@@ -93,3 +93,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+                                        ; 
+(global-set-key (kbd "C-x g") 'grep)
+;; 
+(setq org-agenda-files (list "~/Document/journal/*.org"))
