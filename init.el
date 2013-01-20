@@ -8,7 +8,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete)
+(defvar my-packages '(starter-kit auto-complete color-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -48,7 +48,7 @@
 
 
 
-(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+
 
 
 ;;代码折叠
@@ -122,3 +122,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (when (and *is-a-mac* window-system)
   (set-exec-path-from-shell-PATH))
+
+(require 'color-theme)
+(color-theme-xemacs) 
+
+
+(setq default-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
