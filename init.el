@@ -162,6 +162,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-language-environment "utf-8")
 (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
+(global-set-key (kbd "C-x C-s") 'magit-status)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
