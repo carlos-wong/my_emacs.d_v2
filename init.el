@@ -138,7 +138,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-language-environment "utf-8")
 (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
-;; (require 'github-theme)
+
+(global-set-key (kbd "C-x m") 'smex)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -151,5 +152,3 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(global-set-key (kbd "C-x m") 'smex)
