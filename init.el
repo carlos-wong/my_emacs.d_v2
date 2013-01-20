@@ -1,3 +1,5 @@
+(add-to-list 'load-path "~/.emacs.d")
+(require 'xcscope)
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -6,7 +8,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit)
+(defvar my-packages '(starter-kit auto-complete)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -98,3 +100,25 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "C-x g") 'grep)
 ;; 
 (setq org-agenda-files (list "~/Document/journal/*.org"))
+
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+(setq *is-a-mac* (eq system-type 'darwin))
+
+(defun string-rtrim (str)
+  "Remove trailing white-space from a string."
+  (replace-regexp-in-string "[ \t\n]*$" "" str))
+
+(defun set-exec-path-from-shell-PATH ()
+  (interactive)
+  (let ((path-from-shell 
+         (string-rtrim 
+          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path 
+          (split-string path-from-shell path-separator))))
+
+(when (and *is-a-mac* window-system)
+  (set-exec-path-from-shell-PATH))
