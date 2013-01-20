@@ -8,7 +8,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete color-theme)
+(defvar my-packages '(starter-kit auto-complete )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -18,7 +18,7 @@
 ;;;让 Emacs 可以直接打开和显示图片
 ; 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
-(global-linum-mode t)
+;; (global-linum-mode 1)
 (cua-mode 1)
 (setq frame-title-format "%f") ; 显示当前编辑的文档
 
@@ -45,11 +45,6 @@
 
 ;;以空行结束
 (setq require-final-newline t)
-
-
-
-
-
 
 ;;代码折叠
 (add-hook 'c-mode-hook 'hs-minor-mode)
@@ -95,15 +90,24 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-                                        ; 
+
 (global-set-key (kbd "C-x g") 'grep)
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;(require 'org-agenda)
 ;; 
-(setq org-agenda-files (list "~/Document/journal/*.org"))
+;; (setq org-agenda-files (list "/User/carlos/Document/journal/index.org"
+;;                              "/User/carlos/Document/journal/project.org"
+;; ))
+
+;; (setq org-agenda-files (list "~/Document/journal"))
+;; (setq org-agenda-files (file-expand-wildcards
+;; "~/Document/journal/*.org"))
+(setq org-directory "/User/carlos/Document/journal")
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+(setq global-auto-complete-mode t)
 
 (setq *is-a-mac* (eq system-type 'darwin))
 
@@ -123,10 +127,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (when (and *is-a-mac* window-system)
   (set-exec-path-from-shell-PATH))
 
-(require 'color-theme)
-(color-theme-xemacs) 
+;; (require 'color-theme)
+;; (color-theme-dark-blue2) 
+
+(set-language-environment "utf-8")
+(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 
 
-(setq default-buffer-file-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
