@@ -93,16 +93,20 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-set-key (kbd "C-x g") 'grep)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 ;(require 'org-agenda)
 ;; 
 ;; (setq org-agenda-files (list "/User/carlos/Document/journal/index.org"
 ;;                              "/User/carlos/Document/journal/project.org"
 ;; ))
+;; (setq org-agenda-files (list "~/Documents/journal/project.org"
+;;                              "~/Documents/journal/index.org"))
+;(setq org-agenda-files (list "~/Documents/journal/*.org"))
 
 ;; (setq org-agenda-files (list "~/Document/journal"))
-;; (setq org-agenda-files (file-expand-wildcards
-;; "~/Document/journal/*.org"))
-(setq org-directory "/User/carlos/Document/journal")
+(setq org-agenda-files (file-expand-wildcards
+                        "/Users/carlos/Documents/journal/*.org"))
+;; (setq org-directory "/User/carlos/Document/journal")
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -128,9 +132,22 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (set-exec-path-from-shell-PATH))
 
 ;; (require 'color-theme)
+;; (require 'color-theme-x)
 ;; (color-theme-dark-blue2) 
 
 (set-language-environment "utf-8")
-(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
-
+;; (require 'github-theme)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (misterioso))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
