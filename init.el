@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d")
+(global-set-key[f5] 'compile)
 (require 'xcscope)
 (require 'package)
 (add-to-list 'package-archives
@@ -15,6 +16,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 (auto-image-file-mode)
+
+(mouse-avoidance-mode 'animate)
 ;;;让 Emacs 可以直接打开和显示图片
 ; 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
@@ -24,6 +27,28 @@
 
 (auto-image-file-mode)
 ;;;让 Emacs 可以直接打开和显示图片
+
+(setq default-fill-column 80);默认显示 80列就换行
+                                        ; 
+
+(if (eq system-type 'gnu/linux)
+  (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
+  )
+
+(if (eq system-type 'gnu/linux)
+  (setq org-agenda-files (file-expand-wildcards
+                          "/mnt/hgfs/Document/journal/*.org"))
+  )
+
+(if (eq system-type 'darwin)
+  (setq org-agenda-files (file-expand-wildcards
+                          "/Users/carlos/Documents/journal/*.org"))
+  )
+
+(defun insert-current_time ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
+
 
 (global-set-key (kbd "C-x t") 'org-clock-in)
 (global-set-key (kbd "C-x s") 'org-clock-out)
@@ -104,8 +129,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;(setq org-agenda-files (list "~/Documents/journal/*.org"))
 
 ;; (setq org-agenda-files (list "~/Document/journal"))
-(setq org-agenda-files (file-expand-wildcards
-                        "/Users/carlos/Documents/journal/*.org"))
+
 ;; (setq org-directory "/User/carlos/Document/journal")
 
 (require 'auto-complete-config)
@@ -138,8 +162,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-language-environment "utf-8")
 (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
-
-(global-set-key (kbd "C-x m") 'smex)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
