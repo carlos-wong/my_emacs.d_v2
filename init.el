@@ -167,6 +167,17 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 (require 'org)
 
+(add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
+(require 'ibus)
+;; Turn on ibus-mode automatically after loading .emacs
+(add-hook 'after-init-hook 'ibus-mode-on)
+;; Use C-SPC for Set Mark command
+(ibus-define-common-key ?\C-\s nil)
+;; Use C-/ for Undo command
+(ibus-define-common-key ?\C-/ nil)
+(setq ibus-cursor-color '("red" "blue" "limegreen"))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
