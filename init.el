@@ -31,11 +31,24 @@
 ;;;让 Emacs 可以直接打开和显示图片
 
 (setq default-fill-column 80);默认显示 80列就换行
-                                        ; 
+(global-linum-mode t)
 
 (if (eq system-type 'gnu/linux)
   (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
   )
+
+(add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
+(require 'ibus)
+;; Turn on ibus-mode automatically after loading .emacs
+(add-hook 'after-init-hook 'ibus-mode-on)
+;; Use C-SPC for Set Mark command
+(ibus-define-common-key ?\C-\s nil)
+;; Use C-/ for Undo command
+(ibus-define-common-key ?\C-/ nil)
+(setq ibus-cursor-color '("red" "blue" "limegreen"))
+
+
+
 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
@@ -167,15 +180,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 (require 'org)
 
-(add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
-(require 'ibus)
-;; Turn on ibus-mode automatically after loading .emacs
-(add-hook 'after-init-hook 'ibus-mode-on)
-;; Use C-SPC for Set Mark command
-(ibus-define-common-key ?\C-\s nil)
-;; Use C-/ for Undo command
-(ibus-define-common-key ?\C-/ nil)
-(setq ibus-cursor-color '("red" "blue" "limegreen"))
+(global-set-key "\C-x\C-m" 'smex)
+(global-set-key "\C-c\C-m" 'smex)
+
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
 
 
 (custom-set-variables
