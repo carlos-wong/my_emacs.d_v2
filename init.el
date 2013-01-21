@@ -9,13 +9,15 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete )
+(defvar my-packages '(starter-kit auto-complete org)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 (auto-image-file-mode)
+
+
 
 (mouse-avoidance-mode 'animate)
 ;;;让 Emacs 可以直接打开和显示图片
@@ -162,7 +164,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-language-environment "utf-8")
 (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
-(global-set-key (kbd "C-x C-s") 'magit-status)
+;; (global-set-key (kbd "C-x C-s") 'magit-status)
+(require 'org)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
