@@ -231,6 +231,29 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
            (goto-char (point-min))))))))
 
 
+(if (eq system-type 'gnu/linux)
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "/mnt/hgfs/Document/journal/todo.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "/mnt/hgfs/Document/journal/journal.org")
+         "* %?\nEntered on %U\n  %i\n ")
+        ("n" "Note" entry (file+headline "/mnt/hgfs/Document/journal/notes.org" "Notes")
+         "* %U %?\n\n  %i" :prepend t :empty-lines 1)
+        ))
+)
+
+(if (eq system-type 'darwin)
+   (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
+           "* TODO %?\n  %i\n  %a")
+          ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
+           "* %?\nEntered on %U\n  %i\n ")
+          ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
+           "* %U %?\n\n  %i" :prepend t :empty-lines 1)
+          ))
+)
+
+(define-key global-map "\C-cc" 'org-capture)
 
 
 (custom-set-variables
