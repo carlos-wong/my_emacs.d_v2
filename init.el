@@ -236,7 +236,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       '(("t" "Todo" entry (file+headline "/mnt/hgfs/Document/journal/todo.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "/mnt/hgfs/Document/journal/journal.org")
-         "* %?\nEntered on %U\n  %i\n ")
+         "* %?\nEntered on %U\n  %i\n %a")
         ("n" "Note" entry (file+headline "/mnt/hgfs/Document/journal/notes.org" "Notes")
          "* %U %?\n\n  %i" :prepend t :empty-lines 1)
         ))
@@ -247,7 +247,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
         '(("t" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
            "* TODO %?\n  %i\n  %a")
           ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
-           "* %?\nEntered on %U\n  %i\n ")
+           "* %?\nEntered on %U\n  %i\n %a")
           ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
            "* %U %?\n\n  %i" :prepend t :empty-lines 1)
           ))
@@ -255,6 +255,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (define-key global-map "\C-cc" 'org-capture)
 
+(require 'fuzzy)
+(turn-on-fuzzy-isearch)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
