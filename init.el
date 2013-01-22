@@ -35,7 +35,7 @@
 (auto-image-file-mode)
 ;;;让 Emacs 可以直接打开和显示图片
 
-(setq default-fill-column 70);默认显示 80列就换行
+;; (setq default-fill-column 70);默认显示 80列就换行
 (global-linum-mode t)
 
 (if (eq system-type 'gnu/linux)
@@ -51,7 +51,6 @@
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
-
 
 
 
@@ -135,7 +134,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (defun insert-current_time ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
-
 
 (global-set-key (kbd "C-x g") 'grep)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -264,7 +262,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
-)
+ '(org-startup-truncated nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
