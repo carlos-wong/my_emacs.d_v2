@@ -36,7 +36,6 @@
 ;;;让 Emacs 可以直接打开和显示图片
 
 ;; (setq default-fill-column 70);默认显示 80列就换行
-(global-linum-mode t)
 
 (if (eq system-type 'gnu/linux)
   (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
@@ -50,7 +49,7 @@
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
-(setq ibus-cursor-color '("red" "blue" "limegreen"))
+;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
 
 
 
@@ -130,12 +129,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
     (comment-dwim arg)))
 (global-set-key "\M-;" 'qiang-comment-dwim-line)
 
-(electric-pair-mode t)
-(setq electric-pair-pairs '(
-                            (?\" . ?\")
-                            (?\{ . ?\})
-                            (?\' . ?\')
-                            ) )
+;; (electric-pair-mode t)
+;; (setq electric-pair-pairs '(
+;;                             (?\" . ?\")
+;;                             (?\{ . ?\})
+;;                             (?\' . ?\')
+;;                             (?\< . ?\>)
+;;                             ) )
 
 
 (defun insert-current_time ()
