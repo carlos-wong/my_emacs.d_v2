@@ -265,6 +265,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        ))
+
+(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
