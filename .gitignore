@@ -321,6 +321,10 @@
 /elpa/org-20130114/org.elc
 /elpa/org-20130114/orgcard.pdf
 /bookmarks
+/elpa/anything-complete-1.86/anything-complete-autoloads.el
+/elpa/anything-complete-1.86/anything-complete-pkg.el
+/elpa/anything-complete-1.86/anything-complete-pkg.elc
+/elpa/anything-complete-1.86/anything-complete.el
 /elpa/org-20130121/COPYING
 /elpa/org-20130121/README_ELPA
 /elpa/org-20130121/dir
@@ -537,3 +541,4 @@
 /elpa/org-20130121/org.el
 /elpa/org-20130121/org.elc
 /elpa/org-20130121/orgcard.pdf
+>>>>>>> origin/master
