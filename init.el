@@ -9,9 +9,10 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete org)
+(defvar my-packages '(starter-kit auto-complete)
   "A list of packages to ensure are installed at launch.")
 
+(require 'org)
 (setq ac-ignore-case 'smart)
 ;; Show 0.8 second later
 (setq ac-auto-show-menu 0.8)
@@ -24,6 +25,13 @@
 
 (setq org-log-done 'time)
 (setq org-log-done 'note)
+
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 (mouse-avoidance-mode 'animate)
 ;;;让 Emacs 可以直接打开和显示图片
@@ -267,8 +275,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)")
-        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+      '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)")
         ))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
