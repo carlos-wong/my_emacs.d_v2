@@ -22,7 +22,8 @@
     (package-install p)))
 (auto-image-file-mode)
 
-
+(setq org-log-done 'time)
+(setq org-log-done 'note)
 
 (mouse-avoidance-mode 'animate)
 ;;;让 Emacs 可以直接打开和显示图片
