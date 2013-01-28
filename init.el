@@ -305,8 +305,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq savehist-additional-variables
       ;; search entries
       '(search ring regexp-search-ring)
-      ;; save every minute
-      savehist-autosave-interval 60
+      ;; save every hour
+      ;; savehist-autosave-interval 600
       ;; keep the home clean
       savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
 (savehist-mode t)
