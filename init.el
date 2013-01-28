@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete)
+(defvar my-packages '(starter-kit auto-complete yasnippet)
   "A list of packages to ensure are installed at launch.")
 
 (require 'org)
@@ -298,8 +298,20 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+
+(yas-global-mode 1)
+
 ;; smart pairing for all
 (electric-pair-mode t)
+
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
 
 ;; savehist keeps track of some history
 (setq savehist-additional-variables
