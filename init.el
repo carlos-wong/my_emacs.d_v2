@@ -275,13 +275,66 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)")
+      '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)")
         ))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
+
+(global-auto-revert-mode 1)
+
+(setq-default abbrev-mode t)
+(read-abbrev-file "~/.abbrev_defs")
+(setq save-abbrevs t)
+
+(setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
+(setq-default tab-width 4)            ;; but maintain correct
+;; appearance
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; smart pairing for all
+(electric-pair-mode t)
+
+;; savehist keeps track of some history
+(setq savehist-additional-variables
+      ;; search entries
+      '(search ring regexp-search-ring)
+      ;; save every minute
+      savehist-autosave-interval 60
+      ;; keep the home clean
+      savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
+(savehist-mode t)
+
+
+;; show-paren-mode: subtle highlighting of matching parens (global-mode)
+(show-paren-mode +1)
+(setq show-paren-style 'parenthesis)
+
+;; highlight the current line
+(global-hl-line-mode nil)
+
+
+;; ido-mode
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-max-prospects 10
+      ido-save-directory-list-file (expand-file-name "ido.hist" "~/")
+      ido-default-file-method 'selected-window)
+
+;; auto-completion in minibuffer
+(icomplete-mode +1)
+(set-default 'imenu-auto-rescan t)
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -298,3 +351,43 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(setq org-clock-idle-time nil)
+(setq org-log-done 'time)
+(defadvice org-clock-in (after wicked activate)
+  "Mark STARTED when clocked in"
+  (save-excursion
+    (catch 'exit
+      (org-back-to-heading t)
+      (if (looking-at org-outline-regexp) (goto-char (1- (match-end 0))))
+      (if (looking-at (concat " +" org-todo-regexp "\\( +\\|[ \t]*$\\)"))
+          (org-todo "STARTED")))))
+
+
+(add-hook 'org-clock-in-prepare-hook
+          'my-org-mode-ask-effort)
+
+(defun my-org-mode-ask-effort ()
+  "Ask for an effort estimate when clocking in."
+  (unless (org-entry-get (point) "Effort")
+    (let ((effort
+           (completing-read
+            "Effort: "
+            (org-entry-get-multivalued-property (point) "Effort"))))
+      (unless (equal effort "")
+        (org-set-property "Effort" effort)))))
+
+
+(setq org-agenda-span 7)
+(setq org-agenda-show-log t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-time-grid
+      '((daily today require-timed)
+        "----------------"
+        (800 1000 1200 1400 1600 1800)))
+(setq org-columns-default-format "%50ITEM %12SCHEDULED %TODO %3PRIORITY %Effort{:} %TAGS")
+(org-agenda-list)
+
+
