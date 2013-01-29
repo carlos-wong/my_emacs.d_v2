@@ -13,15 +13,15 @@
   "A list of packages to ensure are installed at launch.")
 
 (require 'org)
-(setq ac-ignore-case 'smart)
+;; (setq ac-ignore-case 'smart)
 ;; Show 0.8 second later
-(setq ac-auto-show-menu 0.8)
-(setq ac-auto-start 4)
+;; (setq ac-auto-show-menu 0.8)
+;; (setq ac-auto-start 4)
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-(auto-image-file-mode)
+
 
 (setq org-log-done 'time)
 (setq org-log-done 'note)
@@ -154,6 +154,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "C-x g") 'grep)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 ;(require 'org-agenda)
 ;; 
 ;; (setq org-agenda-files (list "/User/carlos/Document/journal/index.org"
@@ -280,8 +281,24 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 
+;; store all backup and autosave files in the tmp dir
+;; (setq backup-directory-alist
+;;       `((".*" . ,temporary-file-directory)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,temporary-file-directory t)))
+
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
+
+(require 'real-auto-save)
+(add-hook 'text-mode-hook 'turn-on-real-auto-save)
+(add-hook 'muse-mode-hook 'turn-on-real-auto-save)
+(add-hook 'c-mode-hook 'turn-on-real-auto-save)
+(add-hook 'c++-mode-hook 'turn-on-real-auto-save)
+(add-hook 'org-mode-hook 'turn-on-real-auto-save)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save)
+;; Auto save interval is 10 seconds by default. You can change it:
+(setq real-auto-save-interval 5) ;; in seconds
 
 (global-auto-revert-mode 1)
 
@@ -292,11 +309,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
 (setq-default tab-width 4)            ;; but maintain correct
 ;; appearance
-;; store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
 
 
 (yas-global-mode 1)
