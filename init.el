@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete yasnippet)
+(defvar my-packages '(starter-kit auto-complete yasnippet markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
 (require 'org)
@@ -284,21 +284,21 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; store all backup and autosave files in the tmp dir
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,temporary-file-directory)))
-;; (setq auto-save-file-name-transforms
-;;       `((".*" ,temporary-file-directory t)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
-(setq auto-save-default nil) ; stop creating those #auto-save# files
+(setq auto-save-default t) ; stop creating those #auto-save# files
 
-(require 'real-auto-save)
-(add-hook 'text-mode-hook 'turn-on-real-auto-save)
-(add-hook 'muse-mode-hook 'turn-on-real-auto-save)
-(add-hook 'c-mode-hook 'turn-on-real-auto-save)
-(add-hook 'c++-mode-hook 'turn-on-real-auto-save)
-(add-hook 'org-mode-hook 'turn-on-real-auto-save)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save)
-;; Auto save interval is 10 seconds by default. You can change it:
-(setq real-auto-save-interval 5) ;; in seconds
+;; (require 'real-auto-save)
+;; (add-hook 'text-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'muse-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'c-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'c++-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'org-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save)
+;; ;; Auto save interval is 10 seconds by default. You can change it:
+;; (setq real-auto-save-interval 5) ;; in seconds
 
 (global-auto-revert-mode 1)
 
