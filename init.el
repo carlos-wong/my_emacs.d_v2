@@ -421,4 +421,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
+(ac-flyspell-workaround)
 
