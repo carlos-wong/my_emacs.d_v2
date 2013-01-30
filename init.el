@@ -416,3 +416,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
+(global-set-key "\M-/" 'auto-complete)
+(setq ac-ignore-case 'smart)
+(set-face-background 'ac-candidate-face "lightgray")
+(set-face-underline 'ac-candidate-face "darkgray")
+(set-face-background 'ac-selection-face "steelblue")
+
