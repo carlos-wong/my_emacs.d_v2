@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit auto-complete yasnippet markdown-mode)
+(defvar my-packages '(starter-kit markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
 (require 'org)
@@ -168,9 +168,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 ;; (setq org-directory "/User/carlos/Document/journal")
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+
+
+
+
 (setq global-auto-complete-mode t)
 
 (setq *is-a-mac* (eq system-type 'darwin))
@@ -311,8 +312,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; appearance
 
 
-(yas-global-mode 1)
-
 ;; smart pairing for all
 (electric-pair-mode t)
 
@@ -355,10 +354,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       ido-default-file-method 'selected-window)
 
 ;; auto-completion in minibuffer
-(icomplete-mode +1)
+(icomplete-mode 99)
 (set-default 'imenu-auto-rescan t)
-
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -414,4 +411,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-columns-default-format "%50ITEM %12SCHEDULED %TODO %3PRIORITY %Effort{:} %TAGS")
 (org-agenda-list)
 
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(ac-config-default)
 
