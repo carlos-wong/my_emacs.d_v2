@@ -205,7 +205,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-c\m" 'smex)
 
-(global-set-key "\C-w" 'backward-kill-word)
+;; (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
@@ -423,3 +423,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-face-background 'ac-selection-face "steelblue")
 (ac-flyspell-workaround)
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
