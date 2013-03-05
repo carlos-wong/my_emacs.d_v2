@@ -285,11 +285,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; store all backup and autosave files in the tmp dir
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,temporary-file-directory t)))
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
-(setq auto-save-default t) ; stop creating those #auto-save# files
+(setq auto-save-default nil) ; stop creating those #auto-save# files
 
 ;; (require 'real-auto-save)
 ;; (add-hook 'text-mode-hook 'turn-on-real-auto-save)
@@ -364,6 +364,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
+ '(midnight-mode t nil (midnight))
  '(org-startup-truncated nil))
 
 (custom-set-faces
