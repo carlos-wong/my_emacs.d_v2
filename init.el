@@ -290,11 +290,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; store all backup and autosave files in the tmp dir
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,temporary-file-directory t)))
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
-(setq auto-save-default t) ; stop creating those #auto-save# files
+(setq auto-save-default nil) ; stop creating those #auto-save# files
 
 ;; (require 'real-auto-save)
 ;; (add-hook 'text-mode-hook 'turn-on-real-auto-save)
