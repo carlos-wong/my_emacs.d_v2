@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d")
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m")
 (global-set-key[f5] 'compile)
 (require 'xcscope)
 (require 'package)
@@ -12,6 +13,9 @@
 (defvar my-packages '(starter-kit markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
+;; (require 'w3m)
+;; (setq w3m-default-display-inline-images t)
+;; (setq w3m-use-cookies t)
 (require 'org)
 ;; (setq ac-ignore-case 'smart)
 ;; Show 0.8 second later
@@ -38,7 +42,7 @@
 ; 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 ;; (global-linum-mode 1)
-(cua-mode 1)
+;; (cua-mode 1)
 (setq frame-title-format "%f") ; 显示当前编辑的文档
 
 (auto-image-file-mode)
@@ -46,9 +50,9 @@
 
 ;; (setq default-fill-column 70);默认显示 80列就换行
 
-(if (eq system-type 'gnu/linux)
-  (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
-  )
+;; (if (eq system-type 'gnu/linux)
+;;   (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
+;;   )
 
 (add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
 (require 'ibus)
@@ -86,7 +90,7 @@
 ;;C+Tab
 
 
-(global-set-key "%" 'match-paren)
+;; (global-set-key "%" 'match-paren)
 (show-paren-mode t)          
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
@@ -155,6 +159,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 ;(require 'org-agenda)
 ;; 
 ;; (setq org-agenda-files (list "/User/carlos/Document/journal/index.org"
@@ -200,14 +205,14 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
-(require 'org)
+
 
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-c\m" 'smex)
 
 ;; (global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
+;; (global-set-key "\C-x\C-k" 'kill-region)
+;; (global-set-key "\C-c\C-k" 'kill-region)
 
 
 ;; (if (eq system-type 'gnu/linux)
@@ -277,7 +282,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)")
+      '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "|" "DONE(d)")
         ))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
@@ -308,7 +313,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq save-abbrevs t)
 
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
-(setq-default tab-width 4)            ;; but maintain correct
+;; (setq-default tab-width 2)            ;; but maintain correct
 ;; appearance
 
 
@@ -364,6 +369,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
+ '(midnight-mode t nil (midnight))
  '(org-startup-truncated nil))
 
 (custom-set-faces
@@ -383,7 +389,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       (org-back-to-heading t)
       (if (looking-at org-outline-regexp) (goto-char (1- (match-end 0))))
       (if (looking-at (concat " +" org-todo-regexp "\\( +\\|[ \t]*$\\)"))
-          (org-todo "STARTED")))))
+          (org-todo "WORKING")))))
 
 
 (add-hook 'org-clock-in-prepare-hook
@@ -410,7 +416,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
         (800 1000 1200 1400 1600 1800)))
 (setq org-columns-default-format "%50ITEM %12SCHEDULED %TODO %3PRIORITY %Effort{:} %TAGS")
 (org-agenda-list)
-
+(delete-other-windows)
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
@@ -424,3 +430,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (ac-flyspell-workaround)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; (require 'zone)
+;; (zone-when-idle 120)
