@@ -383,7 +383,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-clock-idle-time nil)
 (setq org-log-done 'time)
 (defadvice org-clock-in (after wicked activate)
-  "Mark STARTED when clocked in"
+  "Mark WORKING when clocked in"
   (save-excursion
     (catch 'exit
       (org-back-to-heading t)
@@ -394,9 +394,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'org-clock-in-prepare-hook
           'my-org-mode-ask-effort)
+(add-hook 'org-after-todo-state-change-hook
+          'my-org-mode-ask-effort)
 
 (defun my-org-mode-ask-effort ()
-  "Ask for an effort estimate when clocking in."
+  "Ask for an effort"
   (unless (org-entry-get (point) "Effort")
     (let ((effort
            (completing-read
