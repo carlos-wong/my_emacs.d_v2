@@ -156,6 +156,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
 (global-set-key (kbd "C-x g") 'ag)
+
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -446,3 +447,15 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (set-exec-path-from-shell-PATH)
 (require 'ag)
+(setq ag-highlight-search t)
+
+
+(add-hook 'c-mode-common-hook
+(lambda()
+  (local-set-key (kbd "C-c f") 'hs-show-block)
+  (local-set-key (kbd "C-c b")  'hs-hide-block)
+  (local-set-key (kbd "C-c p")    'hs-hide-all)
+  (local-set-key (kbd "C-c n")  'hs-show-all)
+  (hs-minor-mode t)))
+
+  
