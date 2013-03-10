@@ -62,7 +62,7 @@
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
-;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
+(setq ibus-cursor-color '( "green" "limegreen" "red"))
 
 
 
