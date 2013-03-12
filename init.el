@@ -161,6 +161,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+
 ;(require 'org-agenda)
 ;; 
 ;; (setq org-agenda-files (list "/User/carlos/Document/journal/index.org"
@@ -277,8 +278,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (define-key global-map "\C-cc" 'org-capture)
 
-(require 'fuzzy)
-(turn-on-fuzzy-isearch)
+;; (require 'fuzzy)
+;; (turn-on-fuzzy-isearch)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
@@ -459,3 +460,14 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   (hs-minor-mode t)))
 
   
+(defun linux-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  (c-mode)
+  (c-set-style "K&R")
+  (setq tab-width 8)
+  (setq indent-tabs-mode t)
+  (setq c-basic-offset 8))
+
+(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
