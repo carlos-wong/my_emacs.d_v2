@@ -62,8 +62,12 @@
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
+(if (eq system-type 'gnu/linux)
 (setq ibus-cursor-color '( "green" "limegreen" "red"))
+)
 
+(add-to-list 'load-path "~/.emacs.d/android-mode/")
+(require 'android-mode)
 
 
 (if (eq system-type 'gnu/linux)
