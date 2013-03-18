@@ -67,8 +67,31 @@
 )
 
 (add-to-list 'load-path "~/.emacs.d/android-mode/")
+(setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
 (require 'android-mode)
+(require 'java-mode-indent-annotations)
 
+(setq java-mode-hook
+      (function (lambda()
+                  (java-mode-indent-annotations-setup))))
+
+
+
+;; (add-hook 'android-mode-hook
+;;           (lambda ()
+;;             (define-key "\C-cp"
+;;               'backward-paragraph)
+;;             ))
+
+(defun mp-display-message ()
+  ;; (interactive)
+  ;;; Place your code below this line, but inside the bracket.
+  (message "Start build and run")
+  (android-ant "debug install")
+  ;; (android-start-app)
+  )
+
+(define-key android-mode-map (kbd "<f4>") 'mp-display-message)
 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
