@@ -84,14 +84,18 @@
 ;;             ))
 
 (defun mp-display-message ()
-  ;; (interactive)
+  (interactive)
   ;;; Place your code below this line, but inside the bracket.
   (message "Start build and run")
-  (android-ant "debug install")
-  ;; (android-start-app)
+  (android-ant-debug-install)
+  (android-start-app)
   )
 
-(define-key android-mode-map (kbd "<f4>") 'mp-display-message)
+;; (define-key android-mode-map (kbd "<f4>") 'mp-display-message)
+(define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
+(define-key android-mode-map (kbd "<f5>") 'android-start-app)
+
+
 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
