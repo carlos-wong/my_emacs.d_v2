@@ -186,7 +186,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
-(global-set-key (kbd "C-x g") 'ag)
+(global-set-key (kbd "C-x g") 'grep)
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -268,7 +268,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
     (set-buffer (get-buffer-create "*sdcv*"))
     (buffer-disable-undo)
     (erase-buffer)
-    (let ((process (start-process-shell-command "sdcv" "*sdcv*" "sdcv" "-n" word)))
+    (let ((process (start-process-shell-command "sdcv" "*sdcv*" "sdcv" "-n --utf8-output" word)))
       (set-process-sentinel
        process
        (lambda (process signal)
