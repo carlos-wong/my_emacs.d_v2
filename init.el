@@ -155,7 +155,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
-(global-set-key (kbd "C-x g") 'ag)
+(global-set-key (kbd "C-x g") 'grep)
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -204,8 +204,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (color-theme-dark-blue2) 
 
 (set-language-environment "utf-8")
-(set-default-font "-adobe-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-
+;; (set-default-font "-adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+;; -adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1
+(set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 
 
