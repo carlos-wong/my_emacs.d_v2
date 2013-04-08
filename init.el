@@ -209,6 +209,17 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 
+(setq window-system-default-frame-alist
+      '(
+        ;; if frame created on x display
+        (x
+	 ;; face
+	 (font . "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+	 )
+
+        )
+      )
+
 
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-c\m" 'smex)
@@ -323,14 +334,14 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; smart pairing for all
 (electric-pair-mode t)
 
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
 
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;; (pymacs-load "ropemacs" "rope-")
+;; (setq ropemacs-enable-autoimport t)
 
 ;; savehist keeps track of some history
 (setq savehist-additional-variables
@@ -472,3 +483,11 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+
+
+;; python
+(require 'tramp)
+(require 'ipython)
+(require 'python-pep8)
+(require 'python-pylint)
+
