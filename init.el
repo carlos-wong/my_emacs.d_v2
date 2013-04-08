@@ -62,7 +62,38 @@
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
+(if (eq system-type 'gnu/linux)
 (setq ibus-cursor-color '( "green" "limegreen" "red"))
+)
+
+(add-to-list 'load-path "~/.emacs.d/android-mode/")
+(setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
+(require 'android-mode)
+(require 'java-mode-indent-annotations)
+
+(setq java-mode-hook
+      (function (lambda()
+                  (java-mode-indent-annotations-setup))))
+
+
+
+;; (add-hook 'android-mode-hook
+;;           (lambda ()
+;;             (define-key "\C-cp"
+;;               'backward-paragraph)
+;;             ))
+
+(defun mp-display-message ()
+  (interactive)
+  ;;; Place your code below this line, but inside the bracket.
+  (message "Start build and run")
+  (android-ant-debug-install)
+  (android-start-app)
+  )
+
+;; (define-key android-mode-map (kbd "<f4>") 'mp-display-message)
+(define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
+(define-key android-mode-map (kbd "<f5>") 'android-start-app)
 
 
 
@@ -249,7 +280,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
     (set-buffer (get-buffer-create "*sdcv*"))
     (buffer-disable-undo)
     (erase-buffer)
-    (let ((process (start-process-shell-command "sdcv" "*sdcv*" "sdcv" "-n" word)))
+    (let ((process (start-process-shell-command "sdcv" "*sdcv*" "sdcv" "-n --utf8-output" word)))
       (set-process-sentinel
        process
        (lambda (process signal)

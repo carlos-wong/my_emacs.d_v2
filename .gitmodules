@@ -1,0 +1,3 @@
+[submodule "android-mode"]
+	path = android-mode
+	url = git@github.com:remvee/android-mode.git
