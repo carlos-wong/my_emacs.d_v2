@@ -515,10 +515,15 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
 
+(require 'recent-jump)
+(recent-jump-mode t)
+(global-set-key "\C-x\[" 'recent-jump-backward)
+(global-set-key "\C-x\]" 'recent-jump-forward)
 
 ;; python
 (require 'tramp)
 (require 'ipython)
 (require 'python-pep8)
 (require 'python-pylint)
+
 
