@@ -523,6 +523,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require 'textmate)
 (textmate-mode)
 
+
+(maximize-frame)
 ;; python
 (require 'tramp)
 (require 'ipython)
