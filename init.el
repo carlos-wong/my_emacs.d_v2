@@ -523,6 +523,12 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require 'textmate)
 (textmate-mode)
 
+(global-set-key "\C-css" 'cscope-find-this-symbol)
+(global-set-key "\C-csd" 'cscope-find-global-definition)
+(global-set-key "\C-csg" 'cscope-find-global-definition)
+(global-set-key "\C-csc" 'cscope-find-functions-calling-this-function)
+(global-set-key "\C-csC" 'cscope-find-called-functions)
+
 ;; python
 (require 'tramp)
 (require 'ipython)
