@@ -516,9 +516,12 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
 
 (require 'recent-jump)
-(recent-jump-mode t)
+(recent-jump-mode)
 (global-set-key "\C-x\[" 'recent-jump-backward)
 (global-set-key "\C-x\]" 'recent-jump-forward)
+
+(require 'textmate)
+(textmate-mode)
 
 ;; python
 (require 'tramp)
