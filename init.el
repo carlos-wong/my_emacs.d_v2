@@ -187,7 +187,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
-(global-set-key (kbd "C-x g") 'grep)
+;; (global-set-key (kbd "C-x g") 'grep)
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -544,3 +544,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key (kbd "C-h j") 'javadoc-lookup)
 (javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
 
+(add-to-list 'load-path "/.emacs.d/ag.el") ;; optional
+(require 'ag)
+(setq ag-highlight-search t)
+;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
+(global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
