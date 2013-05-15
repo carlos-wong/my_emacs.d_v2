@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/javadoc-lookup/")
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m")
 (global-set-key[f5] 'compile)
 (require 'xcscope)
@@ -252,8 +253,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       )
 
 
-(global-set-key "\C-x\m" 'smex)
-(global-set-key "\C-c\m" 'smex)
+;; (global-set-key "\C-x\m" 'smex)
+;; (global-set-key "\C-c\m" 'smex)
 
 ;; (global-set-key "\C-w" 'backward-kill-word)
 ;; (global-set-key "\C-x\C-k" 'kill-region)
@@ -327,7 +328,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "|" "DONE(d)")
+      '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "HOLD(h)" "|" "DONE(d)")
         ))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
@@ -532,9 +533,14 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (maximize-frame)
 
 ;; python
-(require 'tramp)
-(require 'ipython)
-(require 'python-pep8)
-(require 'python-pylint)
+;; (require 'tramp)
+;; (require 'ipython)
+;; (require 'python-pep8)
+;; (require 'python-pylint)
 
+(require 'javadoc-lookup)
+(require 'java-import)
+
+(global-set-key (kbd "C-h j") 'javadoc-lookup)
+(javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
 
