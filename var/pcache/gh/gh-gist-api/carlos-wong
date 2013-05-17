@@ -1,0 +1,569 @@
+;; Object gh/gh-gist-api/carlos-wong
+;; EIEIO PERSISTENT OBJECT
+(gh-cache "gh/gh-gist-api/carlos-wong"
+  :file "carlos-wong"
+  :entries #s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8 data (("/users/carlos-wong/gists" "GET" "518961b9e53cab492b8a913ae8ba7382d4306545") [object pcache-entry "pcache-entry" 1367167731.718878 nil ([object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "repo.py" 279 "https://gist.github.com/raw/5477470/8029d0bedfb6dc9a75c959eb3e49284593104753/repo.py" nil]) t "python: parse arguments" "2013-04-28T16:48:20Z" "2013-04-28T16:48:47Z" "https://gist.github.com/5477470.git" "https://gist.github.com/5477470.git" "https://gist.github.com/5477470" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5477470" "https://api.github.com/gists/5477470" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "howto.txt" 8816 "https://gist.github.com/raw/5476199/3a2b8a46014967380e3a2e7c331298c24f4cd968/howto.txt" "carlos@ubuntu:~/workspace/sunplus/openplatform$ make config
+==============================================
+== Configuration Setup (Ver: 0.24)
+==============================================
+<< Select Project >>
+1. [ Factory test                   ] - gplus
+2. [ Android 2.3.4 Binary Release   ] - gplus
+3. [ Android 2.3.4 Source Code      ] - gplus
+4. [ Android 4.0.4 Binary Release   ] - gplus
+5. [ Android 4.0.4 Source Code      ] - gplus
+6. [ New Updater                    ] - gplus
+7. [ Sample Code                    ] - gplus
+8. [ Android 4.0.3 Binary for tvbox ] - tvbox
+9. [ Android 4.0.3 Source for tvbox ] - tvbox
+Select [1 .. 9] :6
+6. [ New Updater                    ] - gplus
+
+<< Select Platform >>
+ 1. [ DemoKit 83000                   ] - gplus
+ 2. [ DemoKit2 83000                  ] - gplus
+ 3. [ DemoKit3 83000                  ] - gplus
+ 4. [ DemoKit3 Nand Flash 83000       ] - gplus
+ 5. [ DemoKit-BL GPL33003_DDR3_NAND   ] - gplus
+ 6. [ DemoKit-EK GPL33003_DDR3_NAND   ] - gplus
+ 7. [ DemoKit-SB GPL33003_DDR3_NAND   ] - gplus
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+ 9. [ demokit_gp33005                 ] - gplus
+10. [ game_gp33005                    ] - gplus
+11. [ EVM GPL83000                    ] - gplus
+12. [ GENERAL GPL83000                ] - gplus
+13. [ ProgrammingKit 83000            ] - gplus
+Select [1 .. 13] :8
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+
+<< Select Project >>
+1. Updater
+2. ISP
+3. IspFromCard
+4. ProgKit_BurnInTest
+5. ProgKit_SDtoNAND
+6. AutoMP
+7. Updater_Release
+Select [1 .. 7] :2
+2. ISP
+
+=== Summary ===
+SYSCONFIG_APK_MAPS = n
+SYSCONFIG_APK_MARKET = n
+SYSCONFIG_ARCH = GPL83000
+SYSCONFIG_ARCH_GPL83000 = y
+SYSCONFIG_AUDIO = n
+SYSCONFIG_AUDIO_CODEC = codec_alc_5633
+SYSCONFIG_BLUETOOTH = n
+SYSCONFIG_BUILD_OIMAGE = y
+SYSCONFIG_CAM1_FLASHLIGHT = n
+SYSCONFIG_CAM1_MAX_RESOLUTION = VGA
+SYSCONFIG_CHUNKMEM_ADDR = 520093696
+SYSCONFIG_CHUNKMEM_SIZE = 14680064
+SYSCONFIG_CMOS_SENSOR = n
+SYSCONFIG_CMOS_SENSOR_1 = None
+SYSCONFIG_CMOS_SENSOR_1_MF = 2
+SYSCONFIG_CMOS_SENSOR_2 = None
+SYSCONFIG_CONFIG_VERSION = 0.24
+SYSCONFIG_DEFCONFIG_FILE = gpl83000_defconfig
+SYSCONFIG_DISP = y
+SYSCONFIG_DONGLE3G = n
+SYSCONFIG_EXT_DISP = HDMI
+SYSCONFIG_FB_Addr = 0x1fe00000
+SYSCONFIG_FB_SIZE = 2097152
+SYSCONFIG_FM = y
+SYSCONFIG_GPS = n
+SYSCONFIG_GP_FAST_BOOT = n
+SYSCONFIG_HDMI = y
+SYSCONFIG_HOST = linux-x86
+SYSCONFIG_INTERNAL_STORAGE = n
+SYSCONFIG_KERNEL_CMDLINE = mem=496MB gp_chunkmem.membase=0x1f000000 gp_chunkmem.memsize=0x00e00000 vmalloc=192M
+SYSCONFIG_KEY = y
+SYSCONFIG_LCD = panel_lcd_hannstar_tft480
+SYSCONFIG_MAINSTORAGE = NAND
+SYSCONFIG_MAIN_DISP = panel_lcd_hannstar_tft480
+SYSCONFIG_MAIN_DISP_HEIGHT = 272
+SYSCONFIG_MAIN_DISP_WIDTH = 480
+SYSCONFIG_MAIN_FILESYSTEM = cramfs
+SYSCONFIG_MEM_SIZE = 536870912
+SYSCONFIG_MOUNT_EXT4 = n
+SYSCONFIG_NAND = y
+SYSCONFIG_NOISE_REDUCTION = n
+SYSCONFIG_NOISE_REDUCTION_LEVEL = 0
+SYSCONFIG_ON2_VIDEO = n
+SYSCONFIG_OTG = y
+SYSCONFIG_PLATFORM = gplus.demokit_game_sb
+SYSCONFIG_PLATFORM_DIR = platform/gplus/demokit_game_sb
+SYSCONFIG_PLATFORM_NAME = demokit-SB
+SYSCONFIG_PMU = y
+SYSCONFIG_PRODUCT = gplus.newUpdater.project__gplus.demokit_game_sb
+SYSCONFIG_PROJECT = gplus.newUpdater
+SYSCONFIG_PROJECT_DIR = project/gplus/newUpdater
+SYSCONFIG_PROJECT_SELECT = ISP
+SYSCONFIG_PROJECT_UPDATER = y
+SYSCONFIG_SCREEN_ROTATE = 0
+SYSCONFIG_SD = y
+SYSCONFIG_SENSOR_ACCEL = n
+SYSCONFIG_SENSOR_COMPASS = n
+SYSCONFIG_SENSOR_GYRO = n
+SYSCONFIG_SENSOR_MAGNETIC = n
+SYSCONFIG_SIMULATOR = n
+SYSCONFIG_SUSPEND_TO_RAM = y
+SYSCONFIG_TARGET = linux-arm
+SYSCONFIG_TOUCH = y
+SYSCONFIG_TOUCH_NAME = touch_gslX680
+SYSCONFIG_TSLIB_SUPPORT = n
+SYSCONFIG_TV = y
+SYSCONFIG_USB = y
+SYSCONFIG_USB_HOST = y
+SYSCONFIG_USB_HOST_HIGHSPEED_MODE = y
+SYSCONFIG_USB_HOST_HUB_CONFIG = 5
+SYSCONFIG_USB_HOST_STORAGE = y
+SYSCONFIG_USB_PHY0_EN = y
+SYSCONFIG_USB_PHY1_SEL = 1
+SYSCONFIG_USB_SLAVE = y
+SYSCONFIG_USB_SLAVE_MSDC = y
+SYSCONFIG_USE_SPK_OUT = y
+SYSCONFIG_VENDOR_VERSION = 0.02
+SYSCONFIG_WIFI = y
+SYSCONFIG_WIFI_MODULE = 8188eu
+
+
+ export PATH=/opt/arm-2010q1/bin/:$PATH
+
+
+
+==============================================
+== Configuration Setup (Ver: 0.24)
+==============================================
+<< Select Project >>
+1. [ Factory test                   ] - gplus
+2. [ Android 2.3.4 Binary Release   ] - gplus
+3. [ Android 2.3.4 Source Code      ] - gplus
+4. [ Android 4.0.4 Binary Release   ] - gplus
+5. [ Android 4.0.4 Source Code      ] - gplus
+6. [ New Updater                    ] - gplus
+7. [ Sample Code                    ] - gplus
+8. [ Android 4.0.3 Binary for tvbox ] - tvbox
+9. [ Android 4.0.3 Source for tvbox ] - tvbox
+Select [1 .. 9] :4
+4. [ Android 4.0.4 Binary Release   ] - gplus
+
+<< Select Platform >>
+ 1. [ DemoKit 83000                   ] - gplus
+ 2. [ DemoKit2 83000                  ] - gplus
+ 3. [ DemoKit3 83000                  ] - gplus
+ 4. [ DemoKit3 Nand Flash 83000       ] - gplus
+ 5. [ DemoKit-BL GPL33003_DDR3_NAND   ] - gplus
+ 6. [ DemoKit-EK GPL33003_DDR3_NAND   ] - gplus
+ 7. [ DemoKit-SB GPL33003_DDR3_NAND   ] - gplus
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+ 9. [ demokit_gp33005                 ] - gplus
+10. [ game_gp33005                    ] - gplus
+11. [ EVM GPL83000                    ] - gplus
+12. [ GENERAL GPL83000                ] - gplus
+13. [ ProgrammingKit 83000            ] - gplus
+Select [1 .. 13] :8
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+
+=== Summary ===
+SYSCONFIG_ANDROID_OUT_DIR = project/common/ics_release
+SYSCONFIG_ANDROID_OVERLAY_DIR = project/common/ics_overlay
+SYSCONFIG_ANDROID_SDK_VERSION = 15
+SYSCONFIG_APK_MAPS = n
+SYSCONFIG_APK_MARKET = y
+SYSCONFIG_ARCH = GPL83000
+SYSCONFIG_ARCH_GPL83000 = y
+SYSCONFIG_AUDIO = y
+SYSCONFIG_AUDIO_CODEC = codec_alc_5633
+SYSCONFIG_AUTO_SLEEP_TIMEOUT = 0
+SYSCONFIG_BATTERY_EMERG_LEVEL = 10
+SYSCONFIG_BATTERY_EMERG_TIMEOUT = 7200000
+SYSCONFIG_BATTERY_NORMAL_TIMEOUT = 64800000
+SYSCONFIG_BG_PROCESS_LIMIT = -1
+SYSCONFIG_BLUETOOTH = n
+SYSCONFIG_BROWSER_USER_AGENT = 3
+SYSCONFIG_BUILD_OIMAGE = n
+SYSCONFIG_CAM1_FLASHLIGHT = n
+SYSCONFIG_CAM1_MAX_RESOLUTION = VGA
+SYSCONFIG_CHUNKMEM_ADDR = 402653184
+SYSCONFIG_CHUNKMEM_SIZE = 132120576
+SYSCONFIG_CMOS_SENSOR = y
+SYSCONFIG_CMOS_SENSOR_1 = GC0309_yuv
+SYSCONFIG_CMOS_SENSOR_1_MF = 2
+SYSCONFIG_CMOS_SENSOR_2 = None
+SYSCONFIG_CONFIG_VERSION = 0.24
+SYSCONFIG_COUNTRY = CN
+SYSCONFIG_DEFCONFIG_FILE = gpl83000_defconfig
+SYSCONFIG_DISP = y
+SYSCONFIG_DONGLE3G = y
+SYSCONFIG_EXTERNAL_SDCARD = /mnt/ext_sd
+SYSCONFIG_EXTERNAL_USBSTORAGE = /mnt/udisk
+SYSCONFIG_EXT_DISP = HDMI
+SYSCONFIG_FB_Addr = 0x1fe00000
+SYSCONFIG_FB_SIZE = 2097152
+SYSCONFIG_FILESYSTEM_EXFAT = y
+SYSCONFIG_FILESYSTEM_NTFS = ntfs3g
+SYSCONFIG_FM = y
+SYSCONFIG_FONTSIZE = 3
+SYSCONFIG_FULL_SETTING_ENABLE = n
+SYSCONFIG_GPS = n
+SYSCONFIG_GP_FAST_BOOT = y
+SYSCONFIG_HDMI = y
+SYSCONFIG_HOST = linux-x86
+SYSCONFIG_IMMED_KILL_PROCESS = 0
+SYSCONFIG_INTERNAL_STORAGE = y
+SYSCONFIG_KERNEL_CMDLINE = mem=384MB gp_chunkmem.membase=0x18000000 gp_chunkmem.memsize=0x07e00000 vmalloc=192M
+SYSCONFIG_KEY = y
+SYSCONFIG_LANGUAGE = zh
+SYSCONFIG_LCD = panel_lcd_hannstar_tft480
+SYSCONFIG_MAINSTORAGE = NAND
+SYSCONFIG_MAIN_DISP = panel_lcd_hannstar_tft480
+SYSCONFIG_MAIN_DISP_HEIGHT = 272
+SYSCONFIG_MAIN_DISP_WIDTH = 480
+SYSCONFIG_MAIN_FILESYSTEM = ext4
+SYSCONFIG_MAIN_FILESYSTEM_SIZE_MB = 256
+SYSCONFIG_MEM_SIZE = 536870912
+SYSCONFIG_MOUNT_EXT4 = y
+SYSCONFIG_NAND = y
+SYSCONFIG_NOISE_REDUCTION = n
+SYSCONFIG_NOISE_REDUCTION_LEVEL = 0
+SYSCONFIG_ON2_VIDEO = y
+SYSCONFIG_OTG = y
+SYSCONFIG_PLATFORM = gplus.demokit_game_sb
+SYSCONFIG_PLATFORM_DIR = platform/gplus/demokit_game_sb
+SYSCONFIG_PLATFORM_NAME = demokit-SB
+SYSCONFIG_PMU = y
+SYSCONFIG_PRODUCT = gplus.ics.binary__gplus.demokit_game_sb
+SYSCONFIG_PROJECT = gplus.ics
+SYSCONFIG_PROJECT_DIR = project/gplus/ics
+SYSCONFIG_REMOVE_GOOGLE_APPS = n
+SYSCONFIG_SCREEN_ROTATE = 0
+SYSCONFIG_SD = y
+SYSCONFIG_SENSOR_ACCEL = y
+SYSCONFIG_SENSOR_COMPASS = n
+SYSCONFIG_SENSOR_GYRO = n
+SYSCONFIG_SENSOR_MAGNETIC = n
+SYSCONFIG_SHUTDOWN_BATTERY_LEVEL = 5
+SYSCONFIG_SIMULATOR = n
+SYSCONFIG_SUSPEND_DELAY_TIMEOUT = 10000
+SYSCONFIG_SUSPEND_TO_RAM = y
+SYSCONFIG_TARGET = linux-arm
+SYSCONFIG_TIMEZONE = Asia/Shanghai
+SYSCONFIG_TOUCH = y
+SYSCONFIG_TOUCH_NAME = touch_gslX680
+SYSCONFIG_TSLIB_SUPPORT = n
+SYSCONFIG_TV = y
+SYSCONFIG_USB = y
+SYSCONFIG_USB_HOST = y
+SYSCONFIG_USB_HOST_HIGHSPEED_MODE = y
+SYSCONFIG_USB_HOST_HUB_CONFIG = 5
+SYSCONFIG_USB_HOST_STORAGE = y
+SYSCONFIG_USB_PHY0_EN = y
+SYSCONFIG_USB_PHY1_SEL = 1
+SYSCONFIG_USB_SLAVE = y
+SYSCONFIG_USB_SLAVE_MSDC = y
+SYSCONFIG_USE_SPK_OUT = y
+SYSCONFIG_VENDOR_VERSION = 0.02
+SYSCONFIG_WAKEUP_ALARM_POLICY = y
+SYSCONFIG_WIFI = y
+SYSCONFIG_WIFI_MODULE = 8188eu
+
+Save configuration to out/gplus.ics.binary__gplus.demokit_game_sb/config/sysconfig.mak
+
+
+
+output file: openplatform/out/gplus.ics.binary__gplus.demokit_game_sb
+
+
+. ./build/envsetup.sh
+
+
+lunch
+
+full_gpdroid-userdebug
+
+"]) t "android: sunplug android make" "2013-04-28T07:34:43Z" "2013-04-28T10:24:44Z" "https://gist.github.com/5476199.git" "https://gist.github.com/5476199.git" "https://gist.github.com/5476199" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5476199" "https://api.github.com/gists/5476199" (((url . "https://api.github.com/gists/5476199/38d2836243ee09a8953d18fd93b817d80711cea6") (change_status (deletions . 0) (additions . 6) (total . 6)) (committed_at . "2013-04-28T10:24:26Z") (version . "38d2836243ee09a8953d18fd93b817d80711cea6") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong"))) ((url . "https://api.github.com/gists/5476199/54c214e99e4ee8a0559ded8c7f205dce9b6f8d74") (change_status (deletions . 0) (additions . 275) (total . 275)) (committed_at . "2013-04-28T07:34:43Z") (version . "54c214e99e4ee8a0559ded8c7f205dce9b6f8d74") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "tar.txt" 43 "https://gist.github.com/raw/5476196/f9176b3c4422b48caa45e60d79c77c25dad914af/tar.txt" nil]) t "tar: show progress when uncompress file" "2013-04-28T07:33:12Z" "2013-04-28T07:33:53Z" "https://gist.github.com/5476196.git" "https://gist.github.com/5476196.git" "https://gist.github.com/5476196" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5476196" "https://api.github.com/gists/5476196" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "index.html" 36 "https://gist.github.com/raw/5476102/815f51e11f01c7bf53080f62e547ce75a9218ffe/index.html" nil]) t "javascript: pass parameter to setTimerout" "2013-04-28T06:30:50Z" "2013-04-28T06:32:03Z" "https://gist.github.com/5476102.git" "https://gist.github.com/5476102.git" "https://gist.github.com/5476102" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5476102" "https://api.github.com/gists/5476102" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "index.html" 298 "https://gist.github.com/raw/5476101/1a9f5b1d2777a1c7b0a3f5ebb25d5739ec8e267f/index.html" nil]) t "javascript: run function when page onload" "2013-04-28T06:29:34Z" "2013-04-28T06:32:18Z" "https://gist.github.com/5476101.git" "https://gist.github.com/5476101.git" "https://gist.github.com/5476101" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5476101" "https://api.github.com/gists/5476101" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "*scratch*.el" 16 "https://gist.github.com/raw/5425081/b501a6fabffcee4ec94040ea8d15862b9472d235/*scratch*.el" nil]) t "Emacs: max frame on macos" "2013-04-20T06:54:11Z" "2013-04-20T06:54:39Z" "https://gist.github.com/5425081.git" "https://gist.github.com/5425081.git" "https://gist.github.com/5425081" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5425081" "https://api.github.com/gists/5425081" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "sensor.c" 90 "https://gist.github.com/raw/5425046/2922a35cd0b037222e846e1448cc1673763d2ebe/sensor.c" nil]) t "C: #marco  print a value with format" "2013-04-20T06:49:04Z" "2013-04-20T14:16:47Z" "https://gist.github.com/5425046.git" "https://gist.github.com/5425046.git" "https://gist.github.com/5425046" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5425046" "https://api.github.com/gists/5425046" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "python: struct pack char.txt" 24 "https://gist.github.com/raw/5425012/160f2b07605b26a1d642785017d2bf6765bcc205/python:%20struct%20pack%20char.txt" nil]) t "python: struct pack char" "2013-04-20T06:38:36Z" "2013-04-20T06:38:55Z" "https://gist.github.com/5425012.git" "https://gist.github.com/5425012.git" "https://gist.github.com/5425012" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5425012" "https://api.github.com/gists/5425012" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "cscope_wiht_python.txt" 222 "https://gist.github.com/raw/5425002/c0c57e8ea6090f0a9dcad61dce9d91e0ce2fc722/cscope_wiht_python.txt" nil]) t "bash: cscope work with pyhon" "2013-04-20T06:32:35Z" "2013-04-20T06:32:58Z" "https://gist.github.com/5425002.git" "https://gist.github.com/5425002.git" "https://gist.github.com/5425002" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5425002" "https://api.github.com/gists/5425002" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "bash: dd progress" 39 "https://gist.github.com/raw/5402556/7e75597474783c339d50ce03d9260228e8f75882/bash:%20dd%20progress" "pv -tpreb /dev/urandom | dd of=file.img"]) t "bash: dd progress" "2013-04-17T08:03:34Z" "2013-04-17T08:03:35Z" "https://gist.github.com/5402556.git" "https://gist.github.com/5402556.git" "https://gist.github.com/5402556" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5402556" "https://api.github.com/gists/5402556" (((url . "https://api.github.com/gists/5402556/722bea7fd86146c6db224cefff616acd165d0b7e") (change_status (deletions . 0) (additions . 1) (total . 1)) (committed_at . "2013-04-17T08:03:34Z") (version . "722bea7fd86146c6db224cefff616acd165d0b7e") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "git: submodules fetch every modules" 31 "https://gist.github.com/raw/5402089/78338dd6624e717af889a6c8fbec4264a612b65d/git:%20submodules%20fetch%20every%20modules" nil]) t "git: submodules fetch every modules" "2013-04-17T05:59:13Z" "2013-04-17T05:59:14Z" "https://gist.github.com/5402089.git" "https://gist.github.com/5402089.git" "https://gist.github.com/5402089" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5402089" "https://api.github.com/gists/5402089" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "python: query yes or not" 1124 "https://gist.github.com/raw/5402039/781040a1e2404dc935143a27fcc702b09f347ed6/python:%20query%20yes%20or%20not" nil]) t "python: yes or not" "2013-04-17T05:42:51Z" "2013-04-20T05:28:37Z" "https://gist.github.com/5402039.git" "https://gist.github.com/5402039.git" "https://gist.github.com/5402039" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5402039" "https://api.github.com/gists/5402039" nil nil])] ("/gists/5476199" "GET" "e81ae117190f023699915e56f7086e0373e8dfdd") [object pcache-entry "pcache-entry" 1367228849.7302346 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "howto.txt" 8816 "https://gist.github.com/raw/5476199/3a2b8a46014967380e3a2e7c331298c24f4cd968/howto.txt" "carlos@ubuntu:~/workspace/sunplus/openplatform$ make config
+==============================================
+== Configuration Setup (Ver: 0.24)
+==============================================
+<< Select Project >>
+1. [ Factory test                   ] - gplus
+2. [ Android 2.3.4 Binary Release   ] - gplus
+3. [ Android 2.3.4 Source Code      ] - gplus
+4. [ Android 4.0.4 Binary Release   ] - gplus
+5. [ Android 4.0.4 Source Code      ] - gplus
+6. [ New Updater                    ] - gplus
+7. [ Sample Code                    ] - gplus
+8. [ Android 4.0.3 Binary for tvbox ] - tvbox
+9. [ Android 4.0.3 Source for tvbox ] - tvbox
+Select [1 .. 9] :6
+6. [ New Updater                    ] - gplus
+
+<< Select Platform >>
+ 1. [ DemoKit 83000                   ] - gplus
+ 2. [ DemoKit2 83000                  ] - gplus
+ 3. [ DemoKit3 83000                  ] - gplus
+ 4. [ DemoKit3 Nand Flash 83000       ] - gplus
+ 5. [ DemoKit-BL GPL33003_DDR3_NAND   ] - gplus
+ 6. [ DemoKit-EK GPL33003_DDR3_NAND   ] - gplus
+ 7. [ DemoKit-SB GPL33003_DDR3_NAND   ] - gplus
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+ 9. [ demokit_gp33005                 ] - gplus
+10. [ game_gp33005                    ] - gplus
+11. [ EVM GPL83000                    ] - gplus
+12. [ GENERAL GPL83000                ] - gplus
+13. [ ProgrammingKit 83000            ] - gplus
+Select [1 .. 13] :8
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+
+<< Select Project >>
+1. Updater
+2. ISP
+3. IspFromCard
+4. ProgKit_BurnInTest
+5. ProgKit_SDtoNAND
+6. AutoMP
+7. Updater_Release
+Select [1 .. 7] :2
+2. ISP
+
+=== Summary ===
+SYSCONFIG_APK_MAPS = n
+SYSCONFIG_APK_MARKET = n
+SYSCONFIG_ARCH = GPL83000
+SYSCONFIG_ARCH_GPL83000 = y
+SYSCONFIG_AUDIO = n
+SYSCONFIG_AUDIO_CODEC = codec_alc_5633
+SYSCONFIG_BLUETOOTH = n
+SYSCONFIG_BUILD_OIMAGE = y
+SYSCONFIG_CAM1_FLASHLIGHT = n
+SYSCONFIG_CAM1_MAX_RESOLUTION = VGA
+SYSCONFIG_CHUNKMEM_ADDR = 520093696
+SYSCONFIG_CHUNKMEM_SIZE = 14680064
+SYSCONFIG_CMOS_SENSOR = n
+SYSCONFIG_CMOS_SENSOR_1 = None
+SYSCONFIG_CMOS_SENSOR_1_MF = 2
+SYSCONFIG_CMOS_SENSOR_2 = None
+SYSCONFIG_CONFIG_VERSION = 0.24
+SYSCONFIG_DEFCONFIG_FILE = gpl83000_defconfig
+SYSCONFIG_DISP = y
+SYSCONFIG_DONGLE3G = n
+SYSCONFIG_EXT_DISP = HDMI
+SYSCONFIG_FB_Addr = 0x1fe00000
+SYSCONFIG_FB_SIZE = 2097152
+SYSCONFIG_FM = y
+SYSCONFIG_GPS = n
+SYSCONFIG_GP_FAST_BOOT = n
+SYSCONFIG_HDMI = y
+SYSCONFIG_HOST = linux-x86
+SYSCONFIG_INTERNAL_STORAGE = n
+SYSCONFIG_KERNEL_CMDLINE = mem=496MB gp_chunkmem.membase=0x1f000000 gp_chunkmem.memsize=0x00e00000 vmalloc=192M
+SYSCONFIG_KEY = y
+SYSCONFIG_LCD = panel_lcd_hannstar_tft480
+SYSCONFIG_MAINSTORAGE = NAND
+SYSCONFIG_MAIN_DISP = panel_lcd_hannstar_tft480
+SYSCONFIG_MAIN_DISP_HEIGHT = 272
+SYSCONFIG_MAIN_DISP_WIDTH = 480
+SYSCONFIG_MAIN_FILESYSTEM = cramfs
+SYSCONFIG_MEM_SIZE = 536870912
+SYSCONFIG_MOUNT_EXT4 = n
+SYSCONFIG_NAND = y
+SYSCONFIG_NOISE_REDUCTION = n
+SYSCONFIG_NOISE_REDUCTION_LEVEL = 0
+SYSCONFIG_ON2_VIDEO = n
+SYSCONFIG_OTG = y
+SYSCONFIG_PLATFORM = gplus.demokit_game_sb
+SYSCONFIG_PLATFORM_DIR = platform/gplus/demokit_game_sb
+SYSCONFIG_PLATFORM_NAME = demokit-SB
+SYSCONFIG_PMU = y
+SYSCONFIG_PRODUCT = gplus.newUpdater.project__gplus.demokit_game_sb
+SYSCONFIG_PROJECT = gplus.newUpdater
+SYSCONFIG_PROJECT_DIR = project/gplus/newUpdater
+SYSCONFIG_PROJECT_SELECT = ISP
+SYSCONFIG_PROJECT_UPDATER = y
+SYSCONFIG_SCREEN_ROTATE = 0
+SYSCONFIG_SD = y
+SYSCONFIG_SENSOR_ACCEL = n
+SYSCONFIG_SENSOR_COMPASS = n
+SYSCONFIG_SENSOR_GYRO = n
+SYSCONFIG_SENSOR_MAGNETIC = n
+SYSCONFIG_SIMULATOR = n
+SYSCONFIG_SUSPEND_TO_RAM = y
+SYSCONFIG_TARGET = linux-arm
+SYSCONFIG_TOUCH = y
+SYSCONFIG_TOUCH_NAME = touch_gslX680
+SYSCONFIG_TSLIB_SUPPORT = n
+SYSCONFIG_TV = y
+SYSCONFIG_USB = y
+SYSCONFIG_USB_HOST = y
+SYSCONFIG_USB_HOST_HIGHSPEED_MODE = y
+SYSCONFIG_USB_HOST_HUB_CONFIG = 5
+SYSCONFIG_USB_HOST_STORAGE = y
+SYSCONFIG_USB_PHY0_EN = y
+SYSCONFIG_USB_PHY1_SEL = 1
+SYSCONFIG_USB_SLAVE = y
+SYSCONFIG_USB_SLAVE_MSDC = y
+SYSCONFIG_USE_SPK_OUT = y
+SYSCONFIG_VENDOR_VERSION = 0.02
+SYSCONFIG_WIFI = y
+SYSCONFIG_WIFI_MODULE = 8188eu
+
+
+ export PATH=/opt/arm-2010q1/bin/:$PATH
+
+
+
+==============================================
+== Configuration Setup (Ver: 0.24)
+==============================================
+<< Select Project >>
+1. [ Factory test                   ] - gplus
+2. [ Android 2.3.4 Binary Release   ] - gplus
+3. [ Android 2.3.4 Source Code      ] - gplus
+4. [ Android 4.0.4 Binary Release   ] - gplus
+5. [ Android 4.0.4 Source Code      ] - gplus
+6. [ New Updater                    ] - gplus
+7. [ Sample Code                    ] - gplus
+8. [ Android 4.0.3 Binary for tvbox ] - tvbox
+9. [ Android 4.0.3 Source for tvbox ] - tvbox
+Select [1 .. 9] :4
+4. [ Android 4.0.4 Binary Release   ] - gplus
+
+<< Select Platform >>
+ 1. [ DemoKit 83000                   ] - gplus
+ 2. [ DemoKit2 83000                  ] - gplus
+ 3. [ DemoKit3 83000                  ] - gplus
+ 4. [ DemoKit3 Nand Flash 83000       ] - gplus
+ 5. [ DemoKit-BL GPL33003_DDR3_NAND   ] - gplus
+ 6. [ DemoKit-EK GPL33003_DDR3_NAND   ] - gplus
+ 7. [ DemoKit-SB GPL33003_DDR3_NAND   ] - gplus
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+ 9. [ demokit_gp33005                 ] - gplus
+10. [ game_gp33005                    ] - gplus
+11. [ EVM GPL83000                    ] - gplus
+12. [ GENERAL GPL83000                ] - gplus
+13. [ ProgrammingKit 83000            ] - gplus
+Select [1 .. 13] :8
+ 8. [ DemoKit-game GPL33003_DDR3_NAND ] - gplus
+
+=== Summary ===
+SYSCONFIG_ANDROID_OUT_DIR = project/common/ics_release
+SYSCONFIG_ANDROID_OVERLAY_DIR = project/common/ics_overlay
+SYSCONFIG_ANDROID_SDK_VERSION = 15
+SYSCONFIG_APK_MAPS = n
+SYSCONFIG_APK_MARKET = y
+SYSCONFIG_ARCH = GPL83000
+SYSCONFIG_ARCH_GPL83000 = y
+SYSCONFIG_AUDIO = y
+SYSCONFIG_AUDIO_CODEC = codec_alc_5633
+SYSCONFIG_AUTO_SLEEP_TIMEOUT = 0
+SYSCONFIG_BATTERY_EMERG_LEVEL = 10
+SYSCONFIG_BATTERY_EMERG_TIMEOUT = 7200000
+SYSCONFIG_BATTERY_NORMAL_TIMEOUT = 64800000
+SYSCONFIG_BG_PROCESS_LIMIT = -1
+SYSCONFIG_BLUETOOTH = n
+SYSCONFIG_BROWSER_USER_AGENT = 3
+SYSCONFIG_BUILD_OIMAGE = n
+SYSCONFIG_CAM1_FLASHLIGHT = n
+SYSCONFIG_CAM1_MAX_RESOLUTION = VGA
+SYSCONFIG_CHUNKMEM_ADDR = 402653184
+SYSCONFIG_CHUNKMEM_SIZE = 132120576
+SYSCONFIG_CMOS_SENSOR = y
+SYSCONFIG_CMOS_SENSOR_1 = GC0309_yuv
+SYSCONFIG_CMOS_SENSOR_1_MF = 2
+SYSCONFIG_CMOS_SENSOR_2 = None
+SYSCONFIG_CONFIG_VERSION = 0.24
+SYSCONFIG_COUNTRY = CN
+SYSCONFIG_DEFCONFIG_FILE = gpl83000_defconfig
+SYSCONFIG_DISP = y
+SYSCONFIG_DONGLE3G = y
+SYSCONFIG_EXTERNAL_SDCARD = /mnt/ext_sd
+SYSCONFIG_EXTERNAL_USBSTORAGE = /mnt/udisk
+SYSCONFIG_EXT_DISP = HDMI
+SYSCONFIG_FB_Addr = 0x1fe00000
+SYSCONFIG_FB_SIZE = 2097152
+SYSCONFIG_FILESYSTEM_EXFAT = y
+SYSCONFIG_FILESYSTEM_NTFS = ntfs3g
+SYSCONFIG_FM = y
+SYSCONFIG_FONTSIZE = 3
+SYSCONFIG_FULL_SETTING_ENABLE = n
+SYSCONFIG_GPS = n
+SYSCONFIG_GP_FAST_BOOT = y
+SYSCONFIG_HDMI = y
+SYSCONFIG_HOST = linux-x86
+SYSCONFIG_IMMED_KILL_PROCESS = 0
+SYSCONFIG_INTERNAL_STORAGE = y
+SYSCONFIG_KERNEL_CMDLINE = mem=384MB gp_chunkmem.membase=0x18000000 gp_chunkmem.memsize=0x07e00000 vmalloc=192M
+SYSCONFIG_KEY = y
+SYSCONFIG_LANGUAGE = zh
+SYSCONFIG_LCD = panel_lcd_hannstar_tft480
+SYSCONFIG_MAINSTORAGE = NAND
+SYSCONFIG_MAIN_DISP = panel_lcd_hannstar_tft480
+SYSCONFIG_MAIN_DISP_HEIGHT = 272
+SYSCONFIG_MAIN_DISP_WIDTH = 480
+SYSCONFIG_MAIN_FILESYSTEM = ext4
+SYSCONFIG_MAIN_FILESYSTEM_SIZE_MB = 256
+SYSCONFIG_MEM_SIZE = 536870912
+SYSCONFIG_MOUNT_EXT4 = y
+SYSCONFIG_NAND = y
+SYSCONFIG_NOISE_REDUCTION = n
+SYSCONFIG_NOISE_REDUCTION_LEVEL = 0
+SYSCONFIG_ON2_VIDEO = y
+SYSCONFIG_OTG = y
+SYSCONFIG_PLATFORM = gplus.demokit_game_sb
+SYSCONFIG_PLATFORM_DIR = platform/gplus/demokit_game_sb
+SYSCONFIG_PLATFORM_NAME = demokit-SB
+SYSCONFIG_PMU = y
+SYSCONFIG_PRODUCT = gplus.ics.binary__gplus.demokit_game_sb
+SYSCONFIG_PROJECT = gplus.ics
+SYSCONFIG_PROJECT_DIR = project/gplus/ics
+SYSCONFIG_REMOVE_GOOGLE_APPS = n
+SYSCONFIG_SCREEN_ROTATE = 0
+SYSCONFIG_SD = y
+SYSCONFIG_SENSOR_ACCEL = y
+SYSCONFIG_SENSOR_COMPASS = n
+SYSCONFIG_SENSOR_GYRO = n
+SYSCONFIG_SENSOR_MAGNETIC = n
+SYSCONFIG_SHUTDOWN_BATTERY_LEVEL = 5
+SYSCONFIG_SIMULATOR = n
+SYSCONFIG_SUSPEND_DELAY_TIMEOUT = 10000
+SYSCONFIG_SUSPEND_TO_RAM = y
+SYSCONFIG_TARGET = linux-arm
+SYSCONFIG_TIMEZONE = Asia/Shanghai
+SYSCONFIG_TOUCH = y
+SYSCONFIG_TOUCH_NAME = touch_gslX680
+SYSCONFIG_TSLIB_SUPPORT = n
+SYSCONFIG_TV = y
+SYSCONFIG_USB = y
+SYSCONFIG_USB_HOST = y
+SYSCONFIG_USB_HOST_HIGHSPEED_MODE = y
+SYSCONFIG_USB_HOST_HUB_CONFIG = 5
+SYSCONFIG_USB_HOST_STORAGE = y
+SYSCONFIG_USB_PHY0_EN = y
+SYSCONFIG_USB_PHY1_SEL = 1
+SYSCONFIG_USB_SLAVE = y
+SYSCONFIG_USB_SLAVE_MSDC = y
+SYSCONFIG_USE_SPK_OUT = y
+SYSCONFIG_VENDOR_VERSION = 0.02
+SYSCONFIG_WAKEUP_ALARM_POLICY = y
+SYSCONFIG_WIFI = y
+SYSCONFIG_WIFI_MODULE = 8188eu
+
+Save configuration to out/gplus.ics.binary__gplus.demokit_game_sb/config/sysconfig.mak
+
+
+
+output file: openplatform/out/gplus.ics.binary__gplus.demokit_game_sb
+
+
+. ./build/envsetup.sh
+
+
+lunch
+
+full_gpdroid-userdebug
+
+"]) t "android: sunplug android make" "2013-04-28T07:34:43Z" "2013-04-28T10:24:44Z" "https://gist.github.com/5476199.git" "https://gist.github.com/5476199.git" "https://gist.github.com/5476199" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5476199" "https://api.github.com/gists/5476199" (((url . "https://api.github.com/gists/5476199/38d2836243ee09a8953d18fd93b817d80711cea6") (change_status (deletions . 0) (additions . 6) (total . 6)) (committed_at . "2013-04-28T10:24:26Z") (version . "38d2836243ee09a8953d18fd93b817d80711cea6") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong"))) ((url . "https://api.github.com/gists/5476199/54c214e99e4ee8a0559ded8c7f205dce9b6f8d74") (change_status (deletions . 0) (additions . 275) (total . 275)) (committed_at . "2013-04-28T07:34:43Z") (version . "54c214e99e4ee8a0559ded8c7f205dce9b6f8d74") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong")))) nil]] ("/gists/5402556" "GET" "3785a39134310ecc0ec3e85b7f5769c76fe0f313") [object pcache-entry "pcache-entry" 1367488818.939673 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "bash: dd progress" 39 "https://gist.github.com/raw/5402556/7e75597474783c339d50ce03d9260228e8f75882/bash:%20dd%20progress" "pv -tpreb /dev/urandom | dd of=file.img"]) t "bash: dd progress" "2013-04-17T08:03:34Z" "2013-04-17T08:03:35Z" "https://gist.github.com/5402556.git" "https://gist.github.com/5402556.git" "https://gist.github.com/5402556" 0 [object gh-user "gh-user" "carlos-wong" 1055130 nil "https://api.github.com/users/carlos-wong"] "5402556" "https://api.github.com/gists/5402556" (((url . "https://api.github.com/gists/5402556/722bea7fd86146c6db224cefff616acd165d0b7e") (change_status (deletions . 0) (additions . 1) (total . 1)) (committed_at . "2013-04-17T08:03:34Z") (version . "722bea7fd86146c6db224cefff616acd165d0b7e") (user (type . "User") (received_events_url . "https://api.github.com/users/carlos-wong/received_events") (events_url . "https://api.github.com/users/carlos-wong/events{/privacy}") (repos_url . "https://api.github.com/users/carlos-wong/repos") (organizations_url . "https://api.github.com/users/carlos-wong/orgs") (subscriptions_url . "https://api.github.com/users/carlos-wong/subscriptions") (starred_url . "https://api.github.com/users/carlos-wong/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/carlos-wong/gists{/gist_id}") (following_url . "https://api.github.com/users/carlos-wong/following") (followers_url . "https://api.github.com/users/carlos-wong/followers") (html_url . "https://github.com/carlos-wong") (url . "https://api.github.com/users/carlos-wong") (gravatar_id . "3daf032a0b1dd04c39771573638a962a") (avatar_url . "https://secure.gravatar.com/avatar/3daf032a0b1dd04c39771573638a962a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png") (id . 1055130) (login . "carlos-wong")))) nil]]))
+  :timestamp 1367488818.9396915
+  )

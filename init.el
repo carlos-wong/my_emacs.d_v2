@@ -529,12 +529,19 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key "\C-csc" 'cscope-find-functions-calling-this-function)
 (global-set-key "\C-csC" 'cscope-find-called-functions)
 
-(maximize-frame)
+(global-set-key "\C-ctf" 'textmate-goto-file)
+(global-set-key "\C-cts" 'textmate-goto-symbol)
+
+
+
+(if (eq system-type 'darwin)
+    (maximize-frame)
+  )
 
 ;; python
-(require 'tramp)
-(require 'ipython)
-(require 'python-pep8)
-(require 'python-pylint)
+;; (require 'tramp)
+;; (require 'ipython)
+;; (require 'python-pep8)
+;; (require 'python-pylint)
 
 
