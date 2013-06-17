@@ -55,17 +55,17 @@
 ;;   (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
 ;;   )
 
-(add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
-(require 'ibus)
-;; Turn on ibus-mode automatically after loading .emacs
-(add-hook 'after-init-hook 'ibus-mode-on)
-;; Use C-SPC for Set Mark command
-(ibus-define-common-key ?\C-\s nil)
-;; Use C-/ for Undo command
-(ibus-define-common-key ?\C-/ nil)
-(if (eq system-type 'gnu/linux)
-(setq ibus-cursor-color '( "green" "limegreen" "red"))
-)
+;; (add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
+;; (require 'ibus)
+;; ;; Turn on ibus-mode automatically after loading .emacs
+;; (add-hook 'after-init-hook 'ibus-mode-on)
+;; ;; Use C-SPC for Set Mark command
+;; (ibus-define-common-key ?\C-\s nil)
+;; ;; Use C-/ for Undo command
+;; (ibus-define-common-key ?\C-/ nil)
+;; (if (eq system-type 'gnu/linux)
+;; (setq ibus-cursor-color '( "green" "limegreen" "red"))
+;; )
 
 (add-to-list 'load-path "~/.emacs.d/android-mode/")
 (setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
@@ -544,8 +544,23 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key (kbd "C-h j") 'javadoc-lookup)
 (javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
 
-(add-to-list 'load-path "/.emacs.d/ag.el") ;; optional
+(add-to-list 'load-path "~/.emacs.d/ag.el") ;; optional
 (require 'ag)
 (setq ag-highlight-search t)
 ;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
-(global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
+(global-set-key (kbd "C-x g") 'ag-project-at-point)
+
+
+;; (add-to-list 'load-path "~/.emacs.d/skeleton-complete") ;; optional
+;; ;; ;; skeleton-complete
+;; (require 'skeleton-complete)
+;; (skeleton-complete-global-mode 1)
+(defun date (arg)
+  (interactive "P")
+  (insert (if arg
+              (format-time-string "%d.%m.%Y")
+            (format-time-string "%Y-%m-%d"))))
+(defun timestamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
+
