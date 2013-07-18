@@ -55,17 +55,17 @@
 ;;   (setq initial-frame-alist '((top . 0) (left . 0) (width . 1000) (height . 1000)));;; full size window
 ;;   )
 
-(add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
-(require 'ibus)
-;; Turn on ibus-mode automatically after loading .emacs
-(add-hook 'after-init-hook 'ibus-mode-on)
-;; Use C-SPC for Set Mark command
-(ibus-define-common-key ?\C-\s nil)
-;; Use C-/ for Undo command
-(ibus-define-common-key ?\C-/ nil)
-(if (eq system-type 'gnu/linux)
-(setq ibus-cursor-color '( "green" "limegreen" "red"))
-)
+;; (add-to-list 'load-path "~/.emacs.d/ibus-el-0.3.2")
+;; (require 'ibus)
+;; ;; Turn on ibus-mode automatically after loading .emacs
+;; (add-hook 'after-init-hook 'ibus-mode-on)
+;; ;; Use C-SPC for Set Mark command
+;; (ibus-define-common-key ?\C-\s nil)
+;; ;; Use C-/ for Undo command
+;; (ibus-define-common-key ?\C-/ nil)
+;; ;; (if (eq system-type 'gnu/linux)
+;; ;; (setq ibus-cursor-color '( "green" "limegreen" "red"))
+;; ;; )
 
 (add-to-list 'load-path "~/.emacs.d/android-mode/")
 (setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
@@ -100,7 +100,7 @@
 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
-                          "/mnt/hgfs/Document/journal/*.org"))
+                          "/mnt/hgfs/carlos/Document/journal/*.org"))
   )
 
 (if (eq system-type 'darwin)
@@ -238,19 +238,19 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-language-environment "utf-8")
 ;; (set-default-font "-adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 ;; -adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1
-(set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;; (set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 
-(setq window-system-default-frame-alist
-      '(
-        ;; if frame created on x display
-        (x
-	 ;; face
-	 (font . "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-	 )
+;; (setq window-system-default-frame-alist
+;;       '(
+;;         ;; if frame created on x display
+;;         (x
+;; 	 ;; face
+;; 	 (font . "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;; 	 )
 
-        )
-      )
+;;         )
+;;       )
 
 
 ;; (global-set-key "\C-x\m" 'smex)
@@ -300,11 +300,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (if (eq system-type 'gnu/linux)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "/mnt/hgfs/Document/journal/todo.org" "Tasks")
+      '(("t" "Todo" entry (file+headline "/mnt/hgfs/carlos/Document/journal/todo.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "/mnt/hgfs/Document/journal/journal.org")
+        ("j" "Journal" entry (file+datetree "/mnt/hgfs/calros/Document/journal/journal.org")
          "* %?\nEntered on %U\n  %i\n %a")
-        ("n" "Note" entry (file+headline "/mnt/hgfs/Document/journal/notes.org" "Notes")
+        ("n" "Note" entry (file+headline "/mnt/hgfs/carlos/Document/journal/notes.org" "Notes")
          "* %U %?\n\n  %i" :prepend t :empty-lines 1)
         ))
 )
@@ -545,14 +545,25 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (require 'python-pep8)
 ;; (require 'python-pylint)
 
-(require 'javadoc-lookup)
-(require 'java-import)
+;; (require 'javadoc-lookup)
+;; (require 'java-import)
 
-(global-set-key (kbd "C-h j") 'javadoc-lookup)
-(javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
+;; (global-set-key (kbd "C-h j") 'javadoc-lookup)
+;; (javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
 
-(add-to-list 'load-path "/.emacs.d/ag.el") ;; optional
+(add-to-list 'load-path "~/.emacs.d/ag.el") ;; optional
 (require 'ag)
 (setq ag-highlight-search t)
 ;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
+
+
+(defun date (arg)
+  (interactive "P")
+  (insert (if arg
+              (format-time-string "%d.%m.%Y")
+            (format-time-string "%Y-%m-%d"))))
+(defun timestamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
+
