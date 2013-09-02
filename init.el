@@ -414,7 +414,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
  '(midnight-mode t nil (midnight))
  '(org-startup-truncated nil))
 
@@ -424,6 +424,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(load-theme 'solarized-dark t)
 
 
 (setq org-clock-idle-time nil)
