@@ -93,8 +93,8 @@
   )
 
 ;; (define-key android-mode-map (kbd "<f4>") 'mp-display-message)
-(define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
-(define-key android-mode-map (kbd "<f5>") 'android-start-app)
+;; (define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
+;; (define-key android-mode-map (kbd "<f5>") 'android-start-app)
 
 
 
@@ -235,7 +235,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (require 'color-theme-x)
 ;; (color-theme-dark-blue2) 
 
-(set-language-environment "utf-8")
+;; (set-language-environment "utf-8")
 ;; (set-default-font "-adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 ;; -adobe-Source Code Pro-semi-bold-normal-normal-*-12-*-*-*-m-0-iso10646-1
 (set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
@@ -326,6 +326,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (turn-on-fuzzy-isearch)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'solarized-dark t)
+(set-language-environment "UTF-8")
+(set-locale-environment "UTF-8")
+
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "HOLD(h)" "|" "DONE(d)")
@@ -408,15 +412,15 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (icomplete-mode 99)
 (set-default 'imenu-auto-rescan t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
- '(midnight-mode t nil (midnight))
- '(org-startup-truncated nil))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(custom-enabled-themes (quote (zenburn)))
+;;  '(custom-safe-themes (quote ("4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
+;;  '(midnight-mode t nil (midnight))
+;;  '(org-startup-truncated nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
