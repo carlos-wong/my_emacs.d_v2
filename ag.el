@@ -1,21 +1,23 @@
-;;; ag.el --- A front-end for ag, the C ack replacement.
+;;; ag.el --- A front-end for ag ('the silver searcher'), the C ack replacement.
 
 ;; Copyright (C) 2013 Wilfred Hughes <me@wilfred.me.uk>
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 11 January 2013
-;; Version: 0.14
+;; Version: 0.29
 
-;;; Commentary
+;;; Commentary:
 
 ;; This file is heavily based on the excellent ack-and-a-half.el.
 
-;;; Usage
+;; Usage:
 
-;; Add you to your .emacs.d:
+;; Add to your .emacs.d:
 
 ;; (add-to-list 'load-path "/path/to/ag.el") ;; optional
 ;; (require 'ag)
+
+;; Alternatively, just install the package from MELPA.
 
 ;; If you're using ag 0.14+, which supports --color-match, then you
 ;; can add highlighting with:
@@ -24,7 +26,7 @@
 
 ;; I like to bind the *-at-point commands to F5 and F6:
 
-;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
+;; (global-set-key (kbd "<f5>") 'ag-project)
 ;; (global-set-key (kbd "<f6>") 'ag-regexp-project-at-point)
 
 ;;; License:
@@ -47,6 +49,9 @@
 ;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ;; Boston, MA 02110-1301, USA.
 
+;;; Code:
+(eval-when-compile (require 'cl)) ;; dolist, flet
+
 (defcustom ag-arguments
   (list "--smart-case" "--nogroup" "--column" "--")
   "Default arguments passed to ag."
@@ -60,20 +65,63 @@ This requires the ag command to support --color-match, which is only in v0.14+"
   :type 'boolean
   :group 'ag)
 
+(defcustom ag-reuse-buffers nil
+  "Non-nil means we reuse the existing search results buffer, rather than
+creating one buffer per unique search."
+  :type 'boolean
+  :group 'ag)
+
+(defcustom ag-reuse-window nil
+  "Non-nil means we open search results in the same window,
+hiding the results buffer."
+  :type 'boolean
+  :group 'ag)
+
 (require 'compile)
+
+;; Although ag results aren't exactly errors, we treat them as errors
+;; so `next-error' and `previous-error' work. However, we ensure our
+;; face inherits from `compilation-info-face' so the results are
+;; styled appropriately.
+(defvar ag-hit-face compilation-info-face
+  "Face name to use for ag matches.")
 
 (defvar ag-match-face 'match
   "Face name to use for ag matches.")
 
+(defun ag/next-error-function (n &optional reset)
+  "Open the search result at point in the current window or a
+different window, according to `ag-open-in-other-window'."
+  (if ag-reuse-window
+      ;; prevent changing the window
+      (flet ((pop-to-buffer (buffer &rest args)
+                            (switch-to-buffer buffer)))
+        (compilation-next-error-function n reset))
+    ;; just navigate to the results as normal
+    (compilation-next-error-function n reset)))
 
 (define-compilation-mode ag-mode "Ag"
   "Ag results compilation mode"
-  (setq ag-last-buffer (current-buffer))
   (let ((smbl  'compilation-ag-nogroup)
-        (pttrn '("^\\([^:\n]+?\\):\\([0-9]+\\):\\([0-9]+\\):" 1 2 3)))
+        ;; Note that we want to use as tight a regexp as we can to try and
+        ;; handle weird file names (with colons in them) as well as possible.
+        ;; E.g. we use [1-9][0-9]* rather than [0-9]+ so as to accept ":034:"
+        ;; in file names.
+        (pttrn '("^\\([^:\n]+?\\):\\([1-9][0-9]*\\):\\([1-9][0-9]*\\):" 1 2 3)))
     (set (make-local-variable 'compilation-error-regexp-alist) (list smbl))
     (set (make-local-variable 'compilation-error-regexp-alist-alist) (list (cons smbl pttrn))))
+  (set (make-local-variable 'compilation-error-face) ag-hit-face)
+  (set (make-local-variable 'next-error-function) 'ag/next-error-function)
   (add-hook 'compilation-filter-hook 'ag-filter nil t))
+
+(define-key ag-mode-map (kbd "p") 'compilation-previous-error)
+(define-key ag-mode-map (kbd "n") 'compilation-next-error)
+
+(defun ag/buffer-name (search-string directory regexp)
+  (cond
+   (ag-reuse-buffers "*ag*")
+   (regexp (format "*ag regexp:%s dir:%s*" search-string directory))
+   (:else (format "*ag text:%s dir:%s*" search-string directory))))
 
 (defun ag/s-join (separator strings)
   "Join all the strings in STRINGS with SEPARATOR in between."
@@ -84,12 +132,12 @@ This requires the ag command to support --color-match, which is only in v0.14+"
   (replace-regexp-in-string (regexp-quote old) new s t t))
 
 (defun ag/shell-quote (string)
-  "Wrap in single quotes, and quote existing single quotes to make shell safe."
+  "Wrap STRING in single quotes, and quote existing single quotes to make shell safe."
   (concat "'" (ag/s-replace "'" "'\\''" string) "'"))
 
 (defun ag/search (string directory &optional regexp)
-  "Run ag searching for the STRING given in DIRECTORY. If REGEXP
-is non-nil, treat STRING as a regular expression."
+  "Run ag searching for the STRING given in DIRECTORY.
+If REGEXP is non-nil, treat STRING as a regular expression."
   (let ((default-directory (file-name-as-directory directory))
         (arguments (if regexp
                        ag-arguments
@@ -102,60 +150,101 @@ is non-nil, treat STRING as a regular expression."
     (compilation-start
      (ag/s-join " "
                 (append '("ag") arguments (list (ag/shell-quote string))))
-     'ag-mode)))
+     'ag-mode
+     `(lambda (mode-name) ,(ag/buffer-name string directory regexp)))))
 
 (defun ag/dwim-at-point ()
-  "If there's an active selection, return that. Otherwise, get
-the symbol at point."
-  (if (use-region-p)
-      (buffer-substring-no-properties (region-beginning) (region-end))
-    (if (symbol-at-point)
-        (symbol-name (symbol-at-point)))))
+  "If there's an active selection, return that.
+Otherwise, get the symbol at point."
+  (cond ((use-region-p)
+         (buffer-substring-no-properties (region-beginning) (region-end)))
+        ((symbol-at-point)
+         (substring-no-properties
+          (symbol-name (symbol-at-point))))))
+
+(defun ag/longest-string (&rest strings)
+  "Given a list of strings and nils, return the longest string."
+  (let ((longest-string nil))
+    (dolist (string strings)
+      (cond ((null longest-string)
+             (setq longest-string string))
+            ((stringp string)
+             (when (< (length longest-string)
+                      (length string))
+               (setq longest-string string)))))
+    longest-string))
 
 (autoload 'vc-git-root "vc-git")
 (autoload 'vc-svn-root "vc-svn")
+(autoload 'vc-hg-root "vc-hg")
 
 (defun ag/project-root (file-path)
-  "Guess the project root of the given file path."
-  (or (vc-git-root file-path)
-      (vc-svn-root file-path)
+  "Guess the project root of the given FILE-PATH."
+  (or (ag/longest-string
+       (vc-git-root file-path)
+       (vc-svn-root file-path)
+       (vc-hg-root file-path))
       file-path))
 
+;;;###autoload
 (defun ag (string directory)
-  "Search using ag in a given directory for a given string."
-  (interactive "sSearch string: \nDDirectory: ")
+  "Search using ag in a given DIRECTORY for a given search STRING,
+with STRING defaulting to the symbol under point."
+  (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))
+                     (read-directory-name "Directory: ")))
   (ag/search string directory))
 
+;;;###autoload
 (defun ag-regexp (string directory)
   "Search using ag in a given directory for a given regexp."
   (interactive "sSearch regexp: \nDDirectory: ")
   (ag/search string directory t))
 
+;;;###autoload
 (defun ag-project (string)
   "Guess the root of the current project and search it with ag
 for the given string."
-  (interactive "sSearch string: ")
-  (ag/search string (ag/project-root (buffer-file-name))))
+  (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))))
+  (ag/search string (ag/project-root default-directory)))
 
+;;;###autoload
 (defun ag-project-regexp (regexp)
   "Guess the root of the current project and search it with ag
 for the given regexp."
   (interactive "sSearch regexp: ")
-  (ag/search regexp (ag/project-root (buffer-file-name)) t))
+  (ag/search regexp (ag/project-root default-directory) t))
 
 (autoload 'symbol-at-point "thingatpt")
 
-(defun ag-project-at-point (string)
-  "Same as ``ag-project'', but with the search string defaulting
-to the symbol under point."
-   (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))))
-   (ag/search string (ag/project-root default-directory)))
+;;;###autoload
+(defalias 'ag-project-at-point 'ag-project)
 
+;;;###autoload
 (defun ag-regexp-project-at-point (regexp)
   "Same as ``ag-regexp-project'', but with the search regexp defaulting
 to the symbol under point."
-   (interactive (list (read-from-minibuffer "Search regexp: " (ag/dwim-at-point))))
-   (ag/search regexp (ag/project-root default-directory) t))
+  (interactive (list (read-from-minibuffer "Search regexp: " (ag/dwim-at-point))))
+
+  (ag/search regexp (ag/project-root default-directory) t))
+
+;;;###autoload
+(defun ag-kill-buffers ()
+  "Kill all ag-mode buffers."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (eq (buffer-local-value 'major-mode buffer) 'ag-mode)
+      (kill-buffer buffer))))
+
+;;;###autoload
+(defun ag-kill-other-buffers ()
+  "Kill all ag-mode buffers other than the current buffer."
+  (interactive)
+  (let ((current-buffer (current-buffer)))
+    (dolist (buffer (buffer-list))
+      (when (and
+             (eq (buffer-local-value 'major-mode buffer) 'ag-mode)
+             (not (eq buffer current-buffer)))
+        (kill-buffer buffer)))))
 
 ;; Taken from grep-filter, just changed the color regex.
 (defun ag-filter ()
