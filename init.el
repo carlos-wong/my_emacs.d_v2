@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/javadoc-lookup/")
+;; (add-to-list 'load-path "~/.emacs.d/javadoc-lookup/")
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m")
 (global-set-key[f4] 'compile)
 (require 'xcscope)
@@ -67,14 +67,14 @@
 ;; (setq ibus-cursor-color '( "green" "limegreen" "red"))
 ;; )
 
-(add-to-list 'load-path "~/.emacs.d/android-mode/")
-(setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
-(require 'android-mode)
-(require 'java-mode-indent-annotations)
+;; (add-to-list 'load-path "~/.emacs.d/android-mode/")
+;; (setq android-mode-sdk-dir "~/android_work/android-sdk-macosx")
+;; (require 'android-mode)
+;; (require 'java-mode-indent-annotations)
 
-(setq java-mode-hook
-      (function (lambda()
-                  (java-mode-indent-annotations-setup))))
+;; (setq java-mode-hook
+;;       (function (lambda()
+;;                   (java-mode-indent-annotations-setup))))
 
 
 
@@ -84,17 +84,17 @@
 ;;               'backward-paragraph)
 ;;             ))
 
-(defun mp-display-message ()
-  (interactive)
-  ;;; Place your code below this line, but inside the bracket.
-  (message "Start build and run")
-  (android-ant-debug-install)
-  (android-start-app)
-  )
+;; (defun mp-display-message ()
+;;   (interactive)
+;;   ;;; Place your code below this line, but inside the bracket.
+;;   (message "Start build and run")
+;;   (android-ant-debug-install)
+;;   (android-start-app)
+;;   )
 
-;; (define-key android-mode-map (kbd "<f4>") 'mp-display-message)
-(define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
-(define-key android-mode-map (kbd "<f5>") 'android-start-app)
+;; ;; (define-key android-mode-map (kbd "<f4>") 'mp-display-message)
+;; (define-key android-mode-map (kbd "<f4>") 'android-ant-debug-install)
+;; (define-key android-mode-map (kbd "<f5>") 'android-start-app)
 
 
 
@@ -253,8 +253,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       )
 
 
-;; (global-set-key "\C-x\m" 'smex)
-;; (global-set-key "\C-c\m" 'smex)
+
 
 ;; (global-set-key "\C-w" 'backward-kill-word)
 ;; (global-set-key "\C-x\C-k" 'kill-region)
@@ -539,11 +538,11 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (require 'python-pep8)
 ;; (require 'python-pylint)
 
-(require 'javadoc-lookup)
-(require 'java-import)
+;; (require 'javadoc-lookup)
+;; (require 'java-import)
 
-(global-set-key (kbd "C-h j") 'javadoc-lookup)
-(javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
+;; (global-set-key (kbd "C-h j") 'javadoc-lookup)
+;; (javadoc-add-roots "/Users/carlos/android_work/android-sdk-macosx/docs")
 
 (add-to-list 'load-path "~/.emacs.d/ag.el") ;; optional
 (require 'ag)
@@ -570,6 +569,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (global-set-key "\C-x\C-m" 'execute-extended-command)
 ;; (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-set-key "\C-w" 'backward-kill-word)
-;; (global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
-(global-set-key (kbd "C-x m") 'execute-extended-command)
+(global-set-key "\C-x\C-k" 'kill-region)
+;; (global-set-key "\C-c\C-k" 'kill-region)
+;; (global-set-key (kbd "C-x m") 'smex)
+(global-set-key "\C-x\m" 'smex)
+(global-set-key "\C-c\m" 'smex)
