@@ -1,7 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/javadoc-lookup/")
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m")
-(global-set-key[f5] 'compile)
+(global-set-key[f4] 'compile)
 (require 'xcscope)
 (require 'package)
 (add-to-list 'package-archives
@@ -549,8 +549,10 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require 'ag)
 (setq ag-highlight-search t)
 ;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
-(global-set-key (kbd "C-x g") 'ag-project-at-point)
+(global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 
+;; (add-to-list 'load-path "~/.emacs.d/anything-grep.el") ;; optional
+;; (require 'anything-grep)
 
 ;; (add-to-list 'load-path "~/.emacs.d/skeleton-complete") ;; optional
 ;; ;; ;; skeleton-complete
@@ -565,3 +567,9 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   (interactive)
   (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
 
+;; (global-set-key "\C-x\C-m" 'execute-extended-command)
+;; (global-set-key "\C-c\C-m" 'execute-extended-command)
+(global-set-key "\C-w" 'backward-kill-word)
+;; (global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key (kbd "C-x m") 'execute-extended-command)
