@@ -17,7 +17,7 @@
 ;; (require 'w3m)
 ;; (setq w3m-default-display-inline-images t)
 ;; (setq w3m-use-cookies t)
-(require 'org)
+;; (require 'org)
 ;; (setq ac-ignore-case 'smart)
 ;; Show 0.8 second later
 ;; (setq ac-auto-show-menu 0.8)
@@ -28,15 +28,15 @@
     (package-install p)))
 
 
-(setq org-log-done 'time)
-(setq org-log-done 'note)
+;; (setq org-log-done 'time)
+;; (setq org-log-done 'note)
 
-(defun org-summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries are done, to TODO otherwise."
-  (let (org-log-done org-log-states)   ; turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+;; (defun org-summary-todo (n-done n-not-done)
+;;   "Switch entry to DONE when all subentries are done, to TODO otherwise."
+;;   (let (org-log-done org-log-states)   ; turn off logging
+;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
-(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+;; (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 (mouse-avoidance-mode 'animate)
 ;;;让 Emacs 可以直接打开和显示图片
@@ -113,8 +113,8 @@
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
 
-(global-set-key (kbd "C-x t") 'org-clock-in)
-(global-set-key (kbd "C-x s") 'org-clock-out)
+;; (global-set-key (kbd "C-x t") 'org-clock-in)
+;; (global-set-key (kbd "C-x s") 'org-clock-out)
 
 (setq compilation-scroll-output t)
 
@@ -186,7 +186,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (defun insert-current_time ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
-
 ;; (global-set-key (kbd "C-x g") 'grep)
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -241,16 +240,16 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 ;; (global-set-key (kbd "C-x C-s") 'magit-status)
 
-(setq window-system-default-frame-alist
-      '(
-        ;; if frame created on x display
-        (x
-	 ;; face
-	 (font . "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-	 )
+;; (setq window-system-default-frame-alist
+;;       '(
+;;         ;; if frame created on x display
+;;         (x
+;; 	 ;; face
+;; 	 (font . "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;; 	 )
 
-        )
-      )
+;;         )
+;;       )
 
 
 
@@ -426,44 +425,44 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (load-theme 'solarized-dark t)
 
 
-(setq org-clock-idle-time nil)
-(setq org-log-done 'time)
-(defadvice org-clock-in (after wicked activate)
-  "Mark WORKING when clocked in"
-  (save-excursion
-    (catch 'exit
-      (org-back-to-heading t)
-      (if (looking-at org-outline-regexp) (goto-char (1- (match-end 0))))
-      (if (looking-at (concat " +" org-todo-regexp "\\( +\\|[ \t]*$\\)"))
-          (org-todo "WORKING")))))
+;; (setq org-clock-idle-time nil)
+;; (setq org-log-done 'time)
+;; (defadvice org-clock-in (after wicked activate)
+;;   "Mark WORKING when clocked in"
+;;   (save-excursion
+;;     (catch 'exit
+;;       (org-back-to-heading t)
+;;       (if (looking-at org-outline-regexp) (goto-char (1- (match-end 0))))
+;;       (if (looking-at (concat " +" org-todo-regexp "\\( +\\|[ \t]*$\\)"))
+;;           (org-todo "WORKING")))))
 
 
-(add-hook 'org-clock-in-prepare-hook
-          'my-org-mode-ask-effort)
-(add-hook 'org-after-todo-state-change-hook
-          'my-org-mode-ask-effort)
+;; (add-hook 'org-clock-in-prepare-hook
+;;           'my-org-mode-ask-effort)
+;; (add-hook 'org-after-todo-state-change-hook
+;;           'my-org-mode-ask-effort)
 
-(defun my-org-mode-ask-effort ()
-  "Ask for an effort"
-  (unless (org-entry-get (point) "Effort")
-    (let ((effort
-           (completing-read
-            "Effort: "
-            (org-entry-get-multivalued-property (point) "Effort"))))
-      (unless (equal effort "")
-        (org-set-property "Effort" effort)))))
+;; (defun my-org-mode-ask-effort ()
+;;   "Ask for an effort"
+;;   (unless (org-entry-get (point) "Effort")
+;;     (let ((effort
+;;            (completing-read
+;;             "Effort: "
+;;             (org-entry-get-multivalued-property (point) "Effort"))))
+;;       (unless (equal effort "")
+;;         (org-set-property "Effort" effort)))))
 
 
-(setq org-agenda-span 7)
-(setq org-agenda-show-log t)
-(setq org-agenda-skip-scheduled-if-done t)
-(setq org-agenda-skip-deadline-if-done t)
-(setq org-agenda-time-grid
-      '((daily today require-timed)
-        "----------------"
-        (800 1000 1200 1400 1600 1800)))
-(setq org-columns-default-format "%50ITEM %12SCHEDULED %TODO %3PRIORITY %Effort{:} %TAGS")
-(org-agenda-list)
+;; (setq org-agenda-span 7)
+;; (setq org-agenda-show-log t)
+;; (setq org-agenda-skip-scheduled-if-done t)
+;; (setq org-agenda-skip-deadline-if-done t)
+;; (setq org-agenda-time-grid
+;;       '((daily today require-timed)
+;;         "----------------"
+;;         (800 1000 1200 1400 1600 1800)))
+;; (setq org-columns-default-format "%50ITEM %12SCHEDULED %TODO %3PRIORITY %Effort{:} %TAGS")
+;; (org-agenda-list)
 (delete-other-windows)
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
@@ -547,6 +546,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (add-to-list 'load-path "~/.emacs.d/ag.el") ;; optional
 (require 'ag)
 (setq ag-highlight-search t)
+(setq ag-reuse-buffers t)
+(setq ag-reuse-window  t)
 ;; (global-set-key (kbd "<f5>") 'ag-project-at-point)
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 
@@ -575,3 +576,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-x\C-m" 'smex)
 (global-set-key "\C-x\C-a" 'anything)
+(setq mac-option-key-is-meta nil)
+(setq mac-option-modifier nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+
