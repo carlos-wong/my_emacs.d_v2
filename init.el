@@ -573,4 +573,10 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (global-set-key "\C-c\C-k" 'kill-region)
 ;; (global-set-key (kbd "C-x m") 'smex)
 (global-set-key "\C-x\m" 'smex)
-(global-set-key "\C-c\m" 'smex)
+(global-set-key "\C-x\C-m" 'smex)
+(global-set-key "\C-x\C-a" 'anything)
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
