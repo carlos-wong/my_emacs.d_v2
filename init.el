@@ -477,7 +477,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (set-face-background 'ac-selection-face "steelblue")
 (ac-flyspell-workaround)
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; (require 'zone)
 ;; (zone-when-idle 120)
@@ -575,8 +575,3 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-x\C-m" 'smex)
 (global-set-key "\C-x\C-a" 'anything)
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-
