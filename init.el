@@ -12,10 +12,10 @@
 
 
 (global-set-key "\C-x\m" 'smex)
-(setq mac-option-key-is-meta nil)
-(setq mac-option-modifier nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
+;(setq mac-option-key-is-meta nil)
+;(setq mac-option-modifier nil)
+;(setq mac-command-key-is-meta t)
+;(setq mac-command-modifier 'meta)
 
 (load-theme 'solarized-dark t)
 
@@ -35,3 +35,8 @@
     (when (fboundp mode) (funcall mode -1)))
 
 (maximize-frame)
+(smex-initialize)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
