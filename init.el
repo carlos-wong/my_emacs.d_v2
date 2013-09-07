@@ -190,4 +190,3 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-x\]" 'recent-jump-forward)
 
 
-;; (desktop-save-mode 1)
