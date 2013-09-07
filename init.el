@@ -159,22 +159,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
         ))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
-(setq-default abbrev-mode t)
-(read-abbrev-file "~/.abbrev_defs")
-(setq save-abbrevs t)
 
 ;; smart pairing for all
 (electric-pair-mode t)
-
-;; savehist keeps track of some history
-(setq savehist-additional-variables
-      ;; search entries
-      '(search ring regexp-search-ring)
-      ;; save every hour
-      ;; savehist-autosave-interval 600
-      ;; keep the home clean
-      savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
-(savehist-mode t)
 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
@@ -203,4 +190,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-x\]" 'recent-jump-forward)
 
 
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
