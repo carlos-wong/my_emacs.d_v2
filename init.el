@@ -6,6 +6,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -39,14 +40,14 @@
 ;; (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 (mouse-avoidance-mode 'animate)
-;;;让 Emacs 可以直接打开和显示图片
+;;让 Emacs 可以直接打开和显示图片
 ; 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 ;; (global-linum-mode 1)
 ;; (cua-mode 1)
 (setq frame-title-format "%f") ; 显示当前编辑的文档
 
-(auto-image-file-mode)
+(setq auto-image-file-mode t)
 ;;;让 Emacs 可以直接打开和显示图片
 
 ;; (setq default-fill-column 70);默认显示 80列就换行
@@ -117,6 +118,8 @@
 ;; (global-set-key (kbd "C-x s") 'org-clock-out)
 
 (setq compilation-scroll-output t)
+
+
 
 (global-set-key [C-tab] 'other-window);;切换到另一个窗口，快捷键为
 ;;C+Tab
@@ -412,7 +415,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
+ '(custom-safe-themes (quote ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "8260d6fbe31eaff0636b18c0d970ebcc7d9413afc40df9e16a2662d5bea45b59" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "4c8f0d2ccaced4349d7ef6d5c17f77cf97655a6f247bf1edf00699b235dea964" default)))
  '(midnight-mode t nil (midnight))
  '(org-startup-truncated nil))
 
@@ -575,9 +578,23 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (global-set-key (kbd "C-x m") 'smex)
 (global-set-key "\C-x\m" 'smex)
 (global-set-key "\C-x\C-m" 'smex)
-(global-set-key "\C-x\C-a" 'anything)
+;; (global-set-key "\C-x\C-a" 'anything)
 (setq mac-option-key-is-meta nil)
 (setq mac-option-modifier nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 
+(require 'timezone)
+;; (require 'highlight-parentheses)
+
+(setq worklog-automatic-login t)
+;; (add-hook 'emacs-startup-hook
+;;           (function (lambda ()
+;;                       (worklog-do-task "Hacking emacs" t)
+;;                       )))
+
+(add-hook 'kill-emacs-hook
+          (function (lambda ()
+                      (worklog-do-task "logout" t)
+                      (worklog-finish)
+                      )))
