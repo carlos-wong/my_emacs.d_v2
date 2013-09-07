@@ -176,7 +176,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
 (savehist-mode t)
 
-(require 'ag)
+(fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
+
 (setq ag-highlight-search t)
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
