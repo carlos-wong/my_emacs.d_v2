@@ -22,7 +22,6 @@
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
 (set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-(global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -192,3 +191,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 
 (desktop-save-mode t)
+
+
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
