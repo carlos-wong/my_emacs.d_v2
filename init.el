@@ -190,7 +190,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-x\]" 'recent-jump-forward)
 
 
-(require 'save-visited-files)
-(turn-on-save-visited-files-mode)
 
-(setq 'idle-highlight-mode t)
+(desktop-save-mode t)
