@@ -9,7 +9,7 @@
   (list "--smart-case" "-U" "--nogroup" "--column" "--")
   "Default arguments passed to ag."
   :type '(repeat (string))
-  :group 'ag)]
+  :group 'ag)
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -35,6 +35,14 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
 (require-package 'fuzzy)
+(require-package 'ag)
+(require-package 'auto-highlight-symbol)
+(require-package 'auto-indent-mode)
+(require-package 'smex)
+(require-package 'solarized-theme)
+(require-package 'scheme-complete)
+(require-package 'anything)
+
 
 
 
