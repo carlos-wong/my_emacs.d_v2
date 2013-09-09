@@ -5,6 +5,11 @@
 (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
+(defcustom ag-arguments
+  (list "--smart-case" "-U" "--nogroup" "--column" "--")
+  "Default arguments passed to ag."
+  :type '(repeat (string))
+  :group 'ag)]
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -29,17 +34,29 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
+(require-package 'fuzzy)
+
+
+
 ;; (require-package 'yasnippet)
 (setq-default inhibit-startup-screen t)
 (setq-default initial-scratch-message nil)
 
+
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(add-to-list 'ac-dictionary-directories "/Users/carlos/.emacs.d/elpa/auto-complete-1.4/dict")
 (ac-config-default)
+
+(setq ac-use-menu-map t)
+;; Default settings
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+;; Ignore case if completion target string doesn't include upper characters
+(setq ac-ignore-case 'smart)
 
 (global-set-key "\C-x\m" 'smex)
 ;(setq mac-option-key-is-meta nil)
-;(setq mac-option-modifier nil)
+					;(setq mac-option-modifier nil)
 ;(setq mac-command-key-is-meta t)
 ;(setq mac-command-modifier 'meta)
 
@@ -197,8 +214,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
 (setq ag-reuse-window  t)
-(global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 
+(global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 
 (defun linux-c-mode ()
   "C mode with adjusted defaults for use with the Linux kernel."
@@ -222,7 +239,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (desktop-save-mode t)
 
 
+
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 (auto-indent-global-mode)
+
+(mouse-avoidance-mode 'proteus)
+;; (enclose-mode t)
+
+
 
