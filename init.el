@@ -32,6 +32,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (set-exec-path-from-shell-PATH)
 
+(require-package 'maxframe)
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
 (require-package 'fuzzy)
@@ -42,7 +43,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'solarized-theme)
 (require-package 'scheme-complete)
 (require-package 'anything)
-
+(require-package 'magit)
 
 
 
