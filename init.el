@@ -11,6 +11,49 @@
   (package-refresh-contents))
 
 
+(defun require-package (p)
+  (unless (package-installed-p p)
+    (package-install p))
+  (require p))
+
+(defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell.
+
+This is particularly useful under Mac OSX, where GUI apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(set-exec-path-from-shell-PATH)
+
+(require-package 'auto-complete)
+;; (require-package 'yasnippet)
+(setq-default inhibit-startup-screen t)
+(setq-default initial-scratch-message nil)
+;;yasnippet
+;; (yas-global-mode 1)
+
+;; auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
+
+(set-default 'ac-sources
+             '(ac-source-abbrev
+               ac-source-dictionary
+	       ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-semantic))
+
+(ac-config-default)
+
+(dolist (m '(c-mode c++-mode java-mode))
+  (add-to-list 'ac-modes m))
+
+(global-auto-complete-mode t)
+
+
+
 (global-set-key "\C-x\m" 'smex)
 ;(setq mac-option-key-is-meta nil)
 ;(setq mac-option-modifier nil)
@@ -35,8 +78,11 @@
 
 (maximize-frame)
 (smex-initialize)
-(ido-mode t)
+
 (setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
+
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
@@ -195,3 +241,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
+(auto-indent-global-mode)
+
