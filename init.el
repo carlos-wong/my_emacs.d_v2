@@ -28,31 +28,14 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (set-exec-path-from-shell-PATH)
 
 (require-package 'auto-complete)
+(require-package 'markdown-mode)
 ;; (require-package 'yasnippet)
 (setq-default inhibit-startup-screen t)
 (setq-default initial-scratch-message nil)
-;;yasnippet
-;; (yas-global-mode 1)
 
-;; auto-complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
-
-(set-default 'ac-sources
-             '(ac-source-abbrev
-               ac-source-dictionary
-	       ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers
-               ac-source-semantic))
-
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
-
-(dolist (m '(c-mode c++-mode java-mode))
-  (add-to-list 'ac-modes m))
-
-(global-auto-complete-mode t)
-
-
 
 (global-set-key "\C-x\m" 'smex)
 ;(setq mac-option-key-is-meta nil)
