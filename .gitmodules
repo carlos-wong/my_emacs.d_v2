@@ -1,0 +1,3 @@
+[submodule "thirdParty/emacs-google-this"]
+	path = thirdParty/emacs-google-this
+	url = git@github.com:Bruce-Connor/emacs-google-this.git
