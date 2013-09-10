@@ -1,4 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
+
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -44,7 +46,9 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'scheme-complete)
 (require-package 'anything)
 (require-package 'magit)
+(require-package 'python-mode)
 
+(require 'xcscope)
 
 
 ;; (require-package 'yasnippet)
@@ -200,6 +204,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
    (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
            "* TODO %?\n  %i\n  %a")
+	  ("w" "Worklog" entry (file+datetree "/Users/carlos/Documents/journal/worklog.org")
+           "* %?\n  %i\n")
           ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
            "* %?\nEntered on %U\n  %i\n %a")
           ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
@@ -258,3 +264,16 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 
 
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+
+
+(require 'google-this)
+(google-this-mode 1)
+
+(setq default-fill-column 70);默认显示 80列就换行
+;; (setq toggle-truncate-lines nil)
+
+;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
