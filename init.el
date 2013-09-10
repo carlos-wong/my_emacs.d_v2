@@ -1,11 +1,14 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
 
+
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . 				 				 "http://elpa.gnu.org/packages/") (add-to-list 'package-archives '("melpa" .        
+				 "http://melpa.milkbox.net/packages/") 	     t)
+	     )
 
 (defcustom ag-arguments
   (list "--smart-case" "-U" "--nogroup" "--column" "--")
@@ -49,7 +52,9 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'python-mode)
 
 (require 'xcscope)
+(require 'yasnippet)
 
+(yas-global-mode 1)
 
 ;; (require-package 'yasnippet)
 (setq-default inhibit-startup-screen t)
@@ -57,8 +62,16 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/Users/carlos/.emacs.d/elpa/auto-complete-1.4/dict")
+(add-to-list 'ac-dictionary-directories  "~/.emacs.d/elpa/auto-complete-20130724.1750/dict" )
 (ac-config-default)
+;; Show 0.8 second later
+(setq ac-auto-show-menu 0.8)
+(setq ac-auto-start t)
+(set-face-background 'ac-candidate-face "lightgray")
+(set-face-underline 'ac-candidate-face "darkgray")
+(set-face-background 'ac-selection-face "steelblue")
+(setq user-mail-addres "huaixian.huang@gmail.com")
+
 
 (setq ac-use-menu-map t)
 ;; Default settings
@@ -71,9 +84,10 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;(setq mac-option-key-is-meta nil)
 					;(setq mac-option-modifier nil)
 ;(setq mac-command-key-is-meta t)
-;(setq mac-command-modifier 'meta)
+					;(setq mac-command-modifier 'meta)
 
 (load-theme 'solarized-dark t)
+;; (load-theme 'cyberpunk t)
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
@@ -275,7 +289,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'google-this)
 (google-this-mode 1)
 
-(setq default-fill-column 70);默认显示 80列就换行
+;; (setq default-fill-column 70);默认显示 80列就换行
 ;; (setq toggle-truncate-lines nil)
 
 ;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
