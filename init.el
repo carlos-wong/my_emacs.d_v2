@@ -146,7 +146,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-(global-set-key "\M-;" 'qiang-comment-dwim-line)
+;; (global-set-key "\M-;" 'qiang-comment-dwim-line)
+(global-set-key (kbd "C-;") 'qiang-comment-dwim-line)
+
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -277,3 +279,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (setq toggle-truncate-lines nil)
 
 ;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
+(global-set-key (kbd "RET") 'newline-and-indent)
