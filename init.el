@@ -50,6 +50,11 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'anything)
 (require-package 'magit)
 (require-package 'python-mode)
+(require-package 'helm)
+(require-package 'ac-helm)
+(require-package 'helm-ag)
+(require-package 'helm-anything)
+
 
 (require 'xcscope)
 (require 'yasnippet)
@@ -294,3 +299,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 ;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
 (global-set-key (kbd "RET") 'newline-and-indent)
+(helm-mode t)
+
+
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
