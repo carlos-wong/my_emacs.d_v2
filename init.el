@@ -16,6 +16,8 @@
   :type '(repeat (string))
   :group 'ag)
 
+
+
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -50,10 +52,10 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'anything)
 (require-package 'magit)
 (require-package 'python-mode)
-(require-package 'helm)
-(require-package 'ac-helm)
-(require-package 'helm-ag)
-(require-package 'helm-anything)
+;; (require-package 'helm)
+;; (require-package 'ac-helm)
+;; (require-package 'helm-ag)
+;; (require-package 'helm-anything)
 
 
 (require 'xcscope)
@@ -86,6 +88,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (setq ac-ignore-case 'smart)
 
 (global-set-key "\C-x\m" 'smex)
+(global-set-key [f5] 'compile)
 ;(setq mac-option-key-is-meta nil)
 					;(setq mac-option-modifier nil)
 ;(setq mac-command-key-is-meta t)
@@ -262,8 +265,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
-(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+
 
 (require 'recent-jump)
 (recent-jump-mode)
@@ -299,9 +303,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 ;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
 (global-set-key (kbd "RET") 'newline-and-indent)
-(helm-mode t)
 
 
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+(setq-default display-buffer-reuse-frames t)
+(global-set-key "\M-/" 'auto-complete)
