@@ -10,11 +10,11 @@
 				 "http://melpa.milkbox.net/packages/") 	     t)
 	     )
 
-(defcustom ag-arguments
-  (list "--smart-case" "-U" "--nogroup" "--column" "--")
-  "Default arguments passed to ag."
-  :type '(repeat (string))
-  :group 'ag)
+;; (defcustom ag-arguments
+;;   (list "--smart-case" "-U" "--nogroup" "--column" "--")
+;;   "Default arguments passed to ag."
+;;   :type '(repeat (string))
+;;   :group 'ag)
 
 
 
@@ -52,6 +52,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'anything)
 (require-package 'magit)
 (require-package 'python-mode)
+(require-package 'autopair)
+
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
@@ -310,3 +312,18 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-c\C-k" 'kill-region)
 (setq-default display-buffer-reuse-frames t)
 (global-set-key "\M-/" 'auto-complete)
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

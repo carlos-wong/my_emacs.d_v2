@@ -1,3 +1,11 @@
 *~
 elpa/
 elpa_old/
+/.emacs.desktop
+/.emacs.desktop.lock
+/ac-comphist.dat
+/bookmarks
+/eshell/history
+/eshell/lastdir
+/savehist
+/url/cookies
