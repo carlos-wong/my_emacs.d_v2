@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
 
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(require 'cl)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -53,6 +55,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'magit)
 (require-package 'python-mode)
 (require-package 'autopair)
+(require-package 'textmate)
 
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
@@ -232,6 +235,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
            "* TODO %?\n  %i\n  %a")
 	  ("w" "Worklog" entry (file+datetree "/Users/carlos/Documents/journal/worklog.org")
            "* %?\n  %i\n")
+	  ("s" "snk android project" entry (file+datetree "/Users/carlos/Documents/journal/androidSnk.org")
+           "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
           ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
            "* %?\nEntered on %U\n  %i\n %a")
           ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
@@ -320,10 +325,19 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux")))))
+ '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
+ '(textmate-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+
