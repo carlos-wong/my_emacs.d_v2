@@ -46,7 +46,6 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'markdown-mode)
 (require-package 'fuzzy)
 (require-package 'ag)
-(require-package 'auto-highlight-symbol)
 (require-package 'auto-indent-mode)
 (require-package 'smex)
 (require-package 'solarized-theme)
@@ -56,6 +55,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'python-mode)
 (require-package 'autopair)
 (require-package 'textmate)
+(require-package 'idle-highlight-mode)
 
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
@@ -206,7 +206,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
        process
        (lambda (process signal)
          (when (memq (process-status process) '(exit signal))
-           (unless (string= (buffer-name) "*sdcv*")
+           (unless (string	= (buffer-name) "*sdcv*")
              (setq kid-sdcv-window-configuration (current-window-configuration))
              (switch-to-buffer-other-window "*sdcv*")
              (local-set-key (kbd "d") 'kid-sdcv-to-buffer)
@@ -272,8 +272,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
-;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+
+(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
 
 
 (require 'recent-jump)
@@ -287,13 +288,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 
 
-(require 'auto-highlight-symbol)
-(global-auto-highlight-symbol-mode t)
-(auto-indent-global-mode)
-
 (mouse-avoidance-mode 'proteus)
-;; (enclose-mode t)
-
 
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -326,7 +321,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
- '(textmate-mode t))
+ '(textmate-mode t)
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -341,3 +337,15 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
+
+(global-set-key "\C-c\C-o" 'other-frame)
+
+
+;align 可以用来将=号两边的变量对齐
+;align-regexp 可以设定用哪个符号来对齐
+(idle-highlight-mode 1)
+(global-auto-revert-mode 1)
+
+
+;; 
+(setq default-fill-column 80);默认显示 80列就换行
