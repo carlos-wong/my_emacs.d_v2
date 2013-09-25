@@ -129,12 +129,12 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
-                          "/mnt/hgfs/Document/journal/*.org"))
+                          "/mnt/hgfs/Document/journal/todo.org"))
   )
 
 (if (eq system-type 'darwin)
   (setq org-agenda-files (file-expand-wildcards
-                          "/Users/carlos/Documents/journal/*.org"))
+                          "/Users/carlos/Documents/journal/daynote.org"))
   )
 
 (setq compilation-scroll-output t)
@@ -206,7 +206,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
        process
        (lambda (process signal)
          (when (memq (process-status process) '(exit signal))
-           (unless (string	= (buffer-name) "*sdcv*")
+           (unless (string= (buffer-name) "*sdcv*")
              (setq kid-sdcv-window-configuration (current-window-configuration))
              (switch-to-buffer-other-window "*sdcv*")
              (local-set-key (kbd "d") 'kid-sdcv-to-buffer)
@@ -239,7 +239,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
            "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
           ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
            "* %?\nEntered on %U\n  %i\n %a")
+	  ("d" "daynote" entry (file+datetree "/Users/carlos/Documents/journal/daynote.org")
+           "* %?\nEntered on %U\n  %i\n %a")
           ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
+           "* %U %?\n\n  %i" :prepend t :empty-lines 1)
+	  ("p" "tips" entry (file+headline "/Users/carlos/Documents/journal/tips.org" "Tips")
            "* %U %?\n\n  %i" :prepend t :empty-lines 1)
           ))
 )
@@ -322,7 +326,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If there is more than one, they won't work right.
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
  '(textmate-mode t)
-)
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
