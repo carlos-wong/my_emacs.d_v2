@@ -59,19 +59,21 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'autopair)
 (require-package 'textmate)
 (require-package 'idle-highlight-mode)
-
+(require-package 'yasnippet)
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
 ;; (require-package 'helm-anything)
 
+(require 'template)
+(template-initialize)
 
 (require 'xcscope)
-(require 'yasnippet)
+;;(require 'yasnippe)
 
 (yas-global-mode 1)
 
-;; (require-package 'yasnippet)
+
 (setq-default inhibit-startup-screen t)
 (setq-default initial-scratch-message nil)
 
@@ -375,7 +377,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;;光标显示为一竖线
 (setq-default cursor-type 'bar)
 (setq ac-auto-show-menu 0.05)
-(require 'template)
-(template-initialize)
+
 (global-set-key (kbd "C-x t") 'org-clock-in)
 (global-set-key (kbd "C-x s") 'org-clock-out)
