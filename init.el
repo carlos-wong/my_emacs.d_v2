@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
+(add-to-list 'load-path "~/.emacs.d/thirdParty/")
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (require 'cl)
@@ -100,6 +101,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 					;(setq mac-command-modifier 'meta)
 
 (load-theme 'solarized-dark t)
+;; (load-theme 'molokai t)
 ;; (load-theme 'cyberpunk t)
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
@@ -373,3 +375,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;;光标显示为一竖线
 (setq-default cursor-type 'bar)
 (setq ac-auto-show-menu 0.05)
+(require 'template)
+(template-initialize)
