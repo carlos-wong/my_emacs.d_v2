@@ -266,6 +266,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq ag-reuse-window  t)
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
+;; (global-set-key (kbd "C-x g") 'ag-regexp)
 
 (defun linux-c-mode ()
   "C mode with adjusted defaults for use with the Linux kernel."
@@ -325,8 +326,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
- '(textmate-mode t)
- )
+ '(desktop-restore-eager 10)
+ '(textmate-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -353,3 +354,22 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 ;; 
 (setq default-fill-column 80);默认显示 80列就换行
+
+(global-set-key (kbd "C-x t") 'org-clock-in)
+(global-set-key (kbd "C-x s") 'org-clock-out)
+
+;; (auto-insert-mode)  ;;; Adds hook to find-files-hook
+;; (setq auto-insert-directory "~/.emacs.d/mytemplate/") ;;; Or use custom, *NOTE* Trailing slash important
+;; (setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
+
+;; (setq auto-insert-alist
+;;       (append '(
+;; 		(python-mode . "Template.py")
+;; 		(markdown-mode . "Template.md")
+		
+;; 		)
+;; 	      auto-insert-alist))
+
+;;光标显示为一竖线
+(setq-default cursor-type 'bar)
+(setq ac-auto-show-menu 0.05)
