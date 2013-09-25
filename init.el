@@ -13,6 +13,8 @@
 				 "http://melpa.milkbox.net/packages/") 	     t)
 	     )
 
+(setq user-full-name "Carlos");;名字 
+(setq user-mail-address "huaixian.huang@gmail.com");邮箱地址 
 ;; (defcustom ag-arguments
 ;;   (list "--smart-case" "-U" "--nogroup" "--column" "--")
 ;;   "Default arguments passed to ag."
