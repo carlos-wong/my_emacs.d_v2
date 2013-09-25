@@ -359,8 +359,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 (setq default-fill-column 80);默认显示 80列就换行
 
-(global-set-key (kbd "C-x t") 'org-clock-in)
-(global-set-key (kbd "C-x s") 'org-clock-out)
 
 ;; (auto-insert-mode)  ;;; Adds hook to find-files-hook
 ;; (setq auto-insert-directory "~/.emacs.d/mytemplate/") ;;; Or use custom, *NOTE* Trailing slash important
@@ -379,3 +377,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq ac-auto-show-menu 0.05)
 (require 'template)
 (template-initialize)
+(global-set-key (kbd "C-x t") 'org-clock-in)
+(global-set-key (kbd "C-x s") 'org-clock-out)
