@@ -340,7 +340,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
- '(desktop-restore-eager 10)
+ '(desktop-restore-eager 20)
  '(textmate-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -388,3 +388,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-set-key (kbd "C-x t") 'org-clock-in)
 (global-set-key (kbd "C-x s") 'org-clock-out)
+
+
+(defun insert-time ()
+  (interactive)
+  (insert (format-time-string "%04Y-%02m-%02d %02H:%02M:%02S")))
