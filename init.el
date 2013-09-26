@@ -383,7 +383,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 	      auto-insert-alist))
 
 ;;光标显示为一竖线
-(setq-default cursor-type 'bar)
+;; (setq-default cursor-type 'bar)
 (setq ac-auto-show-menu 0.05)
 
 (global-set-key (kbd "C-x t") 'org-clock-in)
