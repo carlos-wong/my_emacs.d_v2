@@ -152,6 +152,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   )
 
 (setq compilation-scroll-output t)
+
 (global-set-key [C-tab] 'other-window);;切换到另一个窗口
 
 (setq require-final-newline t)
@@ -275,9 +276,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
 (setq ag-highlight-search t)
-(setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
 (setq ag-reuse-window  t)
+
+(add-hook 'ag-mode-hook 'next-error-follow-minor-mode)
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
