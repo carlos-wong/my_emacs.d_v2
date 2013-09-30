@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/thirdParty/")
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
 (require 'cl)
 
 (require 'package)
@@ -276,10 +277,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
 (setq ag-highlight-search t)
-;; (setq ag-reuse-buffers t)
+(setq ag-reuse-buffers t)
 ;; (setq ag-reuse-window  t)
 
-(add-hook 'ag-mode-hook 'next-error-follow-minor-mode)
+(add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
@@ -332,7 +333,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (setq-default display-buffer-reuse-frames t)
-(global-set-key "\M-/" 'auto-complete)
+(global-set-key "\M-;" 'auto-complete)
 
 
 
@@ -397,4 +398,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%04Y-%02m-%02d %02H:%02M:%02S")))
 
-('server-start)
+(server-start)
