@@ -277,7 +277,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
 (setq ag-highlight-search t)
-(setq ag-reuse-buffers t)
+;; (setq ag-reuse-buffers t)
 ;; (setq ag-reuse-window  t)
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
@@ -294,9 +294,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
+(add-hook 'c-mode-common-hook 'google-set-c-style)
 
-(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+;; (add-hook 'c-mode-common-hook 'linux-c-mode)
+;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
 
 
 (require 'recent-jump)
@@ -398,4 +402,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%04Y-%02m-%02d %02H:%02M:%02S")))
 
-(server-start)
+(server-start) ;;如何在emacsclient编辑成功之后退出c-x #  ;;如何使用emacsclient来输入git的log , emacsclient  "$@" 不能使用 emacsclient  "$@" & 如果在后台运行那么git就不会等待emacs运行结束。
