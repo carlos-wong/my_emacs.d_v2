@@ -8,19 +8,19 @@
 (require 'cl)
 
 (require 'package)
- ;; (add-to-list 'package-archives
- ;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
- ;; (add-to-list 'package-archives
- ;; 	     '("elpa" . "http://tromey.com/elpa/"))
- ;; (add-to-list 'package-archives
- ;; 	     '("gnu" .  "http://elpa.gnu.org/packages/"))
- ;; (add-to-list 'package-archives
- ;; 	     '("melpa" . "http://melpa.milkbox.net/packages/") 	     t)
+ (add-to-list 'package-archives
+              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+ (add-to-list 'package-archives
+ 	     '("elpa" . "http://tromey.com/elpa/"))
+ (add-to-list 'package-archives
+ 	     '("gnu" .  "http://elpa.gnu.org/packages/"))
+ (add-to-list 'package-archives
+ 	     '("melpa" . "http://melpa.milkbox.net/packages/") 	     t)
 	     
 
-(require 'package)
- (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") 	     t)
+;; (require 'package)
+;;  (add-to-list 'package-archives
+;; 	     '("melpa" . "http://melpa.milkbox.net/packages/") 	     t)
 	     
 
 (setq user-full-name "Carlos");;名字 
@@ -71,6 +71,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'idle-highlight-mode)
 (require-package 'yasnippet)
 (require-package 'rainbow-mode)
+(require-package 'ace-jump-mode)
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
@@ -333,7 +334,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (setq default-fill-column 70);默认显示 80列就换行
 ;; (setq toggle-truncate-lines nil)
 
-;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 
@@ -372,8 +373,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key "\C-c\C-o" 'other-frame)
 
 
-;align 可以用来将=号两边的变量对齐
-;align-regexp 可以设定用哪个符号来对齐
+
 (idle-highlight-mode 1)
 (global-auto-revert-mode 1)
 
@@ -413,4 +413,20 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'powerline)
 
-;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为 包含了一些第三方的库
+
+
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;;tips
+;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
+;;在多个文件中进行搜索替换
+;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为
+;align 可以用来将=号两边的变量对齐
+;align-regexp 可以设定用哪个符号来对齐
+;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
+;;list-matching-lines 可以搜索当前文件中的内容并且单独输出到一个 buffer 中，如果想在 buffer 中直接跳转。只要用 next-error-follow-minor-mode 模式即可。可以通过快捷键 C-c C-f 打开
