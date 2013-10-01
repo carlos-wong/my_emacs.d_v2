@@ -1,3 +1,6 @@
 [submodule "thirdParty/emacs-google-this"]
 	path = thirdParty/emacs-google-this
 	url = git@github.com:Bruce-Connor/emacs-google-this.git
+[submodule "thirdParty/powerline"]
+	path = thirdParty/powerline
+	url = git://github.com/jonathanchu/emacs-powerline.git

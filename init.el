@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
+(add-to-list 'load-path "~/.emacs.d/thirdParty/powerline")
 (add-to-list 'load-path "~/.emacs.d/thirdParty/")
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
@@ -69,10 +70,13 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'textmate)
 (require-package 'idle-highlight-mode)
 (require-package 'yasnippet)
+(require-package 'rainbow-mode)
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
 ;; (require-package 'helm-anything)
+
+
 
 (require 'template)
 (template-initialize)
@@ -277,7 +281,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
 (setq ag-highlight-search t)
-;; (setq ag-reuse-buffers t)
+(setq ag-reuse-buffers t)
 ;; (setq ag-reuse-window  t)
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
@@ -403,3 +407,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (insert (format-time-string "%04Y-%02m-%02d %02H:%02M:%02S")))
 
 (server-start) ;;如何在emacsclient编辑成功之后退出c-x #  ;;如何使用emacsclient来输入git的log , emacsclient  "$@" 不能使用 emacsclient  "$@" & 如果在后台运行那么git就不会等待emacs运行结束。
+(rainbow-mode t)
+(blink-cursor-mode -1)
+(setq default-fill-column 79)
+
+(require 'powerline)
+
