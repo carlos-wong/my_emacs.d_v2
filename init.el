@@ -351,8 +351,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "linux"))))
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(desktop-restore-eager 20)
  '(textmate-mode t))
 (custom-set-faces
@@ -422,6 +420,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   t)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+(custom-set-faces
+ '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 ;;tips
 ;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
 ;;在多个文件中进行搜索替换
