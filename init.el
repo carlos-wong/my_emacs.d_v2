@@ -413,3 +413,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'powerline)
 
+;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为 包含了一些第三方的库
