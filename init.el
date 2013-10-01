@@ -288,7 +288,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
-(add-hook 'magit-mode-hook 'toggle-truncate-lines )
+(add-hook 'magit-mode-hook 'toggle-truncate-lines );; show magit log long truncate
+;; (setq-default truncate-lines t)
+;; (setq-default global-visual-line-mode nil)
+;; (turn-on-visual-line-mode)
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
@@ -357,13 +360,17 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(desktop-restore-eager 20)
- '(textmate-mode t))
+ '(global-visual-line-mode nil)
+ '(textmate-mode t)
+ '(truncate-lines t)
+ '(truncate-partial-width-windows nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -422,9 +429,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; (setq powerline-arrow-shape 'arrow14) ;; best for small fonts
-(custom-set-faces
- '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
- '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+
 
 
 
