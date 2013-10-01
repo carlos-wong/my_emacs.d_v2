@@ -288,6 +288,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
+(add-hook 'magit-mode-hook 'toggle-truncate-lines )
+
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
 
@@ -305,8 +307,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; (add-hook 'c-mode-common-hook 'linux-c-mode)
-(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
 
 
 (require 'recent-jump)
@@ -332,7 +336,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'google-this)
 (google-this-mode 1)
 
-;; (setq default-fill-column 70);默认显示 80列就换行
+(setq default-fill-column 70);默认显示 80列就换行
 ;; (setq toggle-truncate-lines nil)
 
 
@@ -377,10 +381,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-auto-revert-mode 1)
 
 
-;; 
-(setq default-fill-column 80);默认显示 80列就换行
-
-
 ;; (auto-insert-mode)  ;;; Adds hook to find-files-hook
 ;; (setq auto-insert-directory "~/.emacs.d/mytemplate/") ;;; Or use custom, *NOTE* Trailing slash important
 ;; (setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
@@ -408,7 +408,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (server-start) ;;如何在emacsclient编辑成功之后退出c-x #  ;;如何使用emacsclient来输入git的log , emacsclient  "$@" 不能使用 emacsclient  "$@" & 如果在后台运行那么git就不会等待emacs运行结束。
 (rainbow-mode t)
 (blink-cursor-mode -1)
-(setq default-fill-column 79)
 
 (require 'powerline)
 
@@ -421,10 +420,14 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   t)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-(setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+
+;; (setq powerline-arrow-shape 'arrow14) ;; best for small fonts
 (custom-set-faces
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+
+
+
 ;;tips
 ;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
 ;;在多个文件中进行搜索替换
