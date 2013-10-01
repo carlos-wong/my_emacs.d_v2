@@ -124,7 +124,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
-(set-default-font "-adobe-Source Code Pro-semibold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -299,13 +300,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
-(add-hook 'c-mode-common-hook 'google-set-c-style)
+;; (add-hook 'c-mode-common-hook 'google-set-c-style)
 
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; (add-hook 'c-mode-common-hook 'linux-c-mode)
-;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
 
 
 (require 'recent-jump)
