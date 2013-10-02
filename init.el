@@ -158,7 +158,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
                           "/Users/carlos/Documents/journal/daynote.org"))
   )
 
-;; (setq compilation-scroll-output t)
+(setq compilation-scroll-output t)
 
 (global-set-key [C-tab] 'other-window);;切换到另一个窗口
 
@@ -366,6 +366,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(desktop-restore-eager 20)
+ '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
@@ -447,7 +448,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
 (savehist-mode t)
 
-
+;; (split-window-horizontally 1)
+(split-window-right)
 
 ;;tips
 ;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
