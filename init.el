@@ -134,8 +134,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 (show-paren-mode 1)
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-    (when (fboundp mode) (funcall mode -1)))
+;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+;;     (when (fboundp mode) (funcall mode -1)))
 
 (maximize-frame)
 (smex-initialize)
@@ -289,6 +289,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
 (add-hook 'magit-mode-hook 'toggle-truncate-lines );; show magit log long truncate
+(add-hook 'compilation-mode-hook 'toggle-truncate-lines)
 ;; (setq-default truncate-lines t)
 ;; (setq-default global-visual-line-mode nil)
 ;; (turn-on-visual-line-mode)
@@ -361,7 +362,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  ;; If there is more than one, they won't work right.
  '(desktop-restore-eager 20)
  '(global-visual-line-mode nil)
+ '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
  '(textmate-mode t)
+ '(tool-bar-mode nil)
  '(truncate-lines t)
  '(truncate-partial-width-windows nil))
 (custom-set-faces
@@ -380,7 +384,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (toggle-indicate-empty-lines))
 
 
-(global-set-key "\C-c\C-o" 'other-frame)
+
 
 
 
@@ -429,15 +433,35 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; (setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+;; (global-set-key "\C-c\C-o" 'other-frame)
 
+(setq savehist-additional-variables
+      ;; search entries
+      '(search ring regexp-search-ring)
+      ;; save every hour
+      ;; savehist-autosave-interval 600
+      ;; keep the home clean
+      savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
+(savehist-mode t)
 
 
 
 ;;tips
 ;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
+;;关于多个窗口的使用。或者可以不作为多个窗口。可以将两个屏幕拼接成一个屏幕，然后分割成两个窗口
 ;;在多个文件中进行搜索替换
 ;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为
 ;align 可以用来将=号两边的变量对齐
 ;align-regexp 可以设定用哪个符号来对齐
 ;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
 ;;list-matching-lines 可以搜索当前文件中的内容并且单独输出到一个 buffer 中，如果想在 buffer 中直接跳转。只要用 next-error-follow-minor-mode 模式即可。可以通过快捷键 C-c C-f 打开
+;;通过 new-frame建立的frame如何被关闭，使用命令 delete-frame
+
+
+
+
+
+
+
+
+
