@@ -299,6 +299,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (turn-on-visual-line-mode)
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
+(global-set-key (kbd "C-j") 'delete-blank-lines)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
 
 (defun linux-c-mode ()
