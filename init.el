@@ -112,7 +112,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (setq ac-ignore-case 'smart)
 
 (global-set-key "\C-x\m" 'smex)
-(global-set-key [f5] 'compile)
+(global-set-key [f5] 'recompile)
 ;(setq mac-option-key-is-meta nil)
 					;(setq mac-option-modifier nil)
 ;(setq mac-command-key-is-meta t)
