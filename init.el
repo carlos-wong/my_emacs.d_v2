@@ -288,11 +288,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
-(setq toggle-truncate-lines nil)
+(setq-default truncate-lines nil)
+;; (setq toggle-truncate-lines nil)
+;; (add-hook 'ag-mode-hook 'toggle-truncate-lines );; show magit lo
 (add-hook 'magit-mode-hook 'toggle-truncate-lines );; show magit log long truncate
-(add-hook 'org-mode-hook 'toggle-truncate-lines );; show magit log long truncate
-(add-hook 'compilation-mode-hook 'toggle-truncate-lines)
-;; (setq-default truncate-lines t)
+;; (add-hook 'org-mode-hook 'toggle-truncate-lines );; show magit log long truncate
+;; (add-hook 'compilation-mode-hook 'toggle-truncate-lines)
+
 ;; (setq-default global-visual-line-mode nil)
 ;; (turn-on-visual-line-mode)
 
