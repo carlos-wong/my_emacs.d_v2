@@ -288,7 +288,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
+(setq toggle-truncate-lines nil)
 (add-hook 'magit-mode-hook 'toggle-truncate-lines );; show magit log long truncate
+(add-hook 'org-mode-hook 'toggle-truncate-lines );; show magit log long truncate
 (add-hook 'compilation-mode-hook 'toggle-truncate-lines)
 ;; (setq-default truncate-lines t)
 ;; (setq-default global-visual-line-mode nil)
@@ -340,8 +342,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'google-this)
 (google-this-mode 1)
 
-(setq default-fill-column 70);默认显示 80列就换行
-;; (setq toggle-truncate-lines nil)
+;; (setq default-fill-column 70);默认显示 80列就换行
+
 
 
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -365,9 +367,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(textmate-mode t)
- '(tool-bar-mode nil)
- '(truncate-lines t)
- '(truncate-partial-width-windows nil))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
