@@ -141,7 +141,7 @@
 ;; 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
-(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+
 ;; 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; 
@@ -154,7 +154,7 @@
 ;;;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 ;;;;     (when (fboundp mode) (funcall mode -1)))
 ;; 
-(maximize-frame)
+
 (smex-initialize)
 ;; 
 (setq ido-enable-flex-matching t)
@@ -476,3 +476,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'java-mode-hook 'turn-on-fic-mode)
 (add-hook 'python-mode-hook 'turn-on-fic-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
+(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1");
+(maximize-frame)
