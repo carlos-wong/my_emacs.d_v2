@@ -5,6 +5,23 @@
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
+
+;;tips
+;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
+;;关于多个窗口的使用。或者可以不作为多个窗口。可以将两个屏幕拼接成一个屏幕，然后分割成两个窗口
+;;在多个文件中进行搜索替换
+;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为
+					;align 可以用来将=号两边的变量对齐
+					;align-regexp 可以设定用哪个符号来对齐
+;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
+;;list-matching-lines 可以搜索当前文件中的内容并且单独输出到一个 buffer 中，如果想在 buffer 中直接跳转。只要用 next-error-follow-minor-mode 模式即可。可以通过快捷键 C-c C-f 打开
+;;通过 new-frame建立的frame如何被关闭，使用命令 delete-frame
+;;scroll-all-mode 打开之后能够同时滚动多个窗口，如果阅读两个文件的话可以通过这个功能同时滚动两个文件的内容
+
+
+
+
+
 (require 'cl)
 
 (require 'package)
@@ -54,6 +71,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (set-exec-path-from-shell-PATH)
 
+(require-package 'xcscope)
+(require-package 'switch-window)
 (require-package 'maxframe)
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
@@ -82,7 +101,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require 'template)
 (template-initialize)
 
-(require 'xcscope)
+;; (require 'xcscope)
 ;;(require 'yasnippe)
 
 (yas-global-mode 1)
@@ -96,7 +115,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (add-to-list 'ac-dictionary-directories  "~/.emacs.d/elpa/auto-complete-20130724.1750/dict" )
 (ac-config-default)
 ;; Show 0.8 second later
-(setq ac-auto-show-menu 0.8)
+(setq ac-auto-show-menu 2)
 (setq ac-auto-start t)
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline 'ac-candidate-face "darkgray")
@@ -124,7 +143,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
-(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;;(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
@@ -158,9 +177,9 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
                           "/Users/carlos/Documents/journal/daynote.org"))
   )
 
-(setq compilation-scroll-output t)
+;; (setq compilation-scroll-output t)
 
-(global-set-key [C-tab] 'other-window);;切换到另一个窗口
+
 
 (setq require-final-newline t)
 (dolist (command '(yank yank-pop))
@@ -286,7 +305,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq ag-reuse-buffers t)
 ;; (setq ag-reuse-window  t)
 
-(add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
+;; (add-hook 'compilation-mode-hook 'next-error-follow-minor-mode)
+;(add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 
 (setq-default truncate-lines nil)
 ;; (setq toggle-truncate-lines nil)
@@ -299,6 +319,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (turn-on-visual-line-mode)
 
 (global-set-key (kbd "C-x g") 'ag-regexp-project-at-point)
+(global-set-key (kbd "C-x h") 'ag-regexp-project-at-point)
 (global-set-key (kbd "C-j") 'delete-blank-lines)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
 
@@ -318,6 +339,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (add-hook 'c-mode-common-hook 'linux-c-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+(add-to-list 'auto-mode-alist '("\.h$" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
 
@@ -333,7 +355,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 
 
-(mouse-avoidance-mode 'proteus)
+(mouse-avoidance-mode 'animate)
 
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -352,9 +374,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
+;; (global-set-key "\C-w" 'backward-kill-word)
+;; (global-set-key "\C-x\C-k" 'kill-region)
+;; (global-set-key "\C-c\C-k" 'kill-region)
 (setq-default display-buffer-reuse-frames t)
 (global-set-key "\M-;" 'auto-complete)
 
@@ -420,9 +442,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (interactive)
   (insert (format-time-string "%04Y-%02m-%02d %02H:%02M:%02S")))
 
-(server-start) ;;如何在emacsclient编辑成功之后退出c-x #  ;;如何使用emacsclient来输入git的log , emacsclient  "$@" 不能使用 emacsclient  "$@" & 如果在后台运行那么git就不会等待emacs运行结束。
+;; (server-start) ;;如何在emacsclient编辑成功之后退出c-x #  ;;如何使用emacsclient来输入git的log , emacsclient  "$@" 不能使用 emacsclient  "$@" & 如果在后台运行那么git就不会等待emacs运行结束。
 (rainbow-mode t)
-(blink-cursor-mode -1)
+(blink-cursor-mode 1)
 
 (require 'powerline)
 
@@ -436,7 +458,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; (setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+;; (setq powerline-arrow-shape 'arrow14) ;; best for small font
 ;; (global-set-key "\C-c\C-o" 'other-frame)
 
 (setq savehist-additional-variables
@@ -448,25 +470,15 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       savehist-file (expand-file-name "savehist" "~/.emacs.d/"))
 (savehist-mode t)
 
-;; (split-window-horizontally 1)
-(split-window-right)
-
-;;tips
-;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
-;;关于多个窗口的使用。或者可以不作为多个窗口。可以将两个屏幕拼接成一个屏幕，然后分割成两个窗口
-;;在多个文件中进行搜索替换
-;; 如果是将emacs的配置文件迁移 到另外的机器上。需要在.emacs.d 下面执行一下 git submodule update --init 因为
-;align 可以用来将=号两边的变量对齐
-;align-regexp 可以设定用哪个符号来对齐
-;; 如何在magit中实现超过窗口宽度换行？使用命令 toggle-truncate-lines
-;;list-matching-lines 可以搜索当前文件中的内容并且单独输出到一个 buffer 中，如果想在 buffer 中直接跳转。只要用 next-error-follow-minor-mode 模式即可。可以通过快捷键 C-c C-f 打开
-;;通过 new-frame建立的frame如何被关闭，使用命令 delete-frame
+;; (split-window-right)
 
 
+(require 'fic-mode)
+(add-hook 'c++-mode-hook 'turn-on-fic-mode)
+(add-hook 'c-mode-hook 'turn-on-fic-mode)
+(add-hook 'java-mode-hook 'turn-on-fic-mode)
+(add-hook 'python-mode-hook 'turn-on-fic-mode)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
+(put 'upcase-region 'disabled nil)
 
-
-
-
-
-
-
+(define-key global-map (kbd "C-x o") 'switch-window)
