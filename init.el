@@ -72,6 +72,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (set-exec-path-from-shell-PATH)
 
 (require-package 'xcscope)
+(require-package 'fic-ext-mode)
 (require-package 'switch-window)
 (require-package 'maxframe)
 (require-package 'auto-complete)
@@ -91,6 +92,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require-package 'yasnippet)
 (require-package 'rainbow-mode)
 (require-package 'ace-jump-mode)
+(require-package 'auto-save-buffers-enhanced)
 ;; (require-package 'helm)
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
@@ -177,7 +179,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
                           "/Users/carlos/Documents/journal/daynote.org"))
   )
 
-;; (setq compilation-scroll-output t)
+(setq compilation-scroll-output t)
 
 
 
@@ -296,8 +298,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 
-;; smart pairing for all
-(electric-pair-mode t)
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 
@@ -473,12 +475,15 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (split-window-right)
 
 
-(require 'fic-mode)
-(add-hook 'c++-mode-hook 'turn-on-fic-mode)
-(add-hook 'c-mode-hook 'turn-on-fic-mode)
-(add-hook 'java-mode-hook 'turn-on-fic-mode)
-(add-hook 'python-mode-hook 'turn-on-fic-mode)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
+;; (require 'fic-mode)
+;; (add-hook 'c++-mode-hook 'turn-on-fic-mode)
+;; (add-hook 'c-mode-hook 'turn-on-fic-mode)
+;; (add-hook 'java-mode-hook 'turn-on-fic-mode)
+;; (add-hook 'python-mode-hook 'turn-on-fic-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
 (put 'upcase-region 'disabled nil)
 
 (define-key global-map (kbd "C-x o") 'switch-window)
+
+(require 'auto-save-buffers-enhanced)
+(auto-save-buffers-enhanced t)
