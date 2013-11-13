@@ -97,6 +97,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (require-package 'ac-helm)
 ;; (require-package 'helm-ag)
 ;; (require-package 'helm-anything)
+(require-package 'auto-highlight-symbol)
+(require-package 'isearch-symbol-at-point)
 
 
 
@@ -149,10 +151,12 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
+
+(global-set-key (kbd "C-s") 'isearch-symbol-at-point)
+(global-set-key (kbd "C-r") 'isearch-symbol-at-point)
+(global-set-key (kbd "C-M-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-M-r") 'isearch-backward-regexp)
+
 
 (show-paren-mode 1)
 ;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
