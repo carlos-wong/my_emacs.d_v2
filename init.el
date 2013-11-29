@@ -4,7 +4,8 @@
 (add-to-list 'load-path "~/.emacs.d/thirdParty/")
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-(setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
+;(setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
+;(setenv "PATH" (concat "/opt/local/bin/:" (getenv "PATH")));
 
 ;;tips
 ;;如何替换字符串 replace-string, query-replace, 当然也是可以使用正则表达式的只要命令改成类似 replace-regexp,regexp一般都是带正则表达的功能
@@ -350,7 +351,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 ;; 
 ;; 
-(mouse-avoidance-mode 'proteus)
+(mouse-avoidance-mode 'animate)
 ;; 
 ;; 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
