@@ -30,8 +30,8 @@
               '("marmalade" . "http://marmalade-repo.org/packages/") t)
  (add-to-list 'package-archives
  	     '("elpa" . "http://tromey.com/elpa/"))
- (add-to-list 'package-archives
- 	     '("gnu" .  "http://elpa.gnu.org/packages/"))
+ ;; (add-to-list 'package-archives
+ ;; 	     '("gnu" .  "http://elpa.gnu.org/packages/"))
  (add-to-list 'package-archives
  	     '("melpa" . "http://melpa.milkbox.net/packages/") 	     t)
 	     
@@ -72,7 +72,9 @@
 ;;
 ;;set-exec-path-from-shell-PATH)
 
-(require-package 'maxframe)
+;; (require-package 'maxframe)
+(require-package 'auto-async-byte-compile)
+(require-package 'real-auto-save)
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
 (require-package 'fuzzy)
@@ -168,12 +170,13 @@
 ;; 
 (if (eq system-type 'gnu/linux)
   (setq org-agenda-files (file-expand-wildcards
-			   "/mnt/hgfs/Document/journal/todo.org"))
+			   "/mnt/hgfs/Document/journal/*.org"))
   )
  
 (if (eq system-type 'darwin)
-  (setq org-agenda-files (file-expand-wildcards
-			   "/Users/carlos/Documents/journal/daynote.org"))
+			   
+    (setq org-agenda-files (list "/Users/carlos/Documents/jailbreak_project/TODO.org"
+				 "/Users/carlos/Documents/workspace/SnkSupreUfo/todo.org"))  
   )
  
 (setq compilation-scroll-output t)
@@ -290,7 +293,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "HOLD(h)" "|" "DONE(d)")
+      '((sequence "TODO(t!)" "WORKING(w!)" "WAITING(a!)" "HOLD(h!)" "|" "DONE(d!)" "IGNORE(i@/!)")
 	))
  
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
@@ -370,7 +373,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "RET") 'newline-and-indent)
 ;; 
 ;; 
-(global-set-key "\C-w" 'backward-kill-word)
+;; (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (setq-default display-buffer-reuse-frames t)
@@ -478,4 +481,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'python-mode-hook 'turn-on-fic-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
 (set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1");
-(maximize-frame)
+(autopair-global-mode) ;; to enable in all buffers
+
+(require 'real-auto-save)
+(setq real-auto-save-interval 36) ;; in seconds
