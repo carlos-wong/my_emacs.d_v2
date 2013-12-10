@@ -2,6 +2,8 @@
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
 (add-to-list 'load-path "~/.emacs.d/thirdParty/powerline")
 (add-to-list 'load-path "~/.emacs.d/thirdParty/")
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/thirdParty/emacsxcode"))
+;;(require 'xcode)
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 ;(setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
@@ -86,7 +88,9 @@
 (require-package 'anything)
 (require-package 'magit)
 (require-package 'python-mode)
-(require-package 'autopair)
+(require-package 'smartparens)
+
+;; (require-package 'autopair)
 (require-package 'textmate)
 (require-package 'idle-highlight-mode)
 (require-package 'yasnippet)
@@ -299,7 +303,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 ;; 
 ;;;; smart pairing for all
-(electric-pair-mode t)
+;; (electric-pair-mode t)
 ;; 
 (fset 'yes-or-no-p 'y-or-n-p) ; 将yes/no替换为y/n
 ;; 
@@ -307,7 +311,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq ag-reuse-buffers t)
 ;;;; (setq ag-reuse-window  t)
 ;; 
-(add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
+;; (add-hook 'ag-mode-hook 'next-error-follow-minor-mode) ;; 如果要在ag的结果中不跳转再次使用快捷键c-c c-f关闭或者打开该功能
 ;; 
 (setq-default truncate-lines nil)
 ;;;; (setq toggle-truncate-lines nil)
@@ -480,8 +484,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'java-mode-hook 'turn-on-fic-mode)
 (add-hook 'python-mode-hook 'turn-on-fic-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
-(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1");
-(autopair-global-mode) ;; to enable in all buffers
+(set-default-font "-adobe-Source Code Pro-normal-normal-*-16-*-*-*-m-0-iso10646-1");
 
 (require 'real-auto-save)
 (setq real-auto-save-interval 36) ;; in seconds

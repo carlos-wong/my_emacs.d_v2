@@ -4,3 +4,9 @@
 [submodule "thirdParty/powerline"]
 	path = thirdParty/powerline
 	url = git://github.com/jonathanchu/emacs-powerline.git
+[submodule "thirdParty/emacs-xcode"]
+	path = thirdParty/emacs-xcode
+	url = git@github.com:senny/emacs-xcode.git
+[submodule "thirdParty/emacsxcode"]
+	path = thirdParty/emacsxcode
+	url = git@github.com:senny/emacs-xcode.git
