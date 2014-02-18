@@ -71,8 +71,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (set-exec-path-from-shell-PATH)
 
-(require-package 'xcscope)
-(require-package 'fic-ext-mode)
+(require-package 'ascope)
+;; (require-package 'fic-ext-mode)
 (require-package 'switch-window)
 (require-package 'maxframe)
 (require-package 'auto-complete)
@@ -105,7 +105,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (require 'template)
 (template-initialize)
 
-;; (require 'xcscope)
+
 ;;(require 'yasnippe)
 
 (yas-global-mode 1)
@@ -152,8 +152,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
-(global-set-key (kbd "C-s") 'isearch-symbol-at-point)
-(global-set-key (kbd "C-r") 'isearch-symbol-at-point)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp) 
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-M-r") 'isearch-backward-regexp)
 
@@ -297,8 +297,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WORKING(w)" "WAITING(a)" "HOLD(h)" "|" "DONE(d)")
-        ))
+      '((sequence "TODO(t!)" "WORKING(w!)" "WAITING(a!)" "HOLD(h!)" "|" "DONE(d!)" "IGNORE(i@/!)")
+	))
+
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
 
@@ -370,8 +371,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
 
-(require 'google-this)
-(google-this-mode 1)
+;; (require 'google-this)
+;; (google-this-mode 1)
 
 ;; (setq default-fill-column 70);默认显示 80列就换行
 
