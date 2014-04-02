@@ -1,11 +1,12 @@
-(add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/thirdParty//emacs-google-this")
 (add-to-list 'load-path "~/.emacs.d/thirdParty/powerline")
 (add-to-list 'load-path "~/.emacs.d/thirdParty/")
+
 ;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/thirdParty/emacsxcode"))
 ;;(require 'xcode)
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setenv "PATH" (concat "/Users/carlos/Documents/gradle-1.9/bin:" (getenv "PATH")))
 ;(setenv "PATH" (concat "/Users/carlos/android_work/android-ndk-r8e:" (getenv "PATH")))
 ;(setenv "PATH" (concat "/opt/local/bin/:" (getenv "PATH")));
 
@@ -73,10 +74,10 @@
 ;;   (setq exec-path (split-string path-from-shell path-separator))))
 ;;
 ;;set-exec-path-from-shell-PATH)
-
 ;; (require-package 'maxframe)
 (require-package 'auto-async-byte-compile)
-(require-package 'real-auto-save)
+(require-package 'auto-save-buffers-enhanced)
+;; (require-package 'real-auto-save)
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
 (require-package 'fuzzy)
@@ -89,6 +90,7 @@
 (require-package 'magit)
 (require-package 'python-mode)
 (require-package 'smartparens)
+(require-package 'smartscan)
 
 ;; (require-package 'autopair)
 (require-package 'textmate)
@@ -143,11 +145,12 @@
 ;; 					;(setq mac-command-modifier 'meta)
 ;; 
 (load-theme 'solarized-dark t)
+
 ;;;; (load-theme 'molokai t)
 ;;;; (load-theme 'cyberpunk t)
 ;; 
 (setq make-backup-files nil) ; stop creating those backup~ files 
-(setq auto-save-default nil) ; stop creating those #auto-save# files
+;; (setq auto-save-default nil) ; stop creating those #auto-save# files
 
 ;; 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -292,6 +295,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
 	  ("p" "tips" entry (file+headline "/Users/carlos/Documents/journal/tips.org" "Tips")
 	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
+	  ("o" "gcw0 project" entry (file+headline "/Users/carlos/Documents/journal/gcw0_prj.org" "Gcw0_prj")
+	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
 	  ))
 )
 ;; 
@@ -317,6 +322,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;;;; (setq toggle-truncate-lines nil)
 ;;;; (add-hook 'ag-mode-hook 'toggle-truncate-lines );; show magit lo
 (add-hook 'magit-mode-hook 'toggle-truncate-lines );; show magit log long truncate
+
 ;;;; (add-hook 'org-mode-hook 'toggle-truncate-lines );; show magit log long truncate
 ;;;; (add-hook 'compilation-mode-hook 'toggle-truncate-lines)
 ;; 
@@ -478,13 +484,28 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 ;; 
 ;; 
-(require 'fic-mode)
-(add-hook 'c++-mode-hook 'turn-on-fic-mode)
-(add-hook 'c-mode-hook 'turn-on-fic-mode)
-(add-hook 'java-mode-hook 'turn-on-fic-mode)
-(add-hook 'python-mode-hook 'turn-on-fic-mode)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-fic-mode)
+
 (set-default-font "-adobe-Source Code Pro-normal-normal-*-16-*-*-*-m-0-iso10646-1");
 
-(require 'real-auto-save)
-(setq real-auto-save-interval 36) ;; in seconds
+
+;; (setq mac-option-key-is-meta nil)
+;; (setq mac-command-key-is-meta t)
+;; (setq mac-command-modifier 'meta)
+;; (setq mac-option-modifier nil)
+
+(global-smartscan-mode 1)
+
+(require 'auto-save-buffers-enhanced)
+(auto-save-buffers-enhanced t)
+
+(add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
+
+
+
+
+
+
+
+
+
+
