@@ -376,7 +376,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'google-this)
 (google-this-mode 1)
 ;; 
-;;;; (setq default-fill-column 70);默认显示 80列就换行
+(setq default-fill-column 70);默认显示 80列就换行
 ;; 
 ;; 
 ;; 
@@ -500,7 +500,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
 
+(setq x-select-enable-clipboard t)
 
+;关于在org-mode下如何自动换行,使用 refill-mode 并快捷键 M-q 来启动它。如果想暂停自动换行功能只需要refill-mode disable掉
 
 
 
