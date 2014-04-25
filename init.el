@@ -281,8 +281,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  
 (if (eq system-type 'darwin)
    (setq org-capture-templates
-	'(("t" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
+	'(("p" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
 	   "* TODO %?\n	 %i\n  %a")
+	  ("t" "timerecrod" entry (file+datetree "/Users/carlos/Documents/journal/timeRecord.org")
+	   "* %U %? \n%a")
 	  ("w" "Worklog" entry (file+datetree "/Users/carlos/Documents/journal/worklog.org")
 	   "* %?\n  %i\n")
 	  ("s" "snk android project" entry (file+datetree "/Users/carlos/Documents/journal/androidSnk.org")
@@ -498,6 +500,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'auto-save-buffers-enhanced)
 (auto-save-buffers-enhanced t)
 
+(add-hook 'org-mode-hook 'turn-on-font-lock)
+
 (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
 
 (setq x-select-enable-clipboard t)
@@ -505,9 +509,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;关于在org-mode下如何自动换行,使用 refill-mode 并快捷键 M-q 来启动它。如果想暂停自动换行功能只需要refill-mode disable掉
 
 
-
-
-
-
-
-
+(require 'gud)
+(define-key gud-mode-map '[f9] 'gud-step)                    
+(define-key gud-mode-map '[f10] 'gud-next)
+(define-key gud-mode-map '[f5] 'gud-cont)
+(define-key gud-mode-map '[f12] 'gud-break)
+(define-key gud-mode-map '[f11] 'gud-remove)
