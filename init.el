@@ -487,8 +487,24 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 ;; 
 
-(set-default-font "-adobe-Source Code Pro-normal-normal-*-16-*-*-*-m-0-iso10646-1");
+(set-default-font "-adobe-Source Code Pro-normal-normal-*-13-*-*-*-m-0-iso10646-1");
+;;------------------------------------------------------------------------------------
+;; 针对 Mac OSX 系统的特殊设置
+;;------------------------------------------------------------------------------------
+(when (eq system-type 'darwin)
+  ;; disable 所有的斜体显示
+  ;;  (set-face-italic-p 'italic nil))
 
+  ;; mavericks 下默认的中文字体 Wawati SC 太有艺术感了，如果觉得小，
+  ;; 可以从默认的 12 号字放大到 13 号 (point * 10)
+  ;;  (set-face-attribute 'default nil :height 130)
+
+  ;; 或者直接将默认的字体改为流行的、源自日本的 冬青黑 "Hiragino Sans GB"
+  ;; 我更喜欢 mavericks 新加的 手札体 "Hannotate SC"
+  (set-fontset-font
+   (frame-parameter nil 'font)
+   'han
+   (font-spec :family "Hannotate SC" )))
 
 ;; (setq mac-option-key-is-meta nil)
 ;; (setq mac-command-key-is-meta t)
