@@ -287,7 +287,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 	   "* %U %? \n%a")
 	  ("w" "Worklog" entry (file+datetree "/Users/carlos/Documents/journal/worklog.org")
 	   "* %?\n  %i\n")
-	  ("s" "snk android project" entry (file+datetree "/Users/carlos/Documents/journal/androidSnk.org")
+	  ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
 	   "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
 	  ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
 	   "* %?\nEntered on %U\n  %i\n %a")
@@ -373,6 +373,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 ;; 
 ;; 
 (require 'google-this)
