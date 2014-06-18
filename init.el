@@ -20,7 +20,7 @@
 
 
 
-
+(require 'xcscope)
 
 (require 'cl)
 
@@ -147,7 +147,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (setq make-backup-files nil) ; stop creating those backup~ files 
 (setq auto-save-default nil) ; stop creating those #auto-save# files
-;;(set-default-font "-adobe-Source Code Pro-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+(set-default-font "-adobe-Source Code Pro-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
@@ -162,7 +162,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 ;;     (when (fboundp mode) (funcall mode -1)))
 
-(maximize-frame)
+
 (smex-initialize)
 
 (setq ido-enable-flex-matching t)
@@ -330,25 +330,24 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "C-j") 'delete-blank-lines)
 ;; (global-set-key (kbd "C-x g") 'ag-regexp)
 
-(defun linux-c-mode ()
-  "C mode with adjusted defaults for use with the Linux kernel."
-  (interactive)
-  (c-mode)
-  (c-set-style "K&R")
-  (setq tab-width 8)
-  (setq indent-tabs-mode t)
-  (setq c-basic-offset 8))
+;; (defun linux-c-mode ()
+;;   "C mode with adjusted defaults for use with the Linux kernel."
+;;   (interactive)
+;;   (c-mode)
+;;   (c-set-style "K&R")
+;;   (setq tab-width 8)
+;;   (setq c-basic-offset 8))
 
-;; (add-hook 'c-mode-common-hook 'google-set-c-style)
+;; ;; (add-hook 'c-mode-common-hook 'google-set-c-style)
 
-;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; ;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-;; (add-hook 'c-mode-common-hook 'linux-c-mode)
-;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
-;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\.h$" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
+;; ;; (add-hook 'c-mode-common-hook 'linux-c-mode)
+;; ;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
+;; ;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\.h$" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
 
 
 (require 'recent-jump)
@@ -415,10 +414,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
-
-
-
-
 
 
 (idle-highlight-mode 1)
@@ -492,3 +487,18 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'auto-save-buffers-enhanced)
 (auto-save-buffers-enhanced t)
+(maximize-frame)
+(setq c-default-style "K&R")
+					; Get rid of the startup message
+
+(defun linux-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  (c-mode)
+  (c-set-style "K&R")
+  (setq tab-width 8)
+  (setq indent-tabs-mode t)
+  (setq c-basic-offset 8))
+(add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
+
+
