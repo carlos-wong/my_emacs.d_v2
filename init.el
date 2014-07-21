@@ -182,8 +182,9 @@
  
 (if (eq system-type 'darwin)
 			   
-    (setq org-agenda-files (list "/Users/carlos/Documents/jailbreak_project/TODO.org"
-				 "/Users/carlos/Documents/workspace/SnkSupreUfo/todo.org"))  
+    (setq org-agenda-files (list "/Users/carlos/Documents/journal/todo.org"
+				 "/Users/carlos/Documents/DynamicScreen/todo.org"
+				 ))  
   )
  
 (setq compilation-scroll-output t)
@@ -304,7 +305,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "WORKING(w!)" "WAITING(a!)" "HOLD(h!)" "|" "DONE(d!)" "IGNORE(i@/!)")
+      '((sequence "TODO(t!)" "WORKING(w!)" "WAITING(a!)" "HOLD(h!)" "|" "DONE(d@/!)" "IGNORE(i@/!)")
 	))
  
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
@@ -351,8 +352,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;;;; (add-hook 'c-mode-common-hook 'linux-c-mode)
 ;;;; (add-to-list 'auto-mode-alist '("\\.c\\'" . linux-c-mode))
 ;;;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\.c$" . linux-c-mode))
+;; (add-to-list 'auto-mode-alist '("\.cpp$" . linux-c-mode))
 ;; 
 ;; 
 (require 'recent-jump)
@@ -514,8 +515,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-smartscan-mode 1)
 
-(require 'auto-save-buffers-enhanced)
-(auto-save-buffers-enhanced t)
+;; (require 'auto-save-buffers-enhanced)
+;; (auto-save-buffers-enhanced t)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
@@ -532,3 +533,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key gud-mode-map '[f5] 'gud-cont)
 (define-key gud-mode-map '[f12] 'gud-break)
 (define-key gud-mode-map '[f11] 'gud-remove)
+
+
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
