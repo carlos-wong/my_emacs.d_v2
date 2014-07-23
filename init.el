@@ -23,7 +23,8 @@
 ;;scroll-all-mode 打开之后能够同时滚动多个窗口，如果阅读两个文件的话可以通过这个功能同时滚动两个文件的内容
 
 
-
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 
 (require 'cl)
@@ -281,34 +282,40 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 )
  
 (if (eq system-type 'darwin)
-   (setq org-capture-templates
-	'(("p" "Todo" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Tasks")
-	   "* TODO %?\n	 %i\n  %a")
-	  ("t" "timerecrod" entry (file+datetree "/Users/carlos/Documents/journal/timeRecord.org")
-	   "* %U %? \n%a")
-	  ("w" "Worklog" entry (file+datetree "/Users/carlos/Documents/journal/worklog.org")
-	   "* %?\n  %i\n")
-	  ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
-	   "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
-	  ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
-	   "* %?\nEntered on %U\n  %i\n %a")
-	  ("d" "daynote" entry (file+datetree "/Users/carlos/Documents/journal/daynote.org")
-	   "* %?\nEntered on %U\n  %i\n %a")
-	  ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
-	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
-	  ("p" "tips" entry (file+headline "/Users/carlos/Documents/journal/tips.org" "Tips")
-	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
-	  ("o" "gcw0 project" entry (file+headline "/Users/carlos/Documents/journal/gcw0_prj.org" "Gcw0_prj")
-	   "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
-	  ))
-)
+    (setq org-capture-templates
+	  '(("p" "Todo in journal" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Inbox")
+	     "* TODO %?\n  %i\n  %a")
+	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/todo.org" "Inbox")
+	     "* TODO %?\n  %i\n  %a")
+
+	    ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
+	     "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
+	    ("j" "Journal" entry (file+datetree "/Users/carlos/Documents/journal/journal.org")
+	     "* %?\nEntered on %U\n  %i\n %a")
+	    ("n" "Note" entry (file+headline "/Users/carlos/Documents/journal/notes.org" "Notes")
+	     "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
+	    ("o" "gcw0 project" entry (file+headline "/Users/carlos/Documents/journal/gcw0_prj.org" "Gcw0_prj")
+	     "* %U %?\n\n	 %i" :prepend t :empty-lines 1)
+	    ))
+  )
 ;; 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "WORKING(w!)" "WAITING(a!)" "HOLD(h!)" "|" "DONE(d@/!)" "IGNORE(i@/!)")
+      '((sequence "TODO(t!)" "WORKING(w!)" "HOLD(h!)" "|" "DONE(d@/!)" )
 	))
  
-(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
+(setq org-tag-alist '(
+		      (:startgroup . nil)
+		      ("工作" . ?w) ("工具" . ?t) ("其他" . ?o)
+		      (:endgroup . nil)
+		      (:startgroup . nil)
+		      ("简单" . ?e) ("一般" . ?n) ("困难" . ?h)
+		      (:endgroup . nil)
+		      ("有趣" . ?f)
+		      ("LedGo")
+		      ("Emacs")
+		      ("微信公众号")
+		      ))    
 ;; 
 ;;;; smart pairing for all
 ;; (electric-pair-mode t)
@@ -459,7 +466,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (rainbow-mode t)
 (blink-cursor-mode 1)
 ;; 
-(require 'powerline)
+;; (require 'powerline)
 ;; 
 ;; 
 ;; 
@@ -515,8 +522,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-smartscan-mode 1)
 
-;; (require 'auto-save-buffers-enhanced)
-;; (auto-save-buffers-enhanced t)
+(require 'auto-save-buffers-enhanced)
+(auto-save-buffers-enhanced t)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
@@ -537,3 +544,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(global-set-key "\C-ca" 'org-agenda)
+
+
+(setq org-agenda-custom-commands
+      '(("g" "LedGo Project Tasks"
+	 ((agenda "")
+	  (tags-todo "LedGo")
+	  ))
+	)
+      )
