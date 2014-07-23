@@ -546,6 +546,16 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (global-set-key "\C-ca" 'org-agenda)
 
+;; Compact the block agenda view
+(setq org-agenda-compact-blocks t)
+;; Separate drawers for clocking and logs
+(setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
+;; Save clock data and state changes and notes in the LOGBOOK drawer
+(setq org-clock-into-drawer t)
+;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
+(setq org-clock-out-remove-zero-time-clocks t)
+;; Clock out when moving task to a done state
+(setq org-clock-out-when-done t)
 
 (setq org-agenda-custom-commands
       '(("g" "LedGo Project Tasks"
