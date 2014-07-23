@@ -284,9 +284,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (if (eq system-type 'darwin)
     (setq org-capture-templates
 	  '(("p" "Todo in journal" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Inbox")
-	     "* TODO %?\n  %i\n  %a")
+	     "* TODO %?\n  %i\n  %a" :clock-resume t)
 	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/todo.org" "Inbox")
-	     "* TODO %?\n  %i\n  %a")
+	     "* TODO %?\n  %i\n  %a" :clock-resume t)
 
 	    ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
 	     "* %?\n  %U\n  %i\n" :prepend t :empty-lines 1)
@@ -303,7 +303,14 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "WORKING(w!)" "HOLD(h!)" "|" "DONE(d@/!)" )
 	))
- 
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("WORKING" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+)))
+
+
 (setq org-tag-alist '(
 		      (:startgroup . nil)
 		      ("工作" . ?w) ("工具" . ?t) ("其他" . ?o)
@@ -546,6 +553,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (global-set-key "\C-ca" 'org-agenda)
 
+
 ;; Compact the block agenda view
 (setq org-agenda-compact-blocks t)
 ;; Separate drawers for clocking and logs
@@ -564,3 +572,35 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 	  ))
 	)
       )
+;; Agenda clock report parameters
+(setq org-agenda-clockreport-parameter-plist
+      (quote (:link t :maxlevel 5 :fileskip0 t :compact t :narrow 80 :stepskip0 t)))
+; Set default column view headings: Task Effort Clock_Summary
+(setq org-columns-default-format "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
+(defvar bh/insert-inactive-timestamp t)
+
+(defun bh/toggle-insert-inactive-timestamp ()
+  (interactive)
+  (setq bh/insert-inactive-timestamp (not bh/insert-inactive-timestamp))
+  (message "Heading timestamps are %s" (if bh/insert-inactive-timestamp "ON" "OFF")))
+
+(defun bh/insert-inactive-timestamp ()
+  (interactive)
+  (org-insert-time-stamp nil t t nil nil nil))
+
+(defun bh/insert-heading-inactive-timestamp ()
+  (save-excursion
+    (when bh/insert-inactive-timestamp
+      (org-return)
+      (org-cycle)
+      (bh/insert-inactive-timestamp))))
+
+(add-hook 'org-insert-heading-hook 'bh/insert-heading-inactive-timestamp 'append)
+;;make ret to follows link in org mode
+(setq org-return-follows-link t)
+
+;;codeing system
+(setq org-export-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(set-charset-priority 'unicode)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
