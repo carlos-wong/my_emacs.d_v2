@@ -181,12 +181,17 @@
 			   "/mnt/hgfs/Document/journal/*.org"))
   )
  
-(if (eq system-type 'darwin)
-			   
-    (setq org-agenda-files (list "/Users/carlos/Documents/journal/todo.org"
-				 "/Users/carlos/Documents/DynamicScreen/todo.org"
-				 ))  
-  )
+;; (if (eq system-type 'darwin)
+    
+;;     (setq org-agenda-files
+;; 	  (file-expand-wildcards
+;; 	   "~/Documents/DynamicScreen/*.org" "~/Documents/journal/*.org"
+;; 	   )
+;; 	  )
+  
+
+
+;;   )
  
 (setq compilation-scroll-output t)
 ;; 
@@ -418,6 +423,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
+ '(org-agenda-files (quote ("~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org" "~/Documents/mp3_hifi/mp3_hifi.org" "~/Documents/无线取景器/无线取景器.org" "~/Documents/journal/todo.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -565,9 +571,23 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; Clock out when moving task to a done state
 (setq org-clock-out-when-done t)
 
+(add-hook 'org-clock-in-prepare-hook
+          'sacha/org-mode-ask-effort)
+
+(defun sacha/org-mode-ask-effort ()
+  "Ask for an effort estimate when clocking in."
+  (unless (org-entry-get (point) "Effort")
+    (let ((effort
+           (completing-read
+            "Effort: "
+            (org-entry-get-multivalued-property (point) "Effort"))))
+      (unless (equal effort "")
+        (org-set-property "Effort" effort)))))
+
+
 (setq org-agenda-custom-commands
       '(("g" "LedGo Project Tasks"
-	 ((agenda "")
+	 (
 	  (tags-todo "LedGo")
 	  ))
 	)
