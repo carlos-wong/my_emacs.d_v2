@@ -423,7 +423,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org" "~/Documents/mp3_hifi/mp3_hifi.org" "~/Documents/无线取景器/无线取景器.org" "~/Documents/journal/todo.org")))
+ '(org-agenda-files (quote ("~/Documents/journal/ideas.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org" "~/Documents/journal/todo.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -535,8 +535,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-smartscan-mode 1)
 
-(require 'auto-save-buffers-enhanced)
-(auto-save-buffers-enhanced t)
+;; (auto-save-buffers-enhanced t)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
@@ -566,6 +565,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
 ;; Save clock data and state changes and notes in the LOGBOOK drawer
 (setq org-clock-into-drawer t)
+(setq org-log-into-drawer t)
 ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
 ;; Clock out when moving task to a done state
@@ -573,6 +573,32 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'org-clock-in-prepare-hook
           'sacha/org-mode-ask-effort)
+
+;; (add-hook 'org-todo-statistics-hook
+;; 	  'org-set-effort)
+
+
+(defun sacha/org-clock-in-if-starting ()
+  "Clock in when the task is marked WORKING."
+  (when (and (string= state "WORKING")
+             (not (string= last-state state)))
+    (org-clock-in)))
+(add-hook 'org-after-todo-state-change-hook
+	  'sacha/org-clock-in-if-starting)
+(defadvice org-clock-in (after sacha activate)
+  "Set this task's status to 'WORKING'."
+  (org-todo "WORKING"))
+
+(defun sacha/org-clock-out-if-waiting ()
+  "Clock out when the task is marked DONE."
+  (when (and (string= state "DONE")
+             (not (string= last-state state)))
+    (org-clock-out)))
+(add-hook 'org-after-todo-state-change-hook
+	  'sacha/org-clock-out-if-waiting)
+
+;; (add-hook 'org-after-todo-state-change-hook
+;; 	  'sacha/org-mode-ask-effort)
 
 (defun sacha/org-mode-ask-effort ()
   "Ask for an effort estimate when clocking in."
@@ -619,8 +645,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;;make ret to follows link in org mode
 (setq org-return-follows-link t)
 
+
 ;;codeing system
 (setq org-export-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (set-charset-priority 'unicode)
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+
