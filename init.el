@@ -151,7 +151,7 @@
 ;;;; (load-theme 'cyberpunk t)
 ;; 
 (setq make-backup-files nil) ; stop creating those backup~ files 
-;; (setq auto-save-default nil) ; stop creating those #auto-save# files
+(setq auto-save-default nil) ; stop creating those #auto-save# files
 
 ;; 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -318,12 +318,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (setq org-tag-alist '(
 		      (:startgroup . nil)
-		      ("工作" . ?w) ("工具" . ?t) ("其他" . ?o)
+		      ("work" . ?w) ("tool" . ?t) ("other" . ?o)
 		      (:endgroup . nil)
 		      (:startgroup . nil)
-		      ("简单" . ?e) ("一般" . ?n) ("困难" . ?h)
+		      ("easy" . ?e) ("normal" . ?n) ("hard" . ?h)
 		      (:endgroup . nil)
-		      ("有趣" . ?f)
+		      ("funn" . ?f)
 		      ("LedGo")
 		      ("Emacs")
 		      ("微信公众号")
@@ -423,7 +423,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Documents/journal/ideas.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org" "~/Documents/journal/todo.org")))
+ '(org-agenda-files (quote ("~/Documents/journal/grobal.org" "~/Documents/journal/ideas.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -535,11 +535,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-smartscan-mode 1)
 
-;; (auto-save-buffers-enhanced t)
+(auto-save-buffers-enhanced t)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
-(add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
+(add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines t)))
 
 (setq x-select-enable-clipboard t)
 
@@ -553,6 +553,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key gud-mode-map '[f12] 'gud-break)
 (define-key gud-mode-map '[f11] 'gud-remove)
 
+(global-set-key '[f2] 'org-store-link)                    
+(global-set-key '[f3] 'org-insert-link)                    
+(global-set-key '[f4] 'bh/insert-inactive-timestamp)
+
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
@@ -565,11 +569,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
 ;; Save clock data and state changes and notes in the LOGBOOK drawer
 (setq org-clock-into-drawer t)
-(setq org-log-into-drawer t)
+(setq org-log-into-drawer t) 
 ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
 ;; Clock out when moving task to a done state
-(setq org-clock-out-when-done t)
+;; (setq org-clock-out-when-done t)
 
 (add-hook 'org-clock-in-prepare-hook
           'sacha/org-mode-ask-effort)
@@ -589,13 +593,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   "Set this task's status to 'WORKING'."
   (org-todo "WORKING"))
 
-(defun sacha/org-clock-out-if-waiting ()
-  "Clock out when the task is marked DONE."
-  (when (and (string= state "DONE")
-             (not (string= last-state state)))
-    (org-clock-out)))
-(add-hook 'org-after-todo-state-change-hook
-	  'sacha/org-clock-out-if-waiting)
+;; (defun sacha/org-clock-out-if-waiting ()
+;;   "Clock out when the task is marked DONE."
+;;   (when (and (string= state "DONE")
+;;              (not (string= last-state state)))
+;;     (org-clock-out)))
+;; (add-hook 'org-after-todo-state-change-hook
+;; 	  'sacha/org-clock-out-if-waiting)
 
 ;; (add-hook 'org-after-todo-state-change-hook
 ;; 	  'sacha/org-mode-ask-effort)
