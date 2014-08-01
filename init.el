@@ -288,9 +288,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  
 (if (eq system-type 'darwin)
     (setq org-capture-templates
-	  '(("p" "Todo in journal" entry (file+headline "/Users/carlos/Documents/journal/todo.org" "Inbox")
+	  '(("p" "Todo in journal" entry (file+headline "/Users/carlos/Documents/journal/global.org" "Inbox")
 	     "* TODO %?\n  %i\n  %a" :clock-resume t)
-	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/todo.org" "Inbox")
+	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/LedGo.org" "Inbox")
 	     "* TODO %?\n  %i\n  %a" :clock-resume t)
 
 	    ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
@@ -306,7 +306,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "WORKING(w!)" "HOLD(h!)" "|" "DONE(d@/!)" )
+      '((sequence "TODO(t)" "WORKING(w!)" "|" "DONE(d@/!)" "HOLD(h@/!)" )
 	))
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
@@ -423,7 +423,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Documents/journal/grobal.org" "~/Documents/journal/ideas.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/DynamicScreen/LedGo.org" "~/Documents/journal/journal.org")))
+ '(org-agenda-files (quote ("~/Documents/android_game_market/android_game_market.org" "/Users/carlos/Documents/journal/read-record/Problem Solving with Algorithms and Data Structures.org" "/Users/carlos/Documents/journal/read-record/how-we-think.org" "/Users/carlos/Documents/journal/Map.org" "/Users/carlos/Documents/journal/SnkJailbreak.org" "/Users/carlos/Documents/journal/androidSnk.org" "/Users/carlos/Documents/journal/android_study.org" "/Users/carlos/Documents/journal/customer.org" "/Users/carlos/Documents/journal/data.org" "/Users/carlos/Documents/journal/daynote.org" "/Users/carlos/Documents/journal/gcw0_prj.org" "/Users/carlos/Documents/journal/global.org" "/Users/carlos/Documents/journal/ideas.org" "/Users/carlos/Documents/journal/index.org" "/Users/carlos/Documents/journal/journal.org" "/Users/carlos/Documents/journal/list.org" "/Users/carlos/Documents/journal/notes.org" "/Users/carlos/Documents/journal/other_prj.org" "/Users/carlos/Documents/journal/prj_cps.org" "/Users/carlos/Documents/journal/prj_snk.org" "/Users/carlos/Documents/journal/project.org" "/Users/carlos/Documents/journal/project_timeRecorder.org" "/Users/carlos/Documents/journal/python.org" "/Users/carlos/Documents/journal/reset.org" "/Users/carlos/Documents/journal/resuem.org" "/Users/carlos/Documents/journal/smarthome.org" "/Users/carlos/Documents/journal/software.org" "/Users/carlos/Documents/journal/timeRecord.org" "/Users/carlos/Documents/journal/tips.org" "/Users/carlos/Documents/journal/umido_prjs.org" "/Users/carlos/Documents/journal/worklog.org" "/Users/carlos/Documents/journal/商城功能需求.org" "~/Documents/DynamicScreen/LedGo.org" "/Users/carlos/Documents/journal/knowledge/ios_knowledge.org" "/Users/carlos/Documents/journal/knowledge/php_knwoledge.org" "~/Documents/wechat_Pic_AI/wechat_project.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/journal/journal.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -657,3 +657,24 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
 
+(require 'org)
+(require 'org-install)
+(add-to-list 'org-modules "org-habit")
+(defun org-parse-time-string (s &optional nodefault)
+  "Parse the standard Org-mode time string.
+This should be a lot faster than the normal `parse-time-string'.
+If time is not given, defaults to 0:00.  However, with optional NODEFAULT,
+hour and minute fields will be nil if not given."
+  (cond ((string-match org-ts-regexp0 s)
+	 (list 0
+	       (if (or (match-beginning 8) (not nodefault))
+		   (string-to-number (or (match-string 8 s) "0")))
+	       (if (or (match-beginning 7) (not nodefault))
+		   (string-to-number (or (match-string 7 s) "0")))
+	       (string-to-number (match-string 4 s))
+	       (string-to-number (match-string 3 s))
+	       (string-to-number (match-string 2 s))
+	       nil nil nil))
+	((string-match "^<[^>]+>$" s)
+	 (decode-time (seconds-to-time (org-matcher-time s))))
+	(t (error "carlos Not a standard Org-mode time string: %s" s))))
