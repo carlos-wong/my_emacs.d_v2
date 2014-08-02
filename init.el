@@ -77,7 +77,7 @@
 ;;set-exec-path-from-shell-PATH)
 ;; (require-package 'maxframe)
 (require-package 'auto-async-byte-compile)
-(require-package 'auto-save-buffers-enhanced)
+;; (require-package 'auto-save-buffers-enhanced)
 ;; (require-package 'real-auto-save)
 (require-package 'auto-complete)
 (require-package 'markdown-mode)
@@ -137,8 +137,11 @@
 (define-key ac-menu-map "\C-p" 'ac-previous)
 ;;;; Ignore case if completion target string doesn't include upper characters
 (setq ac-ignore-case 'smart)
-;; 
+;;
+
+(smex-initialize)
 (global-set-key "\C-x\m" 'smex)
+;; (global-set-key "\C-x\m" 'smex-major-mode-commands)
 (global-set-key [f5] 'recompile)
 ;;;(setq mac-option-key-is-meta nil)
 ;; 					;(setq mac-option-modifier nil)
@@ -166,7 +169,7 @@
 ;;;;     (when (fboundp mode) (funcall mode -1)))
 ;; 
 
-(smex-initialize)
+
 ;; 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -288,7 +291,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  
 (if (eq system-type 'darwin)
     (setq org-capture-templates
-	  '(("p" "Todo in journal" entry (file+headline "/Users/carlos/Documents/journal/global.org" "Inbox")
+	  '(("p" "Todo in global.org" entry (file+headline "/Users/carlos/Documents/journal/global.org" "Inbox")
 	     "* TODO %?\n  %i\n  %a" :clock-resume t)
 	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/LedGo.org" "Inbox")
 	     "* TODO %?\n  %i\n  %a" :clock-resume t)
@@ -306,7 +309,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WORKING(w!)" "|" "DONE(d@/!)" "HOLD(h@/!)" )
+      '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d@/!)" "HOLD(h@/!)" )
 	))
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
@@ -423,7 +426,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Documents/android_game_market/android_game_market.org" "/Users/carlos/Documents/journal/read-record/Problem Solving with Algorithms and Data Structures.org" "/Users/carlos/Documents/journal/read-record/how-we-think.org" "/Users/carlos/Documents/journal/Map.org" "/Users/carlos/Documents/journal/SnkJailbreak.org" "/Users/carlos/Documents/journal/androidSnk.org" "/Users/carlos/Documents/journal/android_study.org" "/Users/carlos/Documents/journal/customer.org" "/Users/carlos/Documents/journal/data.org" "/Users/carlos/Documents/journal/daynote.org" "/Users/carlos/Documents/journal/gcw0_prj.org" "/Users/carlos/Documents/journal/global.org" "/Users/carlos/Documents/journal/ideas.org" "/Users/carlos/Documents/journal/index.org" "/Users/carlos/Documents/journal/journal.org" "/Users/carlos/Documents/journal/list.org" "/Users/carlos/Documents/journal/notes.org" "/Users/carlos/Documents/journal/other_prj.org" "/Users/carlos/Documents/journal/prj_cps.org" "/Users/carlos/Documents/journal/prj_snk.org" "/Users/carlos/Documents/journal/project.org" "/Users/carlos/Documents/journal/project_timeRecorder.org" "/Users/carlos/Documents/journal/python.org" "/Users/carlos/Documents/journal/reset.org" "/Users/carlos/Documents/journal/resuem.org" "/Users/carlos/Documents/journal/smarthome.org" "/Users/carlos/Documents/journal/software.org" "/Users/carlos/Documents/journal/timeRecord.org" "/Users/carlos/Documents/journal/tips.org" "/Users/carlos/Documents/journal/umido_prjs.org" "/Users/carlos/Documents/journal/worklog.org" "/Users/carlos/Documents/journal/商城功能需求.org" "~/Documents/DynamicScreen/LedGo.org" "/Users/carlos/Documents/journal/knowledge/ios_knowledge.org" "/Users/carlos/Documents/journal/knowledge/php_knwoledge.org" "~/Documents/wechat_Pic_AI/wechat_project.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/journal/journal.org")))
+ '(org-agenda-files (quote ("~/Documents/android_game_market/android_game_market.org" "/Users/carlos/Documents/journal/read-record/Problem Solving with Algorithms and Data Structures.org" "/Users/carlos/Documents/journal/read-record/how-we-think.org" "/Users/carlos/Documents/journal/global.org" "/Users/carlos/Documents/journal/ideas.org" "/Users/carlos/Documents/journal/journal.org" "/Users/carlos/Documents/journal/python.org" "/Users/carlos/Documents/journal/reset.org" "~/Documents/DynamicScreen/LedGo.org" "/Users/carlos/Documents/journal/knowledge" "~/Documents/wechat_Pic_AI/wechat_project.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/journal/journal.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -535,7 +538,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-smartscan-mode 1)
 
-(auto-save-buffers-enhanced t)
+;; (auto-save-buffers-enhanced t)
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
@@ -552,6 +555,9 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key gud-mode-map '[f5] 'gud-cont)
 (define-key gud-mode-map '[f12] 'gud-break)
 (define-key gud-mode-map '[f11] 'gud-remove)
+
+(global-set-key '[f6] 'bookmark-jump)
+(global-set-key '[f1] 'save-some-buffers)
 
 (global-set-key '[f2] 'org-store-link)                    
 (global-set-key '[f3] 'org-insert-link)                    
@@ -646,6 +652,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       (bh/insert-inactive-timestamp))))
 
 (add-hook 'org-insert-heading-hook 'bh/insert-heading-inactive-timestamp 'append)
+
 ;;make ret to follows link in org mode
 (setq org-return-follows-link t)
 
@@ -659,7 +666,28 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'org)
 (require 'org-install)
-(add-to-list 'org-modules "org-habit")
+;; (add-to-list 'org-modules "org-habit")
+
+;; Enable habit tracking (and a bunch of other modules)
+(setq org-modules (quote (org-bbdb
+                          org-bibtex
+                          org-crypt
+                          org-gnus
+                          org-id
+                          org-info
+                          org-jsinfo
+                          org-habit
+                          org-inlinetask
+                          org-irc
+                          org-mew
+                          org-mhe
+                          org-protocol
+                          org-rmail
+                          org-vm
+                          org-wl
+                          org-w3m)))
+;; position the habit graph on the agenda to the right of the default
+(setq org-habit-graph-column 50)
 (defun org-parse-time-string (s &optional nodefault)
   "Parse the standard Org-mode time string.
 This should be a lot faster than the normal `parse-time-string'.
@@ -678,3 +706,66 @@ hour and minute fields will be nil if not given."
 	((string-match "^<[^>]+>$" s)
 	 (decode-time (seconds-to-time (org-matcher-time s))))
 	(t (error "carlos Not a standard Org-mode time string: %s" s))))
+
+
+(defun org-insert-src-block (src-code-type)
+  "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
+  (interactive
+   (let ((src-code-types
+          '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+            "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
+            "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+            "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+            "scheme" "sqlite")))
+     (list (ido-completing-read "Source code type: " src-code-types))))
+  (progn
+    (newline-and-indent)
+    (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+    (newline-and-indent)
+    (insert "#+END_SRC\n")
+    (previous-line 2)
+    (org-edit-src-code)))
+
+(setq org-src-fontify-natively t)
+
+
+(setq org-refile-targets '((nil :maxlevel . 9)
+                           (org-agenda-files :maxlevel . 9)))
+
+;; (setq org-deadline-warning-days 10)
+;; (setq org-enforce-todo-dependencies t)
+;; (setq org-use-fast-todo-selection t)
+(setq org-refile-allow-creating-parent-nodes t)
+(setq org-refile-use-outline-path 'file)
+(setq org-outline-path-complete-in-steps t)
+(setq org-completion-use-ido t)
+(setq ido-max-directory-size 100000)
+
+
+
+					; Erase all reminders and rebuilt reminders for today from the agenda
+(defun bh/org-agenda-to-appt ()
+  (interactive)
+  (setq appt-time-msg-list nil)
+  (org-agenda-to-appt))
+
+					; Rebuild the reminders everytime the agenda is displayed
+(add-hook 'org-finalize-agenda-hook 'bh/org-agenda-to-appt 'append)
+
+					; This is at the end of my .emacs - so appointments are set up when Emacs starts
+(bh/org-agenda-to-appt)
+
+					; Activate appointments so we get notifications
+(appt-activate t)
+
+					; If we leave Emacs running overnight - reset the appointments one minute after midnight
+(run-at-time "24:01" nil 'bh/org-agenda-to-appt)
+(setq org-hide-leading-stars nil)
+
+;; (global-set-key '[f1] 'auto-save-buffers-enhanced-toggle-activity)
+(add-hook 'find-file-hook (lambda () (setq buffer-save-without-query t)))
+
+
+(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+(setq org-id-method (quote uuidgen))
+(setq org-clone-delete-id t)
