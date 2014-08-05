@@ -22,6 +22,15 @@
 ;;通过 new-frame建立的frame如何被关闭，使用命令 delete-frame
 ;;scroll-all-mode 打开之后能够同时滚动多个窗口，如果阅读两个文件的话可以通过这个功能同时滚动两个文件的内容
 
+(require 'org-crypt)
+; Encrypt all entries before saving
+(org-crypt-use-before-save-magic)
+(setq org-crypt-tag-matcher "carlos_crypt")
+(setq org-tags-exclude-from-inheritance (quote ("carlos_crypt")))
+; GPG key to use for encryption
+(setq org-crypt-key "20EFB27D")
+(setq org-crypt-disable-auto-save nil)
+
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -291,9 +300,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  
 (if (eq system-type 'darwin)
     (setq org-capture-templates
-	  '(("p" "Todo in global.org" entry (file+headline "/Users/carlos/Documents/journal/global.org" "Inbox")
-	     "* TODO %?\n  %i\n  %a" :clock-resume t)
-	    ("l" "Todo of LedGO" entry (file+headline "/Users/carlos/Documents/DynamicScreen/LedGo.org" "Inbox")
+	  '(("p" "Todo task need arrange" entry (file+headline "/Users/carlos/Documents/journal/refile.org" "Inbox")
 	     "* TODO %?\n  %i\n  %a" :clock-resume t)
 
 	    ("s" "smart home project" entry (file+datetree "/Users/carlos/Documents/journal/smarthome.org")
@@ -426,7 +433,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
  '(ediff-split-window-function (quote split-window-horizontally))
  '(global-visual-line-mode nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Documents/android_game_market/android_game_market.org" "/Users/carlos/Documents/journal/read-record/Problem Solving with Algorithms and Data Structures.org" "/Users/carlos/Documents/journal/read-record/how-we-think.org" "/Users/carlos/Documents/journal/global.org" "/Users/carlos/Documents/journal/ideas.org" "/Users/carlos/Documents/journal/journal.org" "/Users/carlos/Documents/journal/python.org" "/Users/carlos/Documents/journal/reset.org" "~/Documents/DynamicScreen/LedGo.org" "/Users/carlos/Documents/journal/knowledge" "~/Documents/wechat_Pic_AI/wechat_project.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/journal/journal.org")))
+ '(org-agenda-files (quote ("~/Documents/journal/life.org" "~/Documents/android_game_market/android_game_market.org" "/Users/carlos/Documents/journal/read-record/Problem Solving with Algorithms and Data Structures.org" "/Users/carlos/Documents/journal/read-record/how-we-think.org" "/Users/carlos/Documents/journal/global.org" "/Users/carlos/Documents/journal/ideas.org" "/Users/carlos/Documents/journal/journal.org" "/Users/carlos/Documents/journal/python.org" "/Users/carlos/Documents/journal/reset.org" "~/Documents/DynamicScreen/LedGo.org" "/Users/carlos/Documents/journal/knowledge/android_knowledge.org" "/Users/carlos/Documents/journal/knowledge/ios_knowledge.org" "/Users/carlos/Documents/journal/knowledge/mysql_knowledge.org" "/Users/carlos/Documents/journal/knowledge/php_knwoledge.org" "/Users/carlos/Documents/journal/knowledge/python_knowledge.org" "~/Documents/wechat_Pic_AI/wechat_project.org" "~/Documents/mp3_hifi/data/mp3_hifi.org" "~/Documents/camera_remote_controler/data/camera_remote_controler.org" "~/Documents/journal/journal.org")))
  '(scroll-bar-mode nil)
  '(textmate-mode t)
  '(tool-bar-mode nil))
@@ -557,7 +564,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key gud-mode-map '[f11] 'gud-remove)
 
 (global-set-key '[f6] 'bookmark-jump)
-(global-set-key '[f1] 'save-some-buffers)
+(global-set-key "\C-x\C-s" 'save-some-buffers)
 
 (global-set-key '[f2] 'org-store-link)                    
 (global-set-key '[f3] 'org-insert-link)                    
@@ -741,24 +748,22 @@ hour and minute fields will be nil if not given."
 (setq org-completion-use-ido t)
 (setq ido-max-directory-size 100000)
 
-
-
-					; Erase all reminders and rebuilt reminders for today from the agenda
+; Erase all reminders and rebuilt reminders for today from the agenda
 (defun bh/org-agenda-to-appt ()
   (interactive)
   (setq appt-time-msg-list nil)
   (org-agenda-to-appt))
 
-					; Rebuild the reminders everytime the agenda is displayed
+; Rebuild the reminders everytime the agenda is displayed
 (add-hook 'org-finalize-agenda-hook 'bh/org-agenda-to-appt 'append)
 
-					; This is at the end of my .emacs - so appointments are set up when Emacs starts
+;This is at the end of my .emacs - so appointments are set up when Emacs starts
 (bh/org-agenda-to-appt)
 
-					; Activate appointments so we get notifications
+; Activate appointments so we get notifications
 (appt-activate t)
 
-					; If we leave Emacs running overnight - reset the appointments one minute after midnight
+; If we leave Emacs running overnight - reset the appointments one minute after midnight
 (run-at-time "24:01" nil 'bh/org-agenda-to-appt)
 (setq org-hide-leading-stars nil)
 
@@ -769,3 +774,6 @@ hour and minute fields will be nil if not given."
 (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (setq org-id-method (quote uuidgen))
 (setq org-clone-delete-id t)
+
+(setq org-enforce-todo-dependencies t)
+(setq org-cycle-separator-lines 0)
